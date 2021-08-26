@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css">  
+  <link rel="stylesheet" type="text/css" href="assets/vendor/slick-1.8.1/slick/slick.css">   
+  <link rel="stylesheet" type="text/css" href="assets/vendor/slick-1.8.1/slick/slick-theme.css">   
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+  <title>Document</title>
+</head>
+<body class="bg-gray">
+  <header>
+    <div class="bg-blue c-white">
+      <nav class="container-fluid p-4">
+        <div class="container d-flex align-items-start justify-content-between">
+          <div class="nav-brand s-large bold d-inline-block">WShopping</div>
+          <div class="c-dropdown d-inline-block d-flex align-items-center">
+            <img class="img-1" src="assets/images/nav-white.svg" alt="Not found">              
+              <div class="px-2">
+                <div class="s-small">Danh mục</div>
+                <div>Sản phẩm</div>  
+              </div>
+              <i class="fas fa-caret-down"></i>
+              <div class="c-dropdown-menu bg-white c-black shadow-1">
+                <h1 class="c-dropdown-item">Hello world</h1>
+                <p class="c-dropdown-item">Lorem ipsudddddddddddddddddddddddddddm dodddddddddddddddlor sit, </p>  
+              </div>
+          </div>
+          <div class="search d-inline-block">
+            <input type="text" class="s-normal p-2 bd-radius-5 bd-width-0" style="width: 550px;" placeholder="Tôi muốn mua . . ."/>
+            <button class="p-2 bd-width-0"><i class="fas fa-search"></i>Tìm kiếm</button>
+            <div class="container">
+              <ul class="d-flex s-small">
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+              </ul>
+            </div>        
+          </div>
+          <div class="c-dropdown d-inline-block d-flex align-items-center">
+            <img class="img-1" src="assets/images/user-white.svg" alt="Not found">              
+            <div class="px-2">
+              <div class="s-small">Tài khoản</div>
+              <div>Nguyễn Thanh Nhật</div>  
+            </div>
+            <i class="fas fa-caret-down"></i>
+            <div class="c-dropdown-menu bg-white c-black shadow-1">
+              <h1 class="c-dropdown-item">Hello world</h1>
+              <p class="c-dropdown-item">Lorem ipsudddddddddddddddddddddddddddm dodddddddddddddddlor sit, </p>  
+            </div>
+          </div>
+        <a href="#" class="cart d-flex">
+            <img class="img-1" src="assets/images/cart-white.svg" alt="Not found">
+            <span class="s-small ms-2 align-self-end">Giỏ hàng</span>        
+          </a>
+        </div>
+    </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <section class="banner bd-radius-5 mb-3">
+        <div class="row py-2 mx-0">
+          <div class="col-8 p-0">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active banner-item ht-20">
+                  <img src="assets/images/banner_1.jpg" class="d-block img-full" alt="Not found">
+                </div>
+                <div class="carousel-item banner-item ht-20">
+                  <img src="assets/images/banner_2.jpg" class="d-block img-full" alt="Not found">
+                </div>
+                <div class="carousel-item banner-item ht-20">
+                  <img src="assets/images/banner_3.jpg" class="d-block img-full" alt="Not found">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>            
+          </div>
+          <div class="col-4 ps-2 pe-0">
+            <div class="banner-item ht-20">
+              <img src="assets/images/banner_4.jpg" class="d-block img-full" alt="Not found">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="flash-deal bg-white p-3 my-3 bd-radius-5">
+        <div class="title d-flex justify-content-between align-items-center">
+          <h3>Flash <span><i class="fas fa-bolt"></i></span> deal</h3>
+          <div class="count-time">1:30:59</div>
+        </div>
+        <div class="flash-product">
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+          <a href="#" class="product-item p-2 d-flex flex-column m-1">
+            <img src="assets/images/product_example_1.png"/>
+            <h5 class="text-center p-2">11.831.000đ</h5>
+            <div class="sold-process"></div>
+          </a>
+        </div>
+      </section>      
+      <section class="banner bd-radius-5 my-3">
+        <div class="row py-2 mx-0">
+          <a href="#" class="col-2 ps-0 pe-0">
+            <div class="banner-item ht-10">
+              <img src="assets/images/banner_5.jpg" class="d-block img-full" alt="Not found">
+            </div>
+          </a>
+          <a href="#" class="col-8 ps-2 pe-0">
+            <div class="banner-item ht-10">
+              <img src="assets/images/banner_6.jpg" class="d-block img-full" alt="Not found">
+            </div>
+          </a>
+          <a href="#" class="col-2 ps-2 pe-0">
+            <div class="banner-item ht-10">
+              <img src="assets/images/banner_7.jpg" class="d-block img-full" alt="Not found">
+            </div>
+          </a>
+
+        </div>
+      </section>
+      <section class="option-categories my-3 d-flex bg-white justify-content-around p-3 bd-radius-5">
+        <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+          <div class="img-option-category ht-3">
+            <img class="d-block img-hfull" src="assets/images/option_category_1.png" alt="Not found" />
+          </div>
+          <p class="mt-2 mb-0">Thịt, rau củ</p>
+        </a>
+        <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+          <div class="img-option-category ht-3">
+            <img class="d-block img-hfull" src="assets/images/option_category_2.png" alt="Not found" />
+          </div>
+          <p class="mt-2 mb-0">Thịt, rau củ</p>
+        </a>
+        <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+          <div class="img-option-category ht-3">
+            <img class="d-block img-hfull" src="assets/images/option_category_3.png" alt="Not found" />
+          </div>
+          <p class="mt-2 mb-0">Thịt, rau củ</p>
+        </a>
+        <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+          <div class="img-option-category ht-3">
+            <img class="d-block img-hfull" src="assets/images/option_category_4.png" alt="Not found" />
+          </div>
+          <p class="mt-2 mb-0">Thịt, rau củ</p>
+        </a>
+        <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+          <div class="img-option-category ht-3">
+            <img class="d-block img-hfull" src="assets/images/option_category_5.png" alt="Not found" />
+          </div>
+          <p class="mt-2 mb-0">Thịt, rau củ</p>
+        </a>
+        <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+          <div class="img-option-category ht-3">
+            <img class="d-block img-hfull" src="assets/images/option_category_6.png" alt="Not found" />
+          </div>
+          <p class="mt-2 mb-0">Thịt, rau củ</p>
+        </a>
+        <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+          <div class="img-option-category ht-3">
+            <img class="d-block img-hfull" src="assets/images/option_category_7.png" alt="Not found" />
+          </div>
+          <p class="mt-2 mb-0">Thịt, rau củ</p>
+        </a>
+        <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+          <div class="img-option-category ht-3">
+            <img class="d-block img-hfull" src="assets/images/option_category_8.png" alt="Not found" />
+          </div>
+          <p class="mt-2 mb-0">Thịt, rau củ</p>
+        </a>
+      </section>
+      <section class="banner d-flex justify-content-between my-3">
+        <a href="#" class="ht-10">
+          <img class="bd-radius-10 img-hfull" src="assets/images/banner_8.png" alt="Not found">
+        </a>
+        <a href="#" class="ht-10">
+          <img class="bd-radius-10 img-hfull" src="assets/images/banner_9.png" alt="Not found">
+        </a>
+        <a href="#" class="ht-10">
+          <img class="bd-radius-10 img-hfull" src="assets/images/banner_10.png" alt="Not found">
+        </a>
+        <a href="#" class="ht-10">
+          <img class="bd-radius-10 img-hfull" src="assets/images/banner_11.png" alt="Not found">
+        </a>
+      </section>
+      <section class="my-3 bd-radius-5 bg-white p-3">
+        <h4>Danh mục nổi bật</h4>
+        <div class="hightlight-categories d-flex bg-white justify-content-around mt-4">
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_1.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_2.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_3.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_4.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_5.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_6.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_7.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_8.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>   
+        </div>
+        <div class="hightlight-categories d-flex bg-white justify-content-around mt-5">
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_1.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_2.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_3.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_4.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="option-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_5.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_6.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_7.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>
+          <a href="#" class="hightlight-category d-flex align-items-center flex-column justify-content-center">
+            <div class="img-hightlight-category ht-3">
+              <img class="d-block img-hfull" src="assets/images/option_category_8.png" alt="Not found" />
+            </div>
+            <p class="mt-2 mb-0">Thịt, rau củ</p>
+          </a>   
+        </div>
+      </section>
+      <section class="banner d-flex justify-content-between my-3">
+        <a href="#" class="ht-10">
+          <img class="bd-radius-10 img-hfull" src="assets/images/banner_12.png" alt="Not found">
+        </a>
+        <a href="#" class="ht-10">
+          <img class="bd-radius-10 img-hfull" src="assets/images/banner_13.png" alt="Not found">
+        </a>
+        <a href="#" class="ht-10">
+          <img class="bd-radius-10 img-hfull" src="assets/images/banner_14.png" alt="Not found">
+        </a>
+      </section>
+      <section class="product-types my-3">
+        <div class="container px-0 pb-1" id="product-types-header">
+          <h4 class="p-3 bg-white bd-radius-5">Gợi ý hôm nay</h4>
+          <div class="product-types d-flex mt-3">
+            <a href="#" class="product-type bg-white px-4 py-2 bd-radius-10 me-2 d-flex align-items-center flex-column justify-content-center">
+              <div class="img-product-type ht-3">
+                <img class="d-block img-hfull" src="assets/images/product_type_1.png" alt="Not found" />
+              </div>
+              <p class="mt-2 mb-0">Dành cho bạn</p>
+            </a>
+            <a href="#" class="product-type bg-white px-4 py-2 bd-radius-10 me-2 d-flex align-items-center flex-column justify-content-center">
+              <div class="img-product-type ht-3">
+                <img class="d-block img-hfull" src="assets/images/product_type_2.png" alt="Not found" />
+              </div>
+              <p class="mt-2 mb-0">Rẻ vô đối</p>
+            </a>
+            <a href="#" class="product-type bg-white px-4 py-2 bd-radius-10 me-2 d-flex align-items-center flex-column justify-content-center">
+              <div class="img-product-type ht-3">
+                <img class="d-block img-hfull" src="assets/images/product_type_3.png" alt="Not found" />
+              </div>
+              <p class="mt-2 mb-0">Đi chợ siêu Sale</p>
+            </a>
+            <a href="#" class="product-type bg-white px-4 py-2 bd-radius-10 me-2 d-flex align-items-center flex-column justify-content-center">
+              <div class="img-product-type ht-3">
+                <img class="d-block img-hfull" src="assets/images/product_type_4.jpg" alt="Not found" />
+              </div>
+              <p class="mt-2 mb-0">Deal Siêu Hot</p>
+            </a>
+            <a href="#" class="product-type bg-white px-4 py-2 bd-radius-10 me-2 d-flex align-items-center flex-column justify-content-center">
+              <div class="img-product-type ht-3">
+                <img class="d-block img-hfull" src="assets/images/product_type_5.png" alt="Not found" />
+              </div>
+              <p class="mt-2 mb-0">Hàng mới</p>
+            </a>
+            <a href="#" class="product-type bg-white px-4 py-2 bd-radius-10 me-2 d-flex align-items-center flex-column justify-content-center">
+              <div class="img-product-type ht-3">
+                <img class="d-block img-hfull" src="assets/images/product_type_6.png" alt="Not found" />
+              </div>
+              <p class="mt-2 mb-0">Không giới hạn</p>
+            </a>
+            <a href="#" class="product-type bg-white px-4 py-2 bd-radius-10 me-0 d-flex align-items-center flex-column justify-content-center">
+              <div class="img-product-type ht-3">
+                <img class="d-block img-hfull" src="assets/images/product_type_7.png" alt="Not found" />
+              </div>
+              <p class="mt-2 mb-0">Thời trang nữ</p>
+            </a>          
+          </div>  
+        </div>
+        <div id="temp-element"></div>
+      </section>
+      <section class="bg-white my-3 pb-3">
+        <div class="products row m-0">
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+          <a href="#" class="product col-2 d-flex flex-column p-4">
+            <div class="ht-10 mb-2">
+              <img src="assets/images/product_1.png" class="img-hfull" alt="Not found" />
+            </div>
+            <p class="title-product mb-2">Iphone 11 pro</p>
+            <p class="mb-2">
+              <span>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span> 
+              <span> | </span>
+              <span class="s-small">Đã bán 20</span>
+            </p>
+            <h6 class="price-product"><span>2.800.000 đ</span> <span>-28%</span></h6>
+  
+          </a>
+  
+        </div>
+        <button class="more-product">Xem thêm</button>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="bg-white d-flex justify-content-center py-5">
+      <div class="footer-col">
+        <h6 class="mb-4">HỖ TRỢ KHÁCH HÀNG</h6>
+        <p class="s-small mb-1 c-red">Hotline chăm sóc khách hàng: 1900-6035</p>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Câu hỏi thường gặp</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Gửi yêu cầu hỗ trợ</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Hướng dẫn đặt hàng</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Phương thức vận chuyển</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách đổi trả</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Hướng dẫn trả góp</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách hàng nhập khẩu</p></a>
+        <p class="s-small mb-1">Hỗ trợ khách hàng: hotro@woto.vn</p>
+        <p class="s-small mb-1">Báo lỗi bảo mật: security@woto.vn</p>
+      </div>
+      <div class="footer-col">
+        <h6 class="mb-4">VỀ WOTO</h6>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Giới thiệu Woto</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Tuyển dụng</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách bảo mật thanh toán</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách bảo mật thông tin cả nhân</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách giải quyết khiếu nại</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Điều khoản sử dụng</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Giới thiệu Wolo Xu</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Bán hàng doanh nghiệp</p></a>
+      </div>
+      <div class="footer-col">
+        <h6 class="mb-4">HỢP TÁC VÀ LIÊN KẾT</h6>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Quy chế hoạt động Sàn GDTMĐT</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Bán hàng cùng Woto</p></a>        
+      </div>
+      <div class="footer-col">
+        <h6 class="mb-4">KẾT NỐI VỚI CHÚNG TÔI</h6>
+        <a href="#" class="ht-2 d-inline-block me-1"><img class="img-hfull" src="assets/images/facebook.svg" alt="Not found"></a>
+        <a href="#" class="ht-2 d-inline-block mx-1"><img class="img-hfull" src="assets/images/youtube.svg" alt="Not found"></a>
+        <a href="#" class="ht-2 d-inline-block ms-1"><img class="img-hfull" src="assets/images/zalo.svg" alt="Not found"></a>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+  <script src="assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/fontawesome-free-5.15.4-web/js/all.min.js"></script>
+  <script src="assets/vendor/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/slick-1.8.1/slick/slick.js"></script>
+  <script>
+    $('.flash-product').slick({
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+    });  
+    window.onscroll = function() {stickHeader()};
+
+    var header = document.getElementById("product-types-header");
+    var temp = document.getElementById("temp-element");
+    var sticky = header.offsetTop;
+
+    var widthHeader = header.offsetWidth;
+    var heightHeader = header.offsetHeight;
+
+    function stickHeader() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+        header.style.width = `${widthHeader}px`;
+        temp.style.height = `${heightHeader}px`;
+      } else {
+        header.classList.remove("sticky");
+        temp.style.height = `${0}px`;
+      }
+    }  
+  </script>
+</body>
+</html>
