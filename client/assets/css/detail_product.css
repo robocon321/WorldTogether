@@ -1,0 +1,235 @@
+/* breadcrumb */
+
+.breadcrumb {
+  color: gray;
+  font-weight: 300;
+  font-size: 0.9rem;
+  box-shadow: 1px 1px 5px solid rgb(206, 206, 206, 0.5);
+}
+
+.breadcrumb>ul>li:last-child {
+  color: black;
+}
+
+.breadcrumb-arrow {
+  background-image: url("../images/right-arrow.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #f2f2f2;
+  width: 1.2rem;
+  height: 2rem;
+}
+
+.intro-detail {
+  font-size: 0.9rem;
+}
+
+.intro-detail a {
+  color: #0045ad;
+}
+
+.title-detail {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+
+/* rating */
+.rating {
+  font-size: 0.9em;
+  font-family: sans-serif;
+  color: gray;
+}
+
+.star-ratings {
+  unicode-bidi: bidi-override;
+  color: #ccc;
+  font-size: 32px;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+.fill-ratings {
+  color: yellow;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;    
+}
+.fill-ratings span {
+  display: inline-block;
+}
+
+.empty-ratings {
+  padding: 0;
+  display: block;
+  z-index: 0;
+}
+
+.real-price {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.discount {
+  background-color: red;
+  color: white;
+  padding: 0.1rem;
+}
+
+.discount-code {
+  border-top: 0.1rem solid #ccc;
+  border-bottom: 0.1rem solid #ccc;
+}
+
+.discount-code p{
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.amount input {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  border: 0.1rem solid #ccc;
+  background-color: white;
+}
+
+.amount input:nth-child(2) {
+  border-left: none;
+  border-right: none;
+}
+
+.buy {
+  border: none;
+  color: white;
+  background-color: red;
+  color: 1rem;
+  padding: 1rem 8rem;
+  border-radius: 0.5rem;
+}
+
+#result-zoom {
+  width: 50rem;
+  height: 30rem;
+  background-color: green;
+  position: absolute;
+  top: 0%;
+  right: 30%;
+  transform: translate(50%, 50%);
+  z-index: 3;
+}
+
+.img-selected {
+  position: relative;
+}
+
+.img-nonselected {
+  cursor: pointer;
+}
+
+.active {
+  border: 0.1rem solid #003c9c;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 0.1rem solid #d4d4d4;
+  width: 6rem;
+  height: 6rem;
+  background-color: white;
+  opacity: 0.5;
+}
+
+.img-lens-off {
+  opacity: 0;
+}
+
+.score-shop > div > span:nth-child(2){
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+.btn-shop > button {
+  width: 7rem;
+}
+
+.insurance {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.8rem;
+}
+
+.insurance p:nth-child(1) {
+  color: #ccc;
+}
+
+.policy {
+  font-size: 0.8rem;
+}
+
+.compare {
+  border-top: 1px solid #ccc;
+  font-size: 0.8rem;
+}
+
+.compare > button {
+  width: 5rem;
+}
+
+.wrap {
+  border: 1px solid #ccc;
+}
+
+.c-progress {
+  height: 0.5rem;
+  background-color: #ccc;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.c-progress-bar {
+  height: 0.5rem;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  background-color: yellow;
+}
+
+.all-img > div > div > div{
+  background-size: 100% 100%;
+}
+
+.filter { 
+  font-size: 0.9rem;
+}
+
+.condition-filter {
+  background-color: rgb(241, 241, 241);
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.avatar-user-comment {
+  border-radius: 50%;
+  border: 1px solid rgb(241, 241, 241);
+}
+
+.time-from {
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.written , .received {
+  font-size: 0.9rem;
+}
+
+.written span, .received span {
+  color: gray;
+}
+

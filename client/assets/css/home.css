@@ -1,0 +1,31 @@
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #f2f2f2;
+}
+
+.product:hover {
+  box-shadow: 1px 1px 5px 1px rgb(206, 206, 206, 0.5), -1px -1px 5px 1px rgb(206, 206, 206, 0.5);
+}
+
+.more-product {
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  background-color: white;
+
+  border-color: #0045ad;
+  color: #0045ad;
+  border-radius: 0.3rem;
+  width: 15rem;
+  border-style: solid;
+}
+
+.more-product:hover {
+  background-color: #0045ad;
+  border-color: #0045ad;
+  color: white;
+}
+

@@ -1,6 +1,43 @@
 html, body {
   margin: 0px;
   padding: 0px;
+  font-family: sans-serif;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+}
+
+td, th {
+  text-align: left;
+  padding: 0.8rem;
+  border: 0.1rem solid rgb(228, 228, 228);
+}
+
+th {
+  background-color: rgb(238, 238, 238);
+  width: 30%;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(245, 245, 245);
+}
+
+button {
+  border: 0.1rem solid #003c9c;
+  color: #003c9c;
+  background-color: white;  
+  border-radius: 0.3rem;
+}
+
+button:hover {
+  border: 0.1rem solid white;
+  background-color: #003c9c;
+  color: white;  
+
 }
 
 ul {
@@ -43,26 +80,6 @@ a:hover {
   border-width: 0px;
 }
 
-/* img */
-
-.img-1 {
-  width: 2em;
-  height: 2em;
-}
-
-.img-full {
-  width: 100%;
-  height: 100%;
-}
-
-.img-hfull {
-  height: 100%;
-}
-
-.img-wfull {
-  width: 100%;
-}
-
 /* dimension */
 
 .wp-100{
@@ -71,19 +88,23 @@ a:hover {
 
 /* size word */
 .s-small {
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 
 .s-normal {
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 .s-big {
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 .s-large {
-  font-size: 1.6em;
+  font-size: 1.6rem;
+}
+
+.s-vlarge {
+  font-size: 2rem;
 }
 
 /* color */
@@ -116,27 +137,55 @@ a:hover {
 /* dimension */
 
 .ht-4 {
-  height: 4em;
+  height: 4rem;
 }
 
 .ht-3 {
-  height: 3em;
+  height: 3rem;
 }
 
 .ht-2 {
-  height: 2em;
+  height: 2rem;
 }
 
 .ht-10 {
-  height: 10em;
+  height: 10rem;
 }
 
 .ht-20 {
-  height: 20em;
+  height: 20rem;
 }
 
+.s-2 {
+  width: 2rem;
+  height: 2rem;
+}
 
-/* component */
+.s-4 {
+  width: 4rem;
+  height: 4rem;
+}
+
+.s-full {
+  width: 100%;
+  height: 100%;
+}
+
+.s-hfull {
+  height: 100%;
+}
+
+.s-wfull {
+  width: 100%;
+}
+
+.style-blur {
+  font-size: 0.8rem;
+  color: gray;
+}
+
+/* components */
+
 .c-dropdown {
   position: relative;
   cursor: pointer;
@@ -176,10 +225,10 @@ a:hover {
 }
 
 .slick-next::before, .slick-prev::before {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   background-color: rgba(185, 185, 185, 0.5);
 }
 
@@ -191,40 +240,10 @@ a:hover {
   box-shadow: 1px 1px 4px 2px rgb(206, 206, 206, 0.5), -1px -1px 4px 2px rgb(206, 206, 206, 0.5);
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-  background-color: #f2f2f2;
-}
-
-.product:hover {
-  box-shadow: 1px 1px 5px 1px rgb(206, 206, 206, 0.5), -1px -1px 5px 1px rgb(206, 206, 206, 0.5);
-}
-
-.more-product {
-  left: 50%;
-  position: relative;
-  transform: translateX(-50%);
-  background-color: white;
-
-  border-color: #0045ad;
-  color: #0045ad;
-  border-radius: 0.3em;
-  width: 15em;
-  border-style: solid;
-}
-
-.more-product:hover {
-  background-color: #0045ad;
-  border-color: #0045ad;
-  color: white;
+.page-item {
+  padding: 0;
 }
 
 .footer-col {
-  width: 20em;
+  width: 20rem;
 }
-
-
-
