@@ -1,0 +1,29 @@
+.action > span{
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+}
+
+.avatar-account {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 0.1rem solid #ccc;
+}
+
+.nav-account {
+  color: gray;
+  border-bottom: 0.1rem solid #ccc;
+}
+
+.selected {
+  color: black;
+  background-color: rgb(235, 235, 235);
+}
+
+nav {
+  width: 20%;
+}
+
+.wrap {
+  width: 80%;
+}

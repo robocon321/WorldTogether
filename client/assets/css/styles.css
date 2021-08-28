@@ -102,6 +102,14 @@ a:hover {
 .c-blue {
   color: #34b7eb
 }
+
+.c-green {
+  color: #07db00;
+}
+
+.c-gray {
+  color: gray;
+}
 /* background */
 
 .bg-blue {
