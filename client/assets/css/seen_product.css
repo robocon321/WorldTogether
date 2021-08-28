@@ -1,0 +1,28 @@
+.product:hover {
+  box-shadow: 1px 1px 5px 1px rgb(206, 206, 206, 0.5), -1px -1px 5px 1px rgb(206, 206, 206, 0.5);
+}
+
+.avatar-account {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 0.1rem solid #ccc;
+}
+
+.nav-account {
+  color: gray;
+  border-bottom: 0.1rem solid #ccc;
+}
+
+.selected {
+  color: black;
+  background-color: rgb(235, 235, 235);
+}
+
+nav {
+  width: 20%;
+}
+
+.wrap {
+  width: 80%;
+}
