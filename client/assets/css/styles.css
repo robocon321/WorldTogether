@@ -4,28 +4,6 @@ html, body {
   font-family: sans-serif;
 }
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  background-color: white;
-}
-
-td, th {
-  text-align: left;
-  padding: 0.8rem;
-  border: 0.1rem solid rgb(228, 228, 228);
-}
-
-th {
-  background-color: rgb(238, 238, 238);
-  width: 30%;
-}
-
-tr:nth-child(even) {
-  background-color: rgb(245, 245, 245);
-}
-
 button {
   border: 0.1rem solid #003c9c;
   color: #003c9c;
@@ -119,6 +97,10 @@ a:hover {
 
 .c-red {
   color: #e00f00;
+}
+
+.c-blue {
+  color: #34b7eb
 }
 /* background */
 
@@ -246,4 +228,24 @@ a:hover {
 
 .footer-col {
   width: 20rem;
+}
+
+.breadcrumb {
+  color: gray;
+  font-weight: 300;
+  font-size: 0.9rem;
+  box-shadow: 1px 1px 5px solid rgb(206, 206, 206, 0.5);
+}
+
+.breadcrumb>ul>li:last-child {
+  color: black;
+}
+
+.breadcrumb-arrow {
+  background-image: url("../images/right-arrow.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #f2f2f2;
+  width: 1.2rem;
+  height: 2rem;
 }
