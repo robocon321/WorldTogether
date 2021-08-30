@@ -1,0 +1,81 @@
+.amount input {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  border: 0.1rem solid #ccc;
+  background-color: white;
+}
+
+.amount input:nth-child(2) {
+  border-left: none;
+  border-right: none;
+}
+
+table {
+  width: 100%;
+}
+
+tr > * {
+  padding: 1rem 0rem;
+}
+
+tr > *:nth-child(1) {
+  width: 5%;
+}
+
+tr> *:nth-child(2) {
+  width: 50%;
+}
+
+tr > *:nth-child(3) {
+  width: 15%;
+  text-align: center;
+}
+
+tr > *:nth-child(4) {
+  width: 10%;
+  text-align: center;
+}
+
+tr > *:nth-child(5) {
+  width: 15%;
+  text-align: center;
+}
+
+tr > *:nth-child(6) {
+  width: 5%;
+}
+
+input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+.wrap {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+#inside-modal {
+  position: fixed;
+  width: 80rem;
+  height: 30rem;
+  background-color: white;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  overflow: scroll;
+}
+
+#outside-modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 1;
+  top: 0rem;
+  left: 0rem;
+  opacity: 0.6;
+}
