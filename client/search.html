@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css">  
+  <link rel="stylesheet" type="text/css" href="assets/vendor/slick-1.8.1/slick/slick.css">   
+  <link rel="stylesheet" type="text/css" href="assets/vendor/slick-1.8.1/slick/slick-theme.css">   
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/search.css">
+  <title>Document</title>
+</head>
+<body class="bg-gray">
+  <header>
+    <div class="bg-blue c-white">
+      <nav class="container-fluid p-4">
+        <div class="container d-flex align-items-start justify-content-between">
+          <div class="nav-brand s-large bold d-inline-block">WShopping</div>
+          <div class="c-dropdown d-inline-block d-flex align-items-center">
+            <img class="s-2" src="assets/images/nav-white.svg" alt="Not found">              
+              <div class="px-2">
+                <div class="s-small">Danh mục</div>
+                <div>Sản phẩm</div>  
+              </div>
+              <i class="fas fa-caret-down"></i>
+              <div class="c-dropdown-menu bg-white c-black shadow-1">
+                <h1 class="c-dropdown-item">Hello world</h1>
+                <p class="c-dropdown-item">Lorem ipsudddddddddddddddddddddddddddm dodddddddddddddddlor sit, </p>  
+              </div>
+          </div>
+          <div class="search d-inline-block">
+            <input type="text" class="s-normal p-2 bd-radius-5 bd-width-0" style="width: 550px;" placeholder="Tôi muốn mua . . ."/>
+            <button class="p-2 bd-width-0"><i class="fas fa-search"></i>Tìm kiếm</button>
+            <div class="container">
+              <ul class="d-flex s-small">
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 1</a></li>
+              </ul>
+            </div>        
+          </div>
+          <div class="c-dropdown d-inline-block d-flex align-items-center">
+            <img class="s-2" src="assets/images/user-white.svg" alt="Not found">              
+            <div class="px-2">
+              <div class="s-small">Tài khoản</div>
+              <div>Nguyễn Thanh Nhật</div>  
+            </div>
+            <i class="fas fa-caret-down"></i>
+            <div class="c-dropdown-menu bg-white c-black shadow-1">
+              <h1 class="c-dropdown-item">Hello world</h1>
+              <p class="c-dropdown-item">Lorem ipsudddddddddddddddddddddddddddm dodddddddddddddddlor sit, </p>  
+            </div>
+          </div>
+        <a href="#" class="cart d-flex">
+            <img class="s-2" src="assets/images/cart-white.svg" alt="Not found">
+            <span class="s-small ms-2 align-self-end">Giỏ hàng</span>        
+          </a>
+        </div>
+    </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container d-flex my-3">
+      <div class="left bg-white p-3">
+        <div>
+          <h5>DANH MỤC SẢN PHẨM</h5>
+          <ul>
+            <li class="c-blue"><a href="#">Danh mục 1</a></li>
+            <li class="c-blue"><a href="#">Danh mục 2</a></li>
+            <li class="c-blue"><a href="#">Danh mục 3</a></li>
+            <li class="c-blue"><a href="#">Danh mục 1</a></li>
+            <li class="c-blue"><a href="#">Danh mục 2</a></li>
+            <li class="c-blue"><a href="#">Danh mục 3</a></li>
+            <li class="c-blue"><a href="#">Danh mục 1</a></li>
+            <li class="c-blue"><a href="#">Danh mục 2</a></li>
+            <li class="c-blue"><a href="#">Danh mục 3</a></li>
+          </ul>  
+          <div class="mt-3 more">Xem thêm <span><i class="fas fa-chevron-down"></i></span></div>
+        </div>
+        <hr>
+        <div>
+          <h5>ĐÁNH GIÁ</h5>
+          <ul>
+            <li><a href="#">
+              <span class="c-yellow"><i class="fas fa-star"></i></span>
+              <span class="c-yellow"><i class="fas fa-star"></i></span>
+              <span class="c-yellow"><i class="fas fa-star"></i></span>
+              <span class="c-yellow"><i class="fas fa-star"></i></span>
+              <span class="c-yellow"><i class="fas fa-star"></i></span>
+              <span> từ 5 sao</span>
+            </a></li>
+            <li><a href="#">
+              <li><a href="#">
+                <span class="c-yellow"><i class="fas fa-star"></i></span>
+                <span class="c-yellow"><i class="fas fa-star"></i></span>
+                <span class="c-yellow"><i class="fas fa-star"></i></span>
+                <span class="c-yellow"><i class="fas fa-star"></i></span>
+                <span class="c-gray"><i class="fas fa-star"></i></span>
+                <span> từ 4 sao</span>
+              </a></li>  
+            </a></li>
+            <li><a href="#">
+              <li><a href="#">
+                <span class="c-yellow"><i class="fas fa-star"></i></span>
+                <span class="c-yellow"><i class="fas fa-star"></i></span>
+                <span class="c-yellow"><i class="fas fa-star"></i></span>
+                <span class="c-gray"><i class="fas fa-star"></i></span>
+                <span class="c-gray"><i class="fas fa-star"></i></span>
+                <span> từ 3 sao</span>
+              </a></li>  
+            </a></li>
+          </ul>
+        </div>
+        <hr>
+        <div>
+          <h5>GIÁ</h5>
+          <ul>
+            <li class="c-blue"><a href="#">Dưới 3.500.000</a></li>
+            <li class="c-blue"><a href="#">Từ 3.500.000 đến 17.000.000</a></li>
+            <li class="c-blue"><a href="#">Trên 17.000.000</a></li>
+          </ul>
+          <div class="c-gray">
+            <input type="number" value="0"/> - <input type="number" />
+            <button>Áp dụng</button>
+          </div>
+        </div>
+        <hr>
+        <div>
+          <h5>ROM</h5>
+          <ul>
+            <li><a href="#">
+              <input type="checkbox" id="rom1" name="rom">
+              <label class="ms-1" for="rom1">64GB</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="rom2" name="rom">
+              <label class="ms-1" for="rom2">128GB</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="rom3" name="rom">
+              <label class="ms-1" for="rom3">256GB</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="rom4" name="rom">
+              <label class="ms-1" for="rom4">32GB</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="rom5" name="rom">
+              <label class="ms-1" for="rom5">16GB</label>
+            </a></li>
+          </ul>
+        </div>
+        <hr>
+        <div>
+          <h5>THƯƠNG HIỆU</h5>
+          <ul>
+            <li><a href="#">
+              <input type="checkbox" id="brand1" name="brand">
+              <label class="ms-1" for="brand1">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand2" name="brand">
+              <label class="ms-1" for="brand2">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand3" name="brand">
+              <label class="ms-1" for="brand3">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand4" name="brand">
+              <label class="ms-1" for="brand4">Vsmart</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand1" name="brand">
+              <label class="ms-1" for="brand1">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand2" name="brand">
+              <label class="ms-1" for="brand2">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand3" name="brand">
+              <label class="ms-1" for="brand3">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand4" name="brand">
+              <label class="ms-1" for="brand4">Vsmart</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand1" name="brand">
+              <label class="ms-1" for="brand1">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand2" name="brand">
+              <label class="ms-1" for="brand2">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand3" name="brand">
+              <label class="ms-1" for="brand3">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand4" name="brand">
+              <label class="ms-1" for="brand4">Vsmart</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand1" name="brand">
+              <label class="ms-1" for="brand1">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand2" name="brand">
+              <label class="ms-1" for="brand2">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand3" name="brand">
+              <label class="ms-1" for="brand3">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand4" name="brand">
+              <label class="ms-1" for="brand4">Vsmart</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand1" name="brand">
+              <label class="ms-1" for="brand1">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand2" name="brand">
+              <label class="ms-1" for="brand2">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand3" name="brand">
+              <label class="ms-1" for="brand3">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand4" name="brand">
+              <label class="ms-1" for="brand4">Vsmart</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand1" name="brand">
+              <label class="ms-1" for="brand1">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand2" name="brand">
+              <label class="ms-1" for="brand2">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand3" name="brand">
+              <label class="ms-1" for="brand3">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand4" name="brand">
+              <label class="ms-1" for="brand4">Vsmart</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand1" name="brand">
+              <label class="ms-1" for="brand1">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand2" name="brand">
+              <label class="ms-1" for="brand2">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand3" name="brand">
+              <label class="ms-1" for="brand3">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand4" name="brand">
+              <label class="ms-1" for="brand4">Vsmart</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand5" name="brand">
+              <label class="ms-1" for="brand5">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand6" name="brand">
+              <label class="ms-1" for="brand6">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand7" name="brand">
+              <label class="ms-1" for="brand7">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand8" name="brand">
+              <label class="ms-1" for="brand8">Vsmart</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand9" name="brand">
+              <label class="ms-1" for="brand9">Samsung</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand10" name="brand">
+              <label class="ms-1" for="brand10">Xiaomi</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand11" name="brand">
+              <label class="ms-1" for="brand11">Apple</label>
+            </a></li>
+            <li><a href="#">
+              <input type="checkbox" id="brand12" name="brand">
+              <label class="ms-1" for="brand12">Vsmart</label>
+            </a></li>
+          </ul>
+          <div class="mt-3 more">Xem thêm <span><i class="fas fa-chevron-down"></i></span></div>
+        </div>
+      </div>
+      <div class="right bg-white p-3">
+        <h4>Kết quả tìm kiếm cho  `điện thoại`: <span class="c-gray">32 kết quả</span></h4>
+        <ul class="tabs d-flex pt-2">
+          <li class="p-2 mx-2"><a href="#">Phổ biến</a></li>
+          <li class="p-2 mx-2"><a href="#">Bán chạy</a></li>
+          <li class="p-2 mx-2"><a href="#">Hàng mới</a></li>
+          <li class="p-2 mx-2"><a href="#">Giá thấp</a></li>
+          <li class="p-2 mx-2"><a href="#">Giá cao</a></li>
+        </ul>
+        <hr class="mt-0">
+        <ul class="tags d-flex mb-3">
+          <li><a href="#"><span class="pe-1">từ 4 sao</span> <span><i class="fas fa-times-circle"></i></span></a></li>
+          <li><a href="#"><span class="pe-1">Samsung</span> <span><i class="fas fa-times-circle"></i></span></a></li>
+          <li><a href="#"><span class="pe-1">Xiaomi</span> <span><i class="fas fa-times-circle"></i></span></a></li>
+          <a href="#">Xóa tất cả</a>
+        </ul>
+        <div class="products">
+          <div class="row my-2">
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+            <a href="#" class="product p-2 col-3 d-flex flex-column">
+              <div class="s-10 my-2 align-self-center">
+                <img class="img-main s-full" src="assets/images/product_1.png" alt="Not found" />
+              </div>
+              <div class="imgs d-flex my-2">
+                <div class="s-3 p-2 selected option">
+                  <img class="s-full" src="assets/images/product_2.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_3.jpg" alt="Not found" />
+                </div>
+                <div class="s-3 p-2 option">
+                  <img class="s-full" src="assets/images/product_4.jpg" alt="Not found" />
+                </div>
+              </div>
+              <div class="title-product">Điện thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng</div>
+              <div class="rating-sold d-flex align-items-center c-gray">
+                <span class="star-ratings me-3">
+                  <div class="fill-ratings" style="width: 50%;">
+                    <span>★★★★★</span>
+                  </div>
+                  <div class="empty-ratings">
+                    <span>★★★★★</span>
+                  </div>
+                </span>
+                <span class="mx-1 c-gray">|</span>
+                <span class="s-small">Đã bán 153</span>
+              </div>
+              <div class="price-product"><b>5.189.000 đ</b> <span class="mx-2">-20%</span></div>
+            </a>
+          </div>
+        </div>
+        <div class="d-flex pagination justify-content-center mt-5">
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item" aria-current="page">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="bg-white d-flex justify-content-center py-5">
+      <div class="footer-col">
+        <h5 class="mb-4">HỖ TRỢ KHÁCH HÀNG</h5>
+        <p class="s-small mb-1 c-red">Hotline chăm sóc khách hàng: 1900-6035</p>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Câu hỏi thường gặp</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Gửi yêu cầu hỗ trợ</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Hướng dẫn đặt hàng</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Phương thức vận chuyển</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách đổi trả</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Hướng dẫn trả góp</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách hàng nhập khẩu</p></a>
+        <p class="s-small mb-1">Hỗ trợ khách hàng: hotro@woto.vn</p>
+        <p class="s-small mb-1">Báo lỗi bảo mật: security@woto.vn</p>
+      </div>
+      <div class="footer-col">
+        <h5 class="mb-4">VỀ WOTO</h5>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Giới thiệu Woto</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Tuyển dụng</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách bảo mật thanh toán</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách bảo mật thông tin cả nhân</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Chính sách giải quyết khiếu nại</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Điều khoản sử dụng</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Giới thiệu Wolo Xu</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Bán hàng doanh nghiệp</p></a>
+      </div>
+      <div class="footer-col">
+        <h5 class="mb-4">HỢP TÁC VÀ LIÊN KẾT</h5>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Quy chế hoạt động Sàn GDTMĐT</p></a>
+        <a class="s-small" href="#"><p class="mt-2 mb-2">Bán hàng cùng Woto</p></a>        
+      </div>
+      <div class="footer-col">
+        <h5 class="mb-4">KẾT NỐI VỚI CHÚNG TÔI</h5>
+        <a href="#" class="ht-2 d-inline-block me-1"><img class="s-hfull" src="assets/images/facebook.svg" alt="Not found"></a>
+        <a href="#" class="ht-2 d-inline-block mx-1"><img class="s-hfull" src="assets/images/youtube.svg" alt="Not found"></a>
+        <a href="#" class="ht-2 d-inline-block ms-1"><img class="s-hfull" src="assets/images/zalo.svg" alt="Not found"></a>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+  <script src="assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/fontawesome-free-5.15.4-web/js/all.min.js"></script>
+  <script src="assets/vendor/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/slick-1.8.1/slick/slick.js"></script>
+  <script>
+    var mores = document.getElementsByClassName("more");
+    var elementMores = Array.from(mores);
+    elementMores.forEach(element => {
+      var {previousElementSibling} = element;
+      previousElementSibling.style.height = "10rem";
+      element.addEventListener("click" , () => {
+        var child = element.lastChild;
+        if(previousElementSibling.style.height == "auto") {
+          previousElementSibling.style.height = "10rem";
+          child.innerHTML = '<i class="fas fa-chevron-down"></i>';
+        } else {
+          previousElementSibling.style.height = "auto";
+          child.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        }
+      })
+    });
+  </script>
+  <script>
+    var options = document.getElementsByClassName("option");
+    var arrOpts = Array.from(options);
+    arrOpts.forEach(element => {
+      element.addEventListener("mouseover" , () => {
+        var imgMain = element.parentNode.previousElementSibling.getElementsByClassName("img-main")[0];
+        var imgSource = element.getElementsByTagName("img")[0];
+        imgMain.src = imgSource.src;
+
+        var allSiblingParent = element.parentNode.parentElement.getElementsByClassName("option");
+        var arrAllSiblingParent = Array.from(allSiblingParent);
+
+        arrAllSiblingParent.forEach(item => {
+          item.classList.remove("selected");
+        });
+
+        element.classList.add("selected");
+      })
+    });
+  </script>
+</body>
+</html>

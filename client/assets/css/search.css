@@ -1,0 +1,109 @@
+.left {
+  width: 20%;
+  border-right: 0.1rem solid rgb(216, 216, 216);
+}
+
+.right {
+  width: 80%;
+}
+
+.left li {
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.left ul {
+  overflow: hidden;
+}
+
+.more {
+  color: rgb(0, 0, 153);
+  cursor: pointer;
+}
+
+.left input[type="number"] {
+    width: 45%;
+    margin-bottom: 1rem;
+}
+
+.tabs li {
+  color: black;
+  position: relative;
+  transition: color 0.5s;
+}
+
+.tabs li::before {
+  content: "";
+  position: absolute;
+  height: 0.2rem;
+  width: 0%;
+  transition: width 0.5s;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(0, 0, 153);
+}
+
+.tabs li:hover::before {
+  width: 100%;
+}
+
+.tabs li:hover {
+  color: rgb(0, 0, 153);
+}
+
+.tags > * {
+  color: rgb(90, 90, 90);
+  border-radius: 1rem;
+  padding: 0.2rem 0.9rem;
+  margin: 0rem 0.4rem;
+  font-size: 0.9rem;
+}
+
+.tags > li {
+  background-color: rgb(230, 241, 255);
+}
+
+.tags li span:last-child {
+  color: rgb(124, 179, 252);
+}
+
+.tags > div {
+  color: rgb(0, 0, 153);
+}
+
+.star-ratings {
+  unicode-bidi: bidi-override;
+  color: #ccc;
+  font-size: 20px;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+.fill-ratings {
+  color: yellow;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;    
+}
+.fill-ratings span {
+  display: inline-block;
+}
+
+.empty-ratings {
+  padding: 0;
+  display: block;
+  z-index: 0;
+}
+
+.selected {
+  border: 0.1rem solid red;
+}
+
+.product:hover {
+  box-shadow: 1px 1px 5px gray;
+}
