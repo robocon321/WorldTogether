@@ -1,0 +1,70 @@
+.avatar-account {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 0.1rem solid #ccc;
+}
+
+.nav-account {
+  color: gray;
+  border-bottom: 0.1rem solid #ccc;
+}
+
+.selected {
+  color: black;
+  background-color: rgb(235, 235, 235);
+}
+
+nav {
+  width: 20%;
+}
+
+.wrap {
+  width: 80%;
+}
+
+table {
+  width: 100%;
+}
+
+table tr:not(:first-child) {
+  border-bottom: 0.05rem solid #ccc;
+}
+
+table tr:not(:first-child) td {
+  padding: 1rem 0rem;
+}
+
+table tr:first-child {
+  color: gray;
+  font-size: 0.8rem;
+}
+
+tr > *:nth-child(1) {
+  width: 60%;
+}
+
+tr > *:nth-child(2) {
+  width: 10%;
+}
+
+tr > *:nth-child(3) {
+  width: 10%;
+}
+
+tr > *:nth-child(4) {
+  width: 10%;
+}
+
+tr > *:nth-child(5) {
+  width: 10%;
+}
+
+.pay-total .title{
+  width: 15rem;
+}
+
+.pay-total .result {
+  width: 10rem;
+  text-align: right;
+}
