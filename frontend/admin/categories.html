@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css">  
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/slick-1.8.1/slick/slick.css">   
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/slick-1.8.1/slick/slick-theme.css">   
+  <link rel="stylesheet" type="text/css" href="../assets/css/admin/styles.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/admin/categories.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="d-flex">
+    <div class="col-2 bg-black">
+      <nav class="c-white pt-3 ps-3">
+        <div class="brand fs-30"><b>Woto</b></div>
+        <ul class="nav-list h-100-vh">
+          <li><a class="d-flex" href="#"><span class="me-2 h-10"><img class="h-full" src="../assets/images/dashboard-white.png" alt="Not found"></span><span>Dashboard</span></a></li>
+          <li class="active"><a class="d-flex" href="#"><span class="me-2 h-10"><img class="h-full" src="../assets/images/category-white.png" alt="Not found"></span><span>Categories</span></a></li>
+          <li><a class="d-flex" href="#"><span class="me-2 h-10"><img class="h-full" src="../assets/images/shop-white.png" alt="Not found"></span><span>Shops</span></a></li>
+          <li><a class="d-flex" href="#"><span class="me-2 h-10"><img class="h-full" src="../assets/images/product-white.png" alt="Not found"></span><span>Products</span></a></li>
+          <li><a class="d-flex" href="#"><span class="me-2 h-10"><img class="h-full" src="../assets/images/order-white.png" alt="Not found"></span><span>Orders</span></a></li>
+          <li><a class="d-flex" href="#"><span class="me-2 h-10"><img class="h-full" src="../assets/images/account-white.png" alt="Not found"></span><span>Accounts</span></a></li>
+          <li><a class="d-flex" href="#"><span class="me-2 h-10"><img class="h-full" src="../assets/images/setting-white.png" alt="Not found"></span><span>Settings</span></a></li>
+          <li><a class="d-flex" href="#"><span class="me-2 h-10"><img class="h-full" src="../assets/images/logout-white.png" alt="Not found"></span><span>Logout</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-10">
+      <header>
+        <div class="d-flex justify-content-between">
+          <div class="left d-flex align-items-center">
+            <div class="me-4 d-flex align-items-center" id="toggle-nav"><span class="me-2 h-10 d-flex align-items-center"><img class="h-full" src="../assets/images/nav.png" alt="Not found"></span><span>Categories</span></div>
+            <div class="search">
+              <input class="search-box main-search" name="main-search" type="text" placeholder="Enter something..." />              
+              <div class="icon"><i class="fas fa-search"></i></div>
+            </div>
+          </div>
+          <div class="right d-flex align-items-center">
+            <div class="notify fs-15 me-3 c-gray"><i class="far fa-bell"></i></div>
+            <div class="message fs-15 me-3 c-gray"><i class="far fa-comment"></i></div>
+            <div class="acc-info">
+              <div class="acc-avatar me-3"><img src="../assets/images/account-black.png" alt=""></div>
+            </div>
+            <div class="acc">
+              <div class="name"><b>Nguyễn Thanh Nhật</b></div>
+              <div class="acc-permission c-gray">Permission: root</div>
+            </div>  
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="p-4 m-0">
+          <canvas id="access" width="200" height="100"></canvas>
+        </div>
+        <div class="p-4 m-0">
+          <div class="actions d-flex align-items-center justify-content-center">
+            <select class="sort me-3" name="sort">
+              <option value="0">Mới nhất</option>
+              <option value="1">Phổ biến nhất</option>
+              <option value="2">Nhiều sản phẩm nhất</option>
+              <option value="3">Nhiều lượt xem nhất</option>
+            </select>
+            <div class="search me-3">
+              <input class="search-box sub-search" name="sub-search" type="text" />              
+              <div class="icon"><i class="fas fa-search"></i></div>
+            </div>
+            <button class="btn-add bg-blue-l c-white rd-full">+</button>          
+          </div>
+          <div class="categories">
+            <table class=" my-4">
+              <tr>
+                <th>STT</th>
+                <th>Title</th>
+                <th>Parent Title</th>
+                <th>Display Order</th>
+                <th>View count</th>
+                <th>Product count</th>
+                <th>Action</th>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td><a href="#">1</a></td>
+                <td>Điện thoại</td>
+                <td><a href="#">Đồ điện tử</a></td>
+                <td>1</td>
+                <td>15</td>
+                <td>18</td>
+                <td><button class="btn btn-success me-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger ms-1"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+            </table>
+            <div class="spinner text-center">
+              <div class="spinner-border"></div>
+            </div>
+          </div>
+        </div>
+      </main>  
+    </div>
+  </div>
+  <script src="../assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+  <script src="../assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/fontawesome-free-5.15.4-web/js/all.min.js"></script>
+  <script src="../assets/vendor/jquery/jquery-3.6.0.min.js"></script>
+  <script src="../assets/vendor/chart.min.js"></script>
+  <script>
+    const labels = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+    ];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Labels",
+          backgroundColor: 'rgb(25, 99, 132)',
+          borderColor: 'rgb(25, 99, 132)',
+          data: [0, 30, 51, 12, 72, 3, 75],    
+        }
+      ]
+    };
+
+    const accessConf = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Thống kê lượt truy cập danh mục theo tháng'
+          }
+        }
+      },
+    };
+
+
+
+    var access = document.getElementById('access').getContext('2d');
+    
+    new Chart(access, accessConf);
+  </script>
+</body>
+</html>
