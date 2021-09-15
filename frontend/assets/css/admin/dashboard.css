@@ -1,0 +1,37 @@
+.nav-list li{
+  text-align: left;
+  margin-left: 3rem;
+  font-weight: bold;
+  z-index: 2;
+  position: relative;
+}
+
+.nav-list li.active{
+  background-color: #0E6FFF;
+  border-top-left-radius: 50rem;
+  border-bottom-left-radius: 50rem;
+}
+
+.nav-list li a {
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-list li a span {
+  display: flex;
+  align-items: center;
+}
+
+.search-box {
+  border-radius: 5rem;
+  padding: 0.5rem 1rem;
+  border: 0.001rem solid rgb(189, 189, 189);
+  width: 50rem;
+}
+
+header {
+  border-bottom: 0.001rem solid rgb(189, 189, 189);
+  padding: 1.2rem 0.7rem;
+}
