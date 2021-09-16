@@ -1,1 +1,35 @@
 GET http://localhost:3000/
+
+###
+GET http://localhost:3000/auth
+Content-Type: application/json
+
+{
+  "uname": "",
+  "pwd": ""
+}
+
+###
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "uname": "tana",
+  "pwd": "badc",
+  "email": "robocon321n@gmail.com"
+}
+
+### 
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "uname": "tana",
+  "pwd": "badc",
+  "email": "robocon321n@gmail.com"
+}
+
+###
+GET http://localhost:3000/auth 
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
