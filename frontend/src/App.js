@@ -8,8 +8,8 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Route path="/auth" component={AuthIndex} />
         <Switch>
+          <Route path="/auth" component={AuthIndex} />
           <Route path="/admin" component={Admin} />
           <Route path="/" component={Client} />
         </Switch>

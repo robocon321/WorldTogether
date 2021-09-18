@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/style-prop-object */
-import React from "react";
+import React, {useContext, useState, useRef, useEffect} from "react";
 import { Link } from "react-router-dom";
 import "../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
@@ -9,26 +9,60 @@ import bg from "../../assets/images/bg-01.jpg";
 import "../../assets/css/client/login_main.css";
 import "../../assets/css/client/login_util.css";
 
+import {AuthContext} from "../../contexts/AuthContext";
+
 const Login = (props) => {
+  const {loginAccount} = useContext(AuthContext);
+  const alert = useRef(null);
+  const [account, setAccount] = useState({
+    uname: "",
+    pwd: ""
+  });
+
+  const onLogin = async (e) => {
+    e.preventDefault();
+
+    const result = await loginAccount(account);
+    if(!result.success) {
+      alert.current.style.display = "block";
+      alert.current.textContent = result.message;
+    } else {
+      alert.current.style.display = "none";      
+    }
+  }
+
+  const onChangeFieldRegister = e => {
+    setAccount({
+      ...account,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  useEffect(() => {
+    alert.current.style.display = "none";
+  }, []);
+  
   return (
     <div>
       <div className="limiter">
         <div className="container-login100" style={{backgroundImage: `url(${bg})`}}>
           <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form className="login100-form validate-form">
+            <form className="login100-form validate-form" onSubmit={onLogin}>
               <span className="login100-form-title p-b-49">
                 Login
               </span>
 
+              <div className="alert alert-danger" role="alert" ref={alert}></div>
+
               <div className="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
                 <span className="label-input100">Username</span>
-                <input className="input100" type="text" name="username" placeholder="Type your username" />
+                <input className="input100" type="text" name="uname" placeholder="Type your username" required onChange={onChangeFieldRegister}/>
                 <span className="focus-input100" data-symbol="&#xf206;"></span>
               </div>
 
               <div className="wrap-input100 validate-input" data-validate="Password is required">
                 <span className="label-input100">Password</span>
-                <input className="input100" type="password" name="pass" placeholder="Type your password" />
+                <input className="input100" type="password" name="pwd" placeholder="Type your password" required  onChange={onChangeFieldRegister}/>
                 <span className="focus-input100" data-symbol="&#xf190;"></span>
               </div>
               

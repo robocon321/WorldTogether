@@ -17,21 +17,25 @@ const AuthProvider = ({children}) =>{
   const loginAccount  = async (accountForm) => {
     let result = {
       success: false,
-      message: "Invalid error"
+      message: "Server error"
     }
 
+    let res;
     try {
-      const res = await axios.post(`${SERVER}/auth/login`, accountForm);
+      res = await axios.post(`${SERVER}/auth/login`, accountForm);
     
       result.success = res.data.success;
       result.message = res.data.message;
 
     } catch (e) {
-      console.log("Login error", e);
+      if(e.response) {
+        result.success = e.response.data.success;
+        result.message = e.response.data.message;  
+      }
     }
 
     if(result.success) {
-      localStorage[LOCAL_STORAGE_ACCOUNT] = result.accessToken;
+      localStorage[LOCAL_STORAGE_ACCOUNT] = res.data.accessToken;
       loadAccount();
     }
     
@@ -66,7 +70,7 @@ const AuthProvider = ({children}) =>{
   const registerAccount = async (accountForm) => {
     let result = {
       success: false,
-      message: "Invalid error"
+      message: "Server error"
     }
 
     let res;
@@ -77,8 +81,10 @@ const AuthProvider = ({children}) =>{
       result.message = res.data.message;
 
     } catch (e) {
-      result.success = e.response.data.success;
-      result.message = e.response.data.message;
+      if(e.response) {
+        result.success = e.response.data.success;
+        result.message = e.response.data.message;  
+      }
     }
 
     if(result.success) {
