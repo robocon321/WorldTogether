@@ -1,9 +1,11 @@
 const express = require("express");
-const authRoute = require("./routes/auth");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const authRoute = require("./routes/auth");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use("/auth/", authRoute);
 
@@ -22,6 +24,6 @@ app.get("/", (req, res) => {
   res.send("Hello world");
 })
 
-const PORT = 3000
+const PORT = 5000
 
 app.listen(PORT, () => console.log("Running..."));

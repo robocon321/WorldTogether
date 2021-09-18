@@ -8,7 +8,7 @@ import { SET_AUTH } from "../actions/AuthAction";
 export const AuthContext = createContext();
 
 const AuthProvider = ({children}) =>{
-  const {authState, dispatch} = useReducer(authReducer, {
+  const [authState, dispatch] = useReducer(authReducer, {
     isLoading: true,
     isAuth: false,
     account: null,
@@ -69,21 +69,23 @@ const AuthProvider = ({children}) =>{
       message: "Invalid error"
     }
 
+    let res;
     try { 
-      const res = await axios.post(`${SERVER}/auth/register`, accountForm);
+      res = await axios.post(`${SERVER}/auth/register`, accountForm);
 
       result.success = res.data.success;
       result.message = res.data.message;
 
     } catch (e) {
-      console.log("Register error", e);
+      result.success = e.response.data.success;
+      result.message = e.response.data.message;
     }
 
     if(result.success) {
       localStorage[LOCAL_STORAGE_ACCOUNT] = result.accessToken;
-      loadAccount();  
+      await loadAccount();
     }
-
+    console.log(res, `${SERVER}/auth/register`);
     return result;
   }
 
@@ -99,12 +101,13 @@ const AuthProvider = ({children}) =>{
     })
   }
 
-  const data = { loginAccount, registerAccount, logoutAccount, authState};
+  const data = { loadAccount, loginAccount, registerAccount, logoutAccount, authState};
 
-  return 
-  <AuthContext.Provider value={data}>
-    {children}
-  </AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={data}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 

@@ -33,9 +33,9 @@ const Login = (props) => {
               </div>
               
               <div className="text-right p-t-8 p-b-31">
-                <a href="#">
+                <Link to={"/auth/forgot-password"}>
                   Forgot password?
-                </a>
+                </Link>
               </div>
               
               <div className="container-login100-form-btn">
@@ -72,9 +72,9 @@ const Login = (props) => {
                   Or Sign Up Using
                 </span>
 
-                <a href="#" className="txt2">
+                <Link to={"/auth/register"} className="txt2">
                   Sign Up
-                </a>
+                </Link>
               </div>
             </form>
           </div>

@@ -1,7 +1,7 @@
-GET http://localhost:3000/
+GET http://localhost:5000/
 
 ###
-GET http://localhost:3000/auth
+GET http://localhost:5000/auth
 Content-Type: application/json
 
 {
@@ -10,17 +10,17 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/auth/register
+POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-  "uname": "tana",
+  "uname": "robocon321",
   "pwd": "badc",
   "email": "robocon321n@gmail.com"
 }
 
 ### 
-POST http://localhost:3000/auth/login
+POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
