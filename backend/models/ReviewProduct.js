@@ -2,39 +2,27 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema();
 
 const now = Date.now;
-const AddressSchema = new Schema({
+const ReviewProductSchema = new Schema({
   _id: {
     type: Number,
     required: true,
     default: now
   },
-  company: {
+  product_id: {
+    type: Number,
+    required: true,
+  },
+  rating: {
+    type: Number,
+    required: true,
+  },
+  content: {
     type: String,
     required: true
   },
-  phone: {
-    type: String, 
-    required: true,
-  },
-  province: {
-    type: Integer,
-    required: true,
-  },
-  district: {
-    type: Integer,
-    required: true
-  },
-  sub_district: {
-    type: Integer,
-    required: true
-  },
-  detail: {
-    type: String, 
-    required: true,
-  },
-  type_address: {
-    type: Integer,
-    required: true
+  imgs: {
+    type: String,
+    default: null,
   },
   is_delete: {
     type: Boolean,
@@ -57,8 +45,7 @@ const AddressSchema = new Schema({
     type: Date,
     ref: "Account",
     default: null
-  }, 
-
+  }
 });
 
-module.exports = mongoose.model('Address', AddressSchema);
+module.exports = mongoose.model("ReviewProduct", ReviewProductSchema);

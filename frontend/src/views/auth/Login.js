@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/style-prop-object */
 import React, {useContext, useState, useRef, useEffect} from "react";
+import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import "../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
@@ -27,7 +28,8 @@ const Login = (props) => {
       alert.current.style.display = "block";
       alert.current.textContent = result.message;
     } else {
-      alert.current.style.display = "none";      
+      alert.current.style.display = "none";
+      props.history.push("/admin");   
     }
   }
 

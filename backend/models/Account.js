@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const PERMISSION = require("../utils/Constant");
 
 let now = Date.now;
 const AccountSchema = new Schema({
@@ -42,19 +43,16 @@ const AccountSchema = new Schema({
   },
   is_delete: {
     type: Boolean,
-    required: false,
     default: false
   },
   cre_time: {
     type: Date,
-    required: true,
     default: now
   },
   cre_uid: {
     type: Number,
     ref: "Account",
-    required: true,
-    default: now
+    required: now,
   },
   mod_time: {
     type: Date,
@@ -62,7 +60,24 @@ const AccountSchema = new Schema({
   },
   mod_uid: {
     type: Date,
+    ref: "Account",
     default: null
+  },
+  fb_id: {
+    type: String,
+    default: null,
+  },
+  zalo_id: {
+    type: String,
+    default: null,
+  },
+  gg_id: {
+    type: String,
+    default: null
+  },
+  permission: {
+    type: Number,
+    default: PERMISSION.ROOT
   }
 })
 

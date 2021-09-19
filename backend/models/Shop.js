@@ -2,47 +2,50 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema();
 
 const now = Date.now;
-const AddressSchema = new Schema({
+
+const ShopSchema = new Schema({
   _id: {
     type: Number,
     required: true,
-    default: now
+    default:now,
   },
-  company: {
+  title: {
     type: String,
     required: true
   },
-  phone: {
+  descrp: {
+    type: String,
+    required: true,
+  },
+  avatar: {
+    type: String,
+    required: true,
+  },
+  meta_keyword: {
     type: String, 
     required: true,
   },
-  province: {
-    type: Integer,
-    required: true,
-  },
-  district: {
-    type: Integer,
-    required: true
-  },
-  sub_district: {
-    type: Integer,
-    required: true
-  },
-  detail: {
+  meta_descrp: {
     type: String, 
     required: true,
   },
-  type_address: {
-    type: Integer,
+  meta_title: {
+    type: String,
+    required: true,
+  },
+  slug: {
+    type: String,
     required: true
   },
   is_delete: {
     type: Boolean,
+    required: false,
     default: false
   },
   cre_time: {
     type: Date,
-    required: true
+    required: true,
+    default: now
   },
   cre_uid: {
     type: Number,
@@ -57,8 +60,11 @@ const AddressSchema = new Schema({
     type: Date,
     ref: "Account",
     default: null
-  }, 
-
+  },
+  view_count:  {
+    type: Number,
+    default: 0
+  }
 });
 
-module.exports = mongoose.model('Address', AddressSchema);
+module.exports = mongoose.model("Shop", ShopSchema);

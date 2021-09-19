@@ -2,47 +2,34 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema();
 
 const now = Date.now;
-const AddressSchema = new Schema({
+const NotificationSchema = new Schema({
   _id: {
     type: Number,
     required: true,
     default: now
+  }, 
+  type: {
+    type: Number,
+    required: true,
   },
-  company: {
+  content: {
     type: String,
-    required: true
-  },
-  phone: {
-    type: String, 
     required: true,
   },
-  province: {
-    type: Integer,
+  receive_date: {
+    type: Number,
     required: true,
-  },
-  district: {
-    type: Integer,
-    required: true
-  },
-  sub_district: {
-    type: Integer,
-    required: true
-  },
-  detail: {
-    type: String, 
-    required: true,
-  },
-  type_address: {
-    type: Integer,
-    required: true
+    default: now,
   },
   is_delete: {
     type: Boolean,
+    required: false,
     default: false
   },
   cre_time: {
     type: Date,
-    required: true
+    required: true,
+    default: now
   },
   cre_uid: {
     type: Number,
@@ -58,7 +45,6 @@ const AddressSchema = new Schema({
     ref: "Account",
     default: null
   }, 
+})
 
-});
-
-module.exports = mongoose.model('Address', AddressSchema);
+module.exports = mongoose.model("Notification", NotificationSchema);

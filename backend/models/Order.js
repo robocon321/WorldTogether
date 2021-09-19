@@ -1,48 +1,44 @@
+import { ORDER_STATUS } from "../utils/Constant";
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema();
 
 const now = Date.now;
-const AddressSchema = new Schema({
+
+const OrderSchema = new Schema({
   _id: {
     type: Number,
     required: true,
     default: now
   },
-  company: {
-    type: String,
-    required: true
-  },
-  phone: {
-    type: String, 
+  order_date: {
+    type: Date,
     required: true,
   },
-  province: {
-    type: Integer,
+  receive_date: {
+    type: Date,
     required: true,
   },
-  district: {
-    type: Integer,
-    required: true
+  status: {
+    type: Number,
+    default: ORDER_STATUS.SENDING_TO_SHIP
   },
-  sub_district: {
-    type: Integer,
-    required: true
+  discount: {
+    type: Number,
+    default: 0,
   },
-  detail: {
-    type: String, 
-    required: true,
-  },
-  type_address: {
-    type: Integer,
-    required: true
+  ship: {
+    type: Number,
+    default: 0,
   },
   is_delete: {
     type: Boolean,
+    required: false,
     default: false
   },
   cre_time: {
     type: Date,
-    required: true
+    required: true,
+    default: now
   },
   cre_uid: {
     type: Number,
@@ -57,8 +53,7 @@ const AddressSchema = new Schema({
     type: Date,
     ref: "Account",
     default: null
-  }, 
-
+  },
 });
 
-module.exports = mongoose.model('Address', AddressSchema);
+module.exports = mongoose.model("Order", OrderSchema);

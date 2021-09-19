@@ -2,47 +2,54 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema();
 
 const now = Date.now;
-const AddressSchema = new Schema({
+const CategorySchema = Schema({
   _id: {
     type: Number,
+    default: now,
+    required: true
+  }, 
+  title: {
+    type: String, 
+    required: true,
+  },
+  display_order: {
+    type: Number, 
     required: true,
     default: now
   },
-  company: {
+  meta_keyword: {
     type: String,
     required: true
   },
-  phone: {
-    type: String, 
-    required: true,
-  },
-  province: {
-    type: Integer,
-    required: true,
-  },
-  district: {
-    type: Integer,
+  meta_descrp: {
+    type: String,
     required: true
   },
-  sub_district: {
-    type: Integer,
+  meta_tile: {
+    type: String,
     required: true
   },
-  detail: {
-    type: String, 
+  slug: {
+    type: String,
+    required: true
+  },
+  icon: {
+    type: String,
     required: true,
   },
-  type_address: {
-    type: Integer,
-    required: true
+  view_count: {
+    typs: Number,
+    default: 0
   },
   is_delete: {
     type: Boolean,
+    required: false,
     default: false
   },
   cre_time: {
     type: Date,
-    required: true
+    required: true,
+    default: now
   },
   cre_uid: {
     type: Number,
@@ -58,7 +65,6 @@ const AddressSchema = new Schema({
     ref: "Account",
     default: null
   }, 
+})
 
-});
-
-module.exports = mongoose.model('Address', AddressSchema);
+module.exports = mongoose.model("Cateogry", CategorySchema);
