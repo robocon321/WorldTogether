@@ -10,6 +10,7 @@ import ProductIndex from "./product/ProductIndex";
 import OrderIndex from "./order/OrderIndex";
 import AccountIndex from "./account/AccountIndex";
 import SettingIndex from "./setting/SettingIndex";
+import ShopIndex from "./shop/ShopIndex";
 
 const Admin = props => {
   const { authState, loadAccount } = useContext(AuthContext);
@@ -25,6 +26,7 @@ const Admin = props => {
       return (
         <Switch>
           <Route path="/admin/category" component={CategoryIndex} />
+          <Route path="/admin/shop" component={ShopIndex} />
           <Route path="/admin/product" component={ProductIndex} />
           <Route path="/admin/order" component={OrderIndex} />
           <Route path="/admin/account" component={AccountIndex} />
