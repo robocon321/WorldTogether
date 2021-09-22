@@ -1,50 +1,50 @@
-td {
+.notify_account td {
   padding: 0.5rem 0.5rem;
 }
 
-td:nth-child(1) {
+.notify_account td:nth-child(1) {
   width: 10%;
 }
 
-td:nth-child(2) {
+.notify_account td:nth-child(2) {
   width: 5%;
 }
 
-td:nth-child(3) {
+.notify_account td:nth-child(3) {
   width: 50%;
 }
 
-td:nth-child(4) {
+.notify_account td:nth-child(4) {
   width: 15%;
   text-align: center;
 }
 
-td:nth-child(5) {
+.notify_account td:nth-child(5) {
   width: 5%;
   text-align: center;
 }
 
-.avatar-account {
+.notify_account .avatar-account {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
   border: 0.1rem solid #ccc;
 }
 
-.nav-account {
+.notify_account .nav-account {
   color: gray;
   border-bottom: 0.1rem solid #ccc;
 }
 
-.selected {
+.notify_account .selected {
   color: black;
   background-color: rgb(235, 235, 235);
 }
 
-nav {
+.notify_account nav {
   width: 20%;
 }
 
-.wrap {
+.notify_account .wrap {
   width: 80%;
 }

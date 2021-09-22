@@ -1,29 +1,29 @@
-.action > span{
-  padding: 1rem 0.5rem;
+.manage_address .action > span{
+  padding: 1rem 0.manage_address .5rem;
   cursor: pointer;
 }
 
-.avatar-account {
+.manage_address .avatar-account {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  border: 0.1rem solid #ccc;
+  border: 0.manage_address .1rem solid #ccc;
 }
 
-.nav-account {
+.manage_address .nav-account {
   color: gray;
-  border-bottom: 0.1rem solid #ccc;
+  border-bottom: 0.manage_address .1rem solid #ccc;
 }
 
-.selected {
+.manage_address .selected {
   color: black;
   background-color: rgb(235, 235, 235);
 }
 
-nav {
+.manage_address nav {
   width: 20%;
 }
 
-.wrap {
+.manage_address .wrap {
   width: 80%;
 }

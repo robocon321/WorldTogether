@@ -1,6 +1,6 @@
 import React from "react";
-import "../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
+import "../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
+import "../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 
 const Loading = props => {
   return (

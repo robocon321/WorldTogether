@@ -1,17 +1,17 @@
-table {
+.info_account table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
   font-size: 0.8rem;
 }
 
-td {
+.info_account td {
   text-align: left;
   padding: 0.5rem;
   width: 90%;
 }
 
-td input[type="text"], td input[type="password"], td button[type="submit"] {
+.info_account td input[type="text"], .info_account td input[type="password"], .info_account td button[type="submit"] {
   padding: 0.3rem 0.3rem;
   width: 60%;
   border: 0.1rem solid #ccc;
@@ -19,31 +19,31 @@ td input[type="text"], td input[type="password"], td button[type="submit"] {
   font-size: 0.9rem;
 }
 
-td:nth-child(1) {
+.info_account td:nth-child(1) {
   width: 10%;
 }
 
-.avatar-account {
+.info_account .avatar-account {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
   border: 0.1rem solid #ccc;
 }
 
-.nav-account {
+.info_account .nav-account {
   color: gray;
   border-bottom: 0.1rem solid #ccc;
 }
 
-.selected {
+.info_account .selected {
   color: black;
   background-color: rgb(235, 235, 235);
 }
 
-nav {
+.info_account nav {
   width: 20%;
 }
 
-.wrap {
+.info_account .wrap {
   width: 80%;
 }

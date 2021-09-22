@@ -1,46 +1,46 @@
-table {
+.detail-product table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
   background-color: white;
 }
 
-td, th {
+.detail-product td, .detail th {
   text-align: left;
   padding: 0.8rem;
   border: 0.1rem solid rgb(228, 228, 228);
 }
 
-th {
+.detail-product th {
   background-color: rgb(238, 238, 238);
   width: 30%;
 }
 
-tr:nth-child(even) {
+.detail-product tr:nth-child(even) {
   background-color: rgb(245, 245, 245);
 }
 
-.intro-detail {
+.detail-product .intro-detail {
   font-size: 0.9rem;
 }
 
-.intro-detail a {
+.detail-product .intro-detail a {
   color: #0045ad;
 }
 
-.title-detail {
+.detail-product .title-detail {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
 }
 
 /* rating */
-.rating {
+.detail-product .rating {
   font-size: 0.9em;
   font-family: sans-serif;
   color: gray;
 }
 
-.star-ratings {
+.detail-product .star-ratings {
   unicode-bidi: bidi-override;
   color: #ccc;
   font-size: 32px;
@@ -49,7 +49,8 @@ tr:nth-child(even) {
   margin: 0;
   padding: 0;
 }
-.fill-ratings {
+
+.detail-product .fill-ratings {
   color: yellow;
   padding: 0;
   position: absolute;
@@ -59,38 +60,38 @@ tr:nth-child(even) {
   left: 0;
   overflow: hidden;    
 }
-.fill-ratings span {
+.detail-product .fill-ratings span {
   display: inline-block;
 }
 
-.empty-ratings {
+.detail-product .empty-ratings {
   padding: 0;
   display: block;
   z-index: 0;
 }
 
-.real-price {
+.detail-product .real-price {
   text-decoration: line-through;
   color: #ccc;
 }
 
-.discount {
+.detail-product .discount {
   background-color: red;
   color: white;
   padding: 0.1rem;
 }
 
-.discount-code {
+.detail-product .discount-code {
   border-top: 0.1rem solid #ccc;
   border-bottom: 0.1rem solid #ccc;
 }
 
-.discount-code p{
+.detail-product .discount-code p{
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.amount input {
+.detail-product .amount input {
   width: 2rem;
   height: 2rem;
   text-align: center;
@@ -98,12 +99,12 @@ tr:nth-child(even) {
   background-color: white;
 }
 
-.amount input:nth-child(2) {
+.detail-product .amount input:nth-child(2) {
   border-left: none;
   border-right: none;
 }
 
-.buy {
+.detail-product .buy {
   border: none;
   color: white;
   background-color: red;
@@ -112,7 +113,7 @@ tr:nth-child(even) {
   border-radius: 0.5rem;
 }
 
-#result-zoom {
+.detail-product #result-zoom {
   width: 50rem;
   height: 30rem;
   background-color: green;
@@ -123,19 +124,19 @@ tr:nth-child(even) {
   z-index: 3;
 }
 
-.img-selected {
+.detail-product .img-selected {
   position: relative;
 }
 
-.img-nonselected {
+.detail-product .img-nonselected {
   cursor: pointer;
 }
 
-.active {
+.detail-product .active {
   border: 0.1rem solid #003c9c;
 }
 
-.img-zoom-lens {
+.detail-product .img-zoom-lens {
   position: absolute;
   border: 0.1rem solid #d4d4d4;
   width: 6rem;
@@ -144,47 +145,47 @@ tr:nth-child(even) {
   opacity: 0.5;
 }
 
-.img-lens-off {
+.detail-product .img-lens-off {
   opacity: 0;
 }
 
-.score-shop > div > span:nth-child(2){
+.detail-product  .score-shop > div > span:nth-child(2){
   color: #ccc;
   font-size: 0.8rem;
 }
 
-.btn-shop > button {
+.detail-product  .btn-shop > button {
   width: 7rem;
 }
 
-.insurance {
+.detail-product .insurance {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   font-size: 0.8rem;
 }
 
-.insurance p:nth-child(1) {
+.detail-product .insurance p:nth-child(1) {
   color: #ccc;
 }
 
-.policy {
+.detail-product .policy {
   font-size: 0.8rem;
 }
 
-.compare {
+.detail-product .compare {
   border-top: 1px solid #ccc;
   font-size: 0.8rem;
 }
 
-.compare > button {
+.detail-product .compare > button {
   width: 5rem;
 }
 
-.wrap {
+.detail-product .wrap {
   border: 1px solid #ccc;
 }
 
-.c-progress {
+.detail-product .c-progress {
   height: 0.5rem;
   background-color: #ccc;
   border-radius: 1rem;
@@ -192,7 +193,7 @@ tr:nth-child(even) {
   overflow: hidden;
 }
 
-.c-progress-bar {
+.detail-product .c-progress-bar {
   height: 0.5rem;
   position: absolute;
   top: 0rem;
@@ -200,11 +201,11 @@ tr:nth-child(even) {
   background-color: yellow;
 }
 
-.all-img > div > div > div{
+.detail-product .all-img > div > div > div{
   background-size: 100% 100%;
 }
 
-.filter { 
+.detail-product .filter { 
   font-size: 0.9rem;
 }
 

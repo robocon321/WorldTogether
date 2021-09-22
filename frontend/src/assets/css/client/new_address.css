@@ -1,17 +1,17 @@
-table {
+.new_address table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
   font-size: 0.8rem;
 }
 
-td {
+.new_address td {
   text-align: left;
   padding: 0.5rem;
   width: 90%;
 }
 
-td input[type="text"], td select, td textarea, td button[type="submit"] {
+.new_address td input[type="text"], .new_address td select, .new_address td textarea, .new_address td button[type="submit"] {
   padding: 0.3rem 0.3rem;
   width: 60%;
   border: 0.1rem solid #ccc;
@@ -19,31 +19,31 @@ td input[type="text"], td select, td textarea, td button[type="submit"] {
   font-size: 0.9rem;
 }
 
-td:nth-child(1) {
+.new_address td:nth-child(1) {
   width: 15%;
 }
 
-.avatar-account {
+.new_address .avatar-account {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
   border: 0.1rem solid #ccc;
 }
 
-.nav-account {
+.new_address .nav-account {
   color: gray;
   border-bottom: 0.1rem solid #ccc;
 }
 
-.selected {
+.new_address .selected {
   color: black;
   background-color: rgb(235, 235, 235);
 }
 
-nav {
+.new_address nav {
   width: 20%;
 }
 
-.wrap {
+.new_address .wrap {
   width: 80%;
 }

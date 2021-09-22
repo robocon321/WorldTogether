@@ -1,27 +1,27 @@
-.link {
+.edit_category .link {
   color: blue;
   text-decoration: underline;
   text-align: right;
 }
 
-.main-title {
+.edit_category .main-title {
   text-align: center;
   font-size: 2rem;
 }
 
-form {
+.edit_category form {
   display: flex;
   justify-content: center;
 }
 
-.wrap-form {
+.edit_category .wrap-form {
   width: 80%;
   padding: 3rem 2rem;
   box-shadow: 0.2rem 0.2rem 0.5rem rgb(230, 230, 230), -0.1rem -0.1rem 0.2rem rgb(230, 230, 230);
   border-radius: 1rem;
 }
 
-button {
+.edit_category button {
   color: white;
   outline: none;
   border: none;
@@ -29,24 +29,24 @@ button {
   padding: 0.8rem 0rem;
 }
 
-table {
+.edit_category table {
   width: 100%;
 }
 
-table td {
+.edit_category table td {
   padding: 1rem 0rem;
 }
 
-table td:nth-child(1), table td:nth-child(3) {
+.edit_category table td:nth-child(1),.edit_category  table td:nth-child(3) {
   color: gray;
   font-weight: bold;
 }
 
-table td:nth-child(3) {
+.edit_category table td:nth-child(3) {
   padding-left: 1rem;
 }
 
-input , select, textarea {
+.edit_category input , .edit_category select, .edit_category textarea {
   width: 100%;
   padding: 0.8rem 0.5rem;
   outline: none;
@@ -55,19 +55,19 @@ input , select, textarea {
   border-radius: 0.5rem;
 }
 
-select {
+.edit_category select {
   box-shadow: 0.1rem 0.1rem 0.25rem rgb(230, 230, 230), -0.05rem -0.05rem 0.1rem rgb(230, 230, 230);
 }
 
-input, textarea {
+.edit_category input, .edit_category textarea {
   box-shadow: inset 0.1rem 0.1rem 0.25rem rgb(230, 230, 230), inset -0.05rem -0.05rem 0.1rem rgb(230, 230, 230);
 }
 
-.action {
+.edit_category .action {
   width: 49%;
 }
 
-button:hover {
+.edit_category button:hover {
   border: none;
   outline: none;
 }

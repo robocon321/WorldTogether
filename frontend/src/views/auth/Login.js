@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/style-prop-object */
 import React, {useContext, useState, useRef, useEffect} from "react";
-import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import "../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
@@ -29,7 +28,7 @@ const Login = (props) => {
       alert.current.textContent = result.message;
     } else {
       alert.current.style.display = "none";
-      props.history.push("/admin");   
+      props.history.push("/admin");
     }
   }
 
@@ -46,7 +45,7 @@ const Login = (props) => {
   
   return (
     <div>
-      <div className="limiter">
+      <div className="login_main login_util limiter">
         <div className="container-login100" style={{backgroundImage: `url(${bg})`}}>
           <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
             <form className="login100-form validate-form" onSubmit={onLogin}>

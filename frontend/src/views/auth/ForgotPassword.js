@@ -9,8 +9,7 @@ import "../../assets/css/client/login_util.css";
 const ForgotPassword = props => {
   return (
     <div>
-      
-      <div className="limiter">
+      <div className="login_main login_util limiter">
         <div className="container-login100" style={{backgroundImage: `url(${bg})`}}>
           <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
             <form className="login100-form validate-form">
