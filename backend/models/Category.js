@@ -12,6 +12,10 @@ const CategorySchema = Schema({
     type: String, 
     required: true,
   },
+  parent_id: {
+    type: Number,
+    default: null
+  },
   display_order: {
     type: Number, 
     required: true,

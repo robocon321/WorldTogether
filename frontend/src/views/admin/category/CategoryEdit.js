@@ -31,7 +31,8 @@ const CategoryEdit = props => {
                         <tr>
                           <td>Danh mục cha</td>
                           <td>
-                            <select name="parent">
+                            <select name="parentId">
+                              <option value="null">None</option>
                               <option value="0">Parent 0</option>
                               <option value="1">Parent 1</option>
                               <option value="2">Parent 2</option>
