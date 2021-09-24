@@ -9,14 +9,14 @@ import "../../../assets/css/admin/edit_category.css";
 
 const CategoryEdit = props => {
   return (
-    <div>
+    <div className="edit_category">
       <div className="d-flex">
         <div className="col-2 bg-black">
           <AdminNavigation />
         </div>
         <div className="col-10">
           <AdminHeader />
-          <main className="edit_category">
+          <main>
             <div className="p-4 m-0">
               <div className="main-title mb-4">Sửa danh mục</div>
                 <form>

@@ -1,0 +1,63 @@
+.account_list .sort {
+  border-radius: 0.4rem;
+  padding: 0.8rem 0.5rem;
+  outline: 0;
+  border: 0.001rem solid rgb(189, 189, 189);
+}
+
+.account_list .btn-add {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.account_list table {
+  width: 100%;
+}
+
+.account_list table tr {
+  width: 100%;
+  border-bottom: 0.001rem solid rgb(189, 189, 189);
+}
+
+.account_list tr > * {
+  text-align: center;
+  padding: 0.5rem 0rem;
+}
+
+.account_list table tr:nth-child(even) {
+  background-color: rgb(241, 241, 241);
+}
+
+.account_list table th:nth-child(1), .account_list td:nth-child(1) {
+  width: 5%;
+}
+
+.account_list table th:nth-child(2),.account_list  td:nth-child(2) {
+  width: 15%;
+}
+
+.account_list table th:nth-child(3),.account_list td:nth-child(3) {
+  width: 15%;
+}
+
+.account_list table th:nth-child(4), .account_list td:nth-child(4) {
+  width: 10%;
+}
+
+.account_list table th:nth-child(5), .account_list td:nth-child(5) {
+  width: 10%;
+}
+
+.account_list table th:nth-child(6), .account_list td:nth-child(6) {
+  width: 10%;
+}
+
+.account_list table th:nth-child(7), .account_list td:nth-child(7) {
+  width: 10%;
+}
+
+.account_list table th:nth-child(8), .account_list td:nth-child(8) {
+  width: 10%;
+}

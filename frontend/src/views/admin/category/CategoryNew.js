@@ -5,18 +5,18 @@ import AdminHeader from "../../../components/layout/AdminHeader";
 import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/edit_category.css";
+import "../../../assets/css/admin/new_category.css";
 
 const CategoryNew = props => {
   return (
-    <div>
+    <div className="new_category">
       <div className="d-flex">
         <div className="col-2 bg-black">
           <AdminNavigation />
         </div>
         <div className="col-10">
           <AdminHeader />
-          <main className="edit_category">
+          <main>
             <div className="p-4 m-0">
               <div className="main-title mb-4">Thêm danh mục</div>
                 <form>
