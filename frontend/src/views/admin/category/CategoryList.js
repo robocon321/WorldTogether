@@ -36,14 +36,15 @@ const options = {
 };
 
 const CategoryList = props => {
+  console.log(props);
   return (
     <div>
       <div className="categories d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation />
+          <AdminNavigation title="category" />
         </div>
         <div className="col-10">
-          <AdminHeader />
+          <AdminHeader title="Category" />
           <main>
             <div className="p-4 m-0">
                 <Line data={data} options={options} />

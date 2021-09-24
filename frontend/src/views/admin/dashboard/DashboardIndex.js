@@ -64,10 +64,10 @@ const DashboardIndex = props => {
     <div>
       <div className="dashboard d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation />
+          <AdminNavigation title="dashboard" />
         </div>
         <div className="col-10">
-          <AdminHeader />
+          <AdminHeader title="Dashboard" />
           <main>
             <div className="row p-4 m-0">
               <div className="col-4 d-flex justify-content-center">

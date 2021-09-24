@@ -14,10 +14,10 @@ const ProductNew = props => {
     <div className="new_product">
       <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation />
+          <AdminNavigation title="product" />
         </div>
         <div className="col-10">
-          <AdminHeader />
+          <AdminHeader title="Product" />
           <main className="edit_category">
             <div className="p-4 m-0">
               <div className="main-title mb-4">Thêm sản phẩm</div>

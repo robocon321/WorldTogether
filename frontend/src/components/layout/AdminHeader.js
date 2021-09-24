@@ -9,7 +9,7 @@ const AdminNavigation = props => {
     <header>
     <div className="d-flex justify-content-between">
       <div className="left d-flex align-items-center">
-        <div className="me-4 d-flex align-items-center" id="toggle-nav"><span className="me-2 h-10 d-flex align-items-center"><img className="h-full" src={navIcon} alt="Not found" /></span><span>Dashboard</span></div>
+        <div className="title-nav me-4 d-flex align-items-center" id="toggle-nav"><span className="me-2 h-10 d-flex align-items-center"><img className="h-full" src={navIcon} alt="Not found" /></span><span>{props.title}</span></div>
         <div className="search"><input className="search-box" type="text" placeholder="Enter something..." /></div>
       </div>
       <div className="right d-flex align-items-center">

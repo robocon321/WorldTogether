@@ -41,10 +41,10 @@ const ProductList = props => {
     <div>
       <div className="product_list d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation />
+          <AdminNavigation title="product" />
         </div>
         <div className="col-10">
-          <AdminHeader />          
+          <AdminHeader title="Product" />
           <main>
           <div className="row p-4 m-0">
               <div className="col-4 d-flex justify-content-center">

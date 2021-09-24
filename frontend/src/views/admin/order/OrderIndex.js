@@ -40,10 +40,10 @@ const OrderIndex = props => {
     <div className="order_list">
       <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation />
+          <AdminNavigation title="order" />
         </div>
         <div className="col-10">
-          <AdminHeader />          
+          <AdminHeader title="Order" />          
           <main>
           <div className="row p-4 m-0">
               <div className="col-4 d-flex justify-content-center">

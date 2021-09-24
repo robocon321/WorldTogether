@@ -12,10 +12,10 @@ const CategoryEdit = props => {
     <div className="edit_category">
       <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation />
+          <AdminNavigation title="category" />
         </div>
         <div className="col-10">
-          <AdminHeader />
+          <AdminHeader title="Category" />
           <main>
             <div className="p-4 m-0">
               <div className="main-title mb-4">Sửa danh mục</div>

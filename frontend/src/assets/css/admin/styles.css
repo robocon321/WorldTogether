@@ -169,7 +169,7 @@ a:hover {
   width: 100%;
 }
 
-.h-100-vh{
+.h-100-vh {
   height: 100vh!important;
 }
 
@@ -262,4 +262,8 @@ header {
   align-items: center;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+}
+
+.title-nav {
+  width: 10rem;
 }

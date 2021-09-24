@@ -40,10 +40,10 @@ const ShopList = props => {
     <div>
       <div className="shop_list d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation />
+          <AdminNavigation title="shop" />
         </div>
         <div className="col-10">
-          <AdminHeader />          
+          <AdminHeader title="Shop" />          
           <main>
           <div className="row p-4 m-0">
             <div className="d-flex justify-content-center">
