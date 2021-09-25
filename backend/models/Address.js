@@ -42,7 +42,8 @@ const AddressSchema = new Schema({
   },
   cre_time: {
     type: Date,
-    required: true
+    required: true,
+    default: now
   },
   cre_uid: {
     type: Number,
@@ -58,6 +59,11 @@ const AddressSchema = new Schema({
     ref: "Account",
     default: null
   }, 
+  old_id: {
+    type: Number,
+    ref: "Account",
+    default: null
+  },
 
 });
 

@@ -1,5 +1,3 @@
-GET http://localhost:5000/
-
 ###
 GET http://localhost:5000/auth
 Content-Type: application/json
@@ -30,6 +28,46 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/auth 
+GET http://localhost:5000/auth
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+
+###
+GET http://localhost:5000/admin/account
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "uname": "robocon321"
+}
+
+###
+POST http://localhost:5000/admin/account
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "uname": "robocon32123",
+  "pwd": "lie54kd9",
+  "full_name": "Nguyen Cong Nguyen",
+  "email": "robocon321n@gmail.com",
+  "phone": "0354512411",
+  "sex": "false",
+  "birthday": 1632562489826
+}
+
+###
+PUT http://localhost:5000/admin/account
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "_id": 1632565112911,
+  "pwd": "123bd41234",
+  "full_name": "Robocon",
+  "email": "robocon321n@gmail.com",
+  "phone": "03545454454",
+  "sex": "false",
+  "birthday": 1632562489999
+}

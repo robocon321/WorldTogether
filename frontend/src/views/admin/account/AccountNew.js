@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { React } from "react";
+import { React, useState, useContext, useRef, useEffect } from "react";
+import { AccountContext } from "../../../contexts/AccountContext";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
@@ -8,6 +9,43 @@ import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/new_account.css";
 
 const AccountNew = props => {
+  const {createAccount} = useContext(AccountContext);
+  const alert = useRef();
+  const [account, setAccount] = useState({
+    uname: '',
+    pwd: '',
+    re_pwd: '',
+    full_name: '',
+    email: '',
+    phone: '',
+    sex: true,
+    birthday: '',
+  });
+
+  useEffect(() => {
+    alert.current.style.display = "none";
+  }, []);
+
+  const onChangeField = (e) => {
+    console.log([e.target.name], e.target.value);
+
+    setAccount({
+      ...account,
+      [e.target.name]: e.target.value,
+    })
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    let result = await createAccount(account);
+    if(result.success) {
+      alert.current.style.display = "none";
+    } else {
+      alert.current.style.display = "block";
+      alert.current.textContent = result.message;
+    }
+  }
+
   return (
     <div className="new_account">
       <div className="d-flex">
@@ -19,46 +57,49 @@ const AccountNew = props => {
           <main className="edit_category">
             <div className="p-4 m-0">
               <div className="main-title mb-4">Thêm mới tài khoản</div>
-                <form>
+                <form onSubmit={onSubmit}>
                   <div className="wrap-form">
+                  <div ref={alert} className="alert alert-danger">
+                    Nothing
+                  </div>
                     <table>
                       <tbody>
                         <tr>
                           <td>Tên tài khoản</td>
-                          <td colSpan="3"><input type="text" name="uname"/></td>
+                          <td colSpan="3"><input type="text" name="uname" onChange={onChangeField} required/></td>
                         </tr>
                         <tr>
                           <td>Mật khẩu</td>
-                          <td colSpan="3"><input type="password" name="pwd"/></td>
+                          <td colSpan="3"><input type="password" name="pwd" onChange={onChangeField} required/></td>
                         </tr>
                         <tr>
                           <td>Xác nhận mật khẩu</td>
-                          <td colSpan="3"><input type="password" name="re_pwd"/></td>
+                          <td colSpan="3"><input type="password" name="re_pwd" onChange={onChangeField} required/></td>
                         </tr>
                         <tr>
                           <td>Họ tên</td>
-                          <td colSpan="3"><input type="text" name="full_name"/></td>
+                          <td colSpan="3"><input type="text" name="full_name" onChange={onChangeField} required/></td>
                         </tr>
                         <tr>
                           <td>SĐT</td>
-                          <td colSpan="3"><input type="text" name="phone"/></td>
+                          <td colSpan="3"><input type="text" name="phone" onChange={onChangeField} required/></td>
                         </tr>
                         <tr>
                           <td>Email</td>
-                          <td colSpan="3"><input type="text" name="email"/></td>
+                          <td colSpan="3"><input type="text" name="email" onChange={onChangeField} required/></td>
                         </tr>
                         <tr>
                           <td>Ngày sinh</td>
-                          <td><input type="date" name="birthday"/></td>
+                          <td><input type="date" name="birthday" onChange={onChangeField} required/></td>
                           <td>Giới tính</td>
-                          <td><div className="d-flex align-items-center"><label className="me-2" htmlFor="male">Nam</label><input className="me-4" type="radio" id="male" name="gender" value="true"/><label className="me-2" htmlFor="female">Nữ</label><input type="radio" id="female" name="gender" value="false"/></div></td>
+                          <td><div className="d-flex align-items-center"><label className="me-2" htmlFor="male">Nam</label><input className="me-4" type="radio" defaultChecked id="male" name="sex" value="true" onChange={onChangeField}/><label className="me-2" htmlFor="female">Nữ</label><input type="radio" id="female" name="sex" value="false" onChange={onChangeField} /></div></td>
                         </tr>
                         <tr>
                           <td colSpan="3"></td>
                           <td>
                             <div className="d-flex justify-content-between">
-                              <button className="bg-green action">Đồng ý</button>
-                              <button className="bg-red-d action">Hủy</button>  
+                              <button type="submit" className="bg-green action">Đồng ý</button>
+                              <button type="reset" className="bg-red-d action">Hủy</button>  
                             </div>
                           </td>
                         </tr>

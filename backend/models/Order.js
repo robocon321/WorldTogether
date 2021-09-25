@@ -54,6 +54,11 @@ const OrderSchema = new Schema({
     ref: "Account",
     default: null
   },
+  old_id: {
+    type: Number,
+    ref: "Account",
+    default: null
+  },
 });
 
 module.exports = mongoose.model("Order", OrderSchema);

@@ -77,6 +77,11 @@ const ProductSchema = new Schema({
     ref: "Account",
     default: null
   },
+  old_id: {
+    type: Number,
+    ref: "Account",
+    default: null
+  },
   view_count:  {
     type: Number,
     default: 0

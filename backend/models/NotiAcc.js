@@ -37,6 +37,11 @@ const NotiAccSchema = new Schema({
     ref: "Account",
     default: null
   }, 
+  old_id: {
+    type: Number,
+    ref: "Account",
+    default: null
+  },
 });
 
 NotiAccSchema.index({noti_id: 1, uid: 1}, {unique: true});

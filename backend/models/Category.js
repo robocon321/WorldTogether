@@ -69,6 +69,12 @@ const CategorySchema = Schema({
     ref: "Account",
     default: null
   }, 
+  old_id: {
+    type: Number,
+    ref: "Account",
+    default: null
+  },
+
 })
 
 module.exports = mongoose.model("Cateogry", CategorySchema);

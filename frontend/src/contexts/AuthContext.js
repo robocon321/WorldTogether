@@ -91,7 +91,6 @@ const AuthProvider = ({children}) =>{
       localStorage[LOCAL_STORAGE_ACCOUNT] = result.accessToken;
       await loadAccount();
     }
-    console.log(res, `${SERVER}/auth/register`);
     return result;
   }
 

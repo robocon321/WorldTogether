@@ -30,7 +30,8 @@ const ReviewProductSchema = new Schema({
   },
   cre_time: {
     type: Date,
-    required: true
+    required: true,
+    default: now
   },
   cre_uid: {
     type: Number,
@@ -45,7 +46,12 @@ const ReviewProductSchema = new Schema({
     type: Date,
     ref: "Account",
     default: null
-  }
+  },
+  old_id: {
+    type: Number,
+    ref: "Account",
+    default: null
+  },
 });
 
 module.exports = mongoose.model("ReviewProduct", ReviewProductSchema);

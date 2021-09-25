@@ -38,6 +38,11 @@ const ShopFollowSchema = new Schema({
     ref: "Account",
     default: null
   },
+  old_id: {
+    type: Number,
+    ref: "Account",
+    default: null
+  },
 });
 
 ShopFollowSchema.index({product_id: 1, uid: 1}, {unique: true});

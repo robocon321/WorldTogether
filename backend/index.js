@@ -2,12 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoute = require("./routes/auth");
+const adminRoute = require("./routes/admin/index");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/auth/", authRoute);
+app.use("/admin/", adminRoute);
 
 const connect = async () => {
   try{

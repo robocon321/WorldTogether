@@ -52,7 +52,7 @@ const AccountSchema = new Schema({
   cre_uid: {
     type: Number,
     ref: "Account",
-    required: now,
+    default: now,
   },
   mod_time: {
     type: Date,
@@ -60,6 +60,11 @@ const AccountSchema = new Schema({
   },
   mod_uid: {
     type: Date,
+    ref: "Account",
+    default: null
+  },
+  old_id: {
+    type: Number,
     ref: "Account",
     default: null
   },
