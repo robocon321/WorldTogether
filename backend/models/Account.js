@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const PERMISSION = require("../utils/Constant");
+const cst = require("../utils/Constant");
 
 let now = Date.now;
 const AccountSchema = new Schema({
@@ -12,7 +12,6 @@ const AccountSchema = new Schema({
   uname: {
     type: String,
     required: true,
-    unique: true
   },
   pwd: {
     type: String, 
@@ -59,7 +58,7 @@ const AccountSchema = new Schema({
     default: null
   },
   mod_uid: {
-    type: Date,
+    type: Number,
     ref: "Account",
     default: null
   },
@@ -82,7 +81,7 @@ const AccountSchema = new Schema({
   },
   permission: {
     type: Number,
-    default: PERMISSION.ROOT
+    default: cst.PERMISSION.ROOT
   }
 })
 

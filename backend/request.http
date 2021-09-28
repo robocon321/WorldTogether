@@ -3,8 +3,8 @@ GET http://localhost:5000/auth
 Content-Type: application/json
 
 {
-  "uname": "",
-  "pwd": ""
+  "uname": "issei2018",
+  "pwd": "aaaa"
 }
 
 ###
@@ -32,14 +32,13 @@ GET http://localhost:5000/auth
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
-
 ###
 GET http://localhost:5000/admin/account
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
 {
-  "uname": "robocon321"
+  "_id": "1632565112911"
 }
 
 ###

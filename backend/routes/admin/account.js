@@ -7,7 +7,7 @@ const router = express.Router();
 const verifyToken = require('../../middleware/verifyToken');
 
 router.get('/', verifyToken, async (req, res) => {
-  const account = await Account.findOne(req.body);
+  const account = await Account.find(req.query);
   if(account) res.status(200).json({success: true, message: "Successful!", account});
   else res.status(400).json({success: false, message: "Not exists"});
 })
@@ -21,11 +21,11 @@ router.post('/', verifyToken, async (req, res) => {
   if(!full_name) return res.status(400).json({success: false, message: "Full-name is required"});
   if(!email) return res.status(400).json({success: false, message: "Email is required"});
   if(!phone) return res.status(400).json({success: false, message: "Phone is required"});
-  if(!sex) return res.status(400).json({success: false, message: "Sex is required"});
+  if(sex === '' || sex === null || sex === undefined) return res.status(400).json({success: false, message: "Sex is required"});
   if(!birthday) return res.status(400).json({success: false, message: "Birthday is required"});
 
   try {
-    const account = await Account.findOne({uname}).select("-pwd");
+    const account = await Account.findOne({uname, is_delete: false}).select("-pwd");
     if(account) return res.status(400).json({success: false, message: "Exists uname"});
     
     const newAccount = new Account(req.body);
@@ -45,7 +45,7 @@ router.put('/', verifyToken, async (req, res) => {
   if(!full_name) return res.status(400).json({success: false, message: "Full-name is required"});
   if(!email) return res.status(400).json({success: false, message: "Email is required"});
   if(!phone) return res.status(400).json({success: false, message: "Phone is required"});
-  if(!sex) return res.status(400).json({success: false, message: "Sex is required"});
+  if(sex === '' || sex === null || sex === undefined) return res.status(400).json({success: false, message: "Sex is required"});
   if(!birthday) return res.status(400).json({success: false, message: "Birthday is required"});
 
   try {

@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { React } from "react";
+import { React, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AccountContext } from "../../../contexts/AccountContext";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
@@ -36,6 +38,20 @@ const options = {
 };
 
 const AccountList = props => {
+  const { accounts, deleteAccount, loadAccount } = useContext(AccountContext);
+
+  useEffect(() => {
+    loadAccount();
+  }, []);
+
+  const onEditAccount = (id) => {
+    props.history.push(`/admin/account/edit/${id}`);
+  }
+
+  const onDeleteAccount = async (id) => {
+    deleteAccount(id);
+  }
+  
   return (
     <div>
       <div className="account_list d-flex">
@@ -87,7 +103,7 @@ const AccountList = props => {
                 <Line data={data} options={options} />
             </div>
             <div className="p-4 m-0">
-            <div className="actions d-flex align-items-center justify-content-center">
+              <div className="actions d-flex align-items-center justify-content-center">
                 <select className="sort me-3" name="sort">
                   <option value="0">Mới nhất</option>
                   <option value="1">Phổ biến nhất</option>
@@ -111,75 +127,23 @@ const AccountList = props => {
                       <th>Permission</th>
                       <th>Action</th>
                     </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>robocon321</td>
-                      <td>Nguyễn Thanh Nhật</td>
-                      <td>0354512411</td>
-                      <td>Root</td>
-                      <td><Link to="/admin/account/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>robocon321</td>
-                      <td>Nguyễn Thanh Nhật</td>
-                      <td>0354512411</td>
-                      <td>Root</td>
-                      <td><Link to="/admin/account/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>robocon321</td>
-                      <td>Nguyễn Thanh Nhật</td>
-                      <td>0354512411</td>
-                      <td>Root</td>
-                      <td><Link to="/admin/account/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>robocon321</td>
-                      <td>Nguyễn Thanh Nhật</td>
-                      <td>0354512411</td>
-                      <td>Root</td>
-                      <td><Link to="/admin/account/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>robocon321</td>
-                      <td>Nguyễn Thanh Nhật</td>
-                      <td>0354512411</td>
-                      <td>Root</td>
-                      <td><Link to="/admin/account/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>robocon321</td>
-                      <td>Nguyễn Thanh Nhật</td>
-                      <td>0354512411</td>
-                      <td>Root</td>
-                      <td><Link to="/admin/account/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>robocon321</td>
-                      <td>Nguyễn Thanh Nhật</td>
-                      <td>0354512411</td>
-                      <td>Root</td>
-                      <td><Link to="/admin/account/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>robocon321</td>
-                      <td>Nguyễn Thanh Nhật</td>
-                      <td>0354512411</td>
-                      <td>Root</td>
-                      <td><Link to="/admin/account/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                  </tbody>
+                    {
+                      accounts.map((item, index) => {
+                        return (
+                          <tr key={index}>
+                            <td><a href="#">{index}</a></td>
+                            <td>{item.uname}</td>
+                            <td>{item.full_name}</td>
+                            <td>{item.phone}</td>
+                            <td>Root</td>
+                            <td><button className="btn btn-success me-1" onClick={() => onEditAccount(item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={() => onDeleteAccount(item._id)}><i className="fas fa-trash-alt"></i></button></td>
+                          </tr>
+                        )
+                      })
+                    }
+                 </tbody>
                 </table>
-                <div className="spinner text-center">
-                  <div className="spinner-border"></div>
-                </div>
+                <div className="d-flex justify-content-center"><button className="c-white bg-blue px-5 py-2 bd-width-0">More</button></div>
               </div>
             </div>
           </main>  

@@ -36,7 +36,7 @@ const AuthProvider = ({children}) =>{
 
     if(result.success) {
       localStorage[LOCAL_STORAGE_ACCOUNT] = res.data.accessToken;
-      loadAccount();
+      await loadAccount();
     }
     
     return result;
@@ -44,7 +44,7 @@ const AuthProvider = ({children}) =>{
 
   const loadAccount = async () => {
     if(localStorage[LOCAL_STORAGE_ACCOUNT]) {
-      setAuthToken(localStorage[LOCAL_STORAGE_ACCOUNT]);
+      await setAuthToken(localStorage[LOCAL_STORAGE_ACCOUNT]);
       try {
         const res = await axios.get(`${SERVER}/auth`);
         if(res.data.success) {
@@ -58,13 +58,37 @@ const AuthProvider = ({children}) =>{
           })
         } else {
           setAuthToken(null);
+          dispatch({
+            type: SET_AUTH,
+            payload: {
+              isLoading: false,
+              isAuth: false,
+              account: null
+            }
+          })
         }
       } catch (e) {
         console.log("Load error", e);
+        dispatch({
+          type: SET_AUTH,
+          payload: {
+            isLoading: false,
+            isAuth: false,
+            account: null
+          }
+        })
       }
     } else {
       setAuthToken(null);
-    }
+      dispatch({
+        type: SET_AUTH,
+        payload: {
+          isLoading: false,
+          isAuth: false,
+          account: null
+        }
+      })
+  }
   }
 
   const registerAccount = async (accountForm) => {

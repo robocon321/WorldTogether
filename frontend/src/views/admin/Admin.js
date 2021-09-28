@@ -22,7 +22,7 @@ const Admin = props => {
   if(authState.isLoading) {
     return <Loading />
   } else {
-    if(authState.isAuth || authState.account.permission < PERMISSION.CLIENT) {
+    if(authState.isAuth && authState.account.permission < PERMISSION.CLIENT) {
       return (
         <Switch>
           <Route path="/admin/category" component={CategoryIndex} />

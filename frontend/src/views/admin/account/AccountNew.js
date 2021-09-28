@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { React, useState, useContext, useRef, useEffect } from "react";
 import { AccountContext } from "../../../contexts/AccountContext";
+import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
@@ -27,8 +28,6 @@ const AccountNew = props => {
   }, []);
 
   const onChangeField = (e) => {
-    console.log([e.target.name], e.target.value);
-
     setAccount({
       ...account,
       [e.target.name]: e.target.value,
@@ -40,6 +39,7 @@ const AccountNew = props => {
     let result = await createAccount(account);
     if(result.success) {
       alert.current.style.display = "none";
+      props.history.goBack();
     } else {
       alert.current.style.display = "block";
       alert.current.textContent = result.message;
@@ -56,6 +56,7 @@ const AccountNew = props => {
           <AdminHeader title="Account" />
           <main className="edit_category">
             <div className="p-4 m-0">
+              <Link to="/admin/account" className="link-primary"><i className="fas fa-long-arrow-alt-left"></i> Trở về</Link>
               <div className="main-title mb-4">Thêm mới tài khoản</div>
                 <form onSubmit={onSubmit}>
                   <div className="wrap-form">

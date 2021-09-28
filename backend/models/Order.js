@@ -50,7 +50,7 @@ const OrderSchema = new Schema({
     default: null
   },
   mod_uid: {
-    type: Date,
+    type: Number,
     ref: "Account",
     default: null
   },

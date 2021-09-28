@@ -39,6 +39,8 @@ const Register = props => {
     if(!result.success) {
       alert.current.style.display = "block";
       alert.current.textContent = result.message;
+    } else {
+      props.history.push("/admin/dashboard");
     }
   }
 
