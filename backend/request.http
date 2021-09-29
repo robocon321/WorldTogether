@@ -37,10 +37,6 @@ GET http://localhost:5000/admin/account
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
-{
-  "_id": "1632565112911"
-}
-
 ###
 POST http://localhost:5000/admin/account
 Content-Type: application/json

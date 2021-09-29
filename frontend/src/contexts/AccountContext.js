@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../actions/AccountAction";
 import axios from 'axios';
@@ -9,8 +9,14 @@ export const AccountContext = createContext();
 
 const AccountProvider = ({children}) => {
   
-  const accounts = useSelector((state) => state.accounts);
+  const { accounts, size, page, count, search } = useSelector(state => state);
   const dispatch = useDispatch();
+  let remain = count - size*page < 0 ? 0 : count - size*page;
+
+  useEffect( ()=> {
+    console.log(search);
+    loadAccount();
+  }, [search]);
 
   const {authState} = useContext(AuthContext);
   
@@ -101,9 +107,19 @@ const AccountProvider = ({children}) => {
   }
 
   const loadAccount = async () => {
-    const result = await axios.get(`${SERVER}/admin/account`, {params: {is_delete: false}});
+    const result = await axios.get(`${SERVER}/admin/account`, {
+      params: {
+        is_delete: false,
+        limit: size,
+        skip: page * size, 
+        search,
+      }
+    });
+    
     if(result.data.success) {
       dispatch(actions.addAccounts(result.data.account));
+      dispatch(actions.nextPage());
+      dispatch(actions.setCount(result.data.count));
     }
   }
 
@@ -142,7 +158,12 @@ const AccountProvider = ({children}) => {
 
   }
 
-  const value = {createAccount, updateAccount, loadAccount, deleteAccount, getAccountById, accounts};
+  const searchAccount = async (str) => {
+    await dispatch(actions.reset());
+    await dispatch(actions.setSearch(str));
+  }
+
+  const value = {createAccount, updateAccount, loadAccount, deleteAccount, getAccountById, searchAccount, accounts, remain};
   return (
     <AccountContext.Provider value={value}>
       {children}

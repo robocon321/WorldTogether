@@ -7,9 +7,21 @@ const router = express.Router();
 const verifyToken = require('../../middleware/verifyToken');
 
 router.get('/', verifyToken, async (req, res) => {
-  const account = await Account.find(req.query);
-  if(account) res.status(200).json({success: true, message: "Successful!", account});
-  else res.status(400).json({success: false, message: "Not exists"});
+    const { query } = req;
+    const {skip, limit, sort, search} = query;
+    
+    delete query.skip;
+    delete query.limit;
+    delete query.search;
+
+    try {
+      const count = await Account.find({...query, uname: { $regex: '.' + search + '.' }}).count();
+      const account = await Account.find({...query, uname: { $regex: '.' + search + '.'}}).skip(skip && parseInt(skip)).limit(limit && parseInt(limit)).sort(sort);
+      if(account) return res.status(200).json({success: true, message: "Successful!", account, count});
+      else return res.status(400).json({success: false, message: "Not exists"});  
+    } catch (e) {
+      return res.status(500).json({success: false, message: "Interval server"});
+    }
 })
 
 router.post('/', verifyToken, async (req, res) => {

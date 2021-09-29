@@ -38,18 +38,19 @@ const options = {
 };
 
 const AccountList = props => {
-  const { accounts, deleteAccount, loadAccount } = useContext(AccountContext);
-
-  useEffect(() => {
-    loadAccount();
-  }, []);
+  const { accounts, deleteAccount, loadAccount, searchAccount, remain } = useContext(AccountContext);
 
   const onEditAccount = (id) => {
     props.history.push(`/admin/account/edit/${id}`);
   }
 
-  const onDeleteAccount = async (id) => {
+  const onDeleteAccount = (id) => {
     deleteAccount(id);
+  }
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    searchAccount(e.target.value);
   }
   
   return (
@@ -111,7 +112,7 @@ const AccountList = props => {
                   <option value="3">Nhiều lượt xem nhất</option>
                 </select>
                 <div className="search me-3">
-                  <input className="search-box sub-search" name="sub-search" type="text" />              
+                  <input className="search-box sub-search" name="sub-search" type="text" onChange={onSearch}/>              
                   <div className="icon"><i className="fas fa-search"></i></div>
                 </div>
                 <Link to="/admin/account/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
@@ -143,7 +144,7 @@ const AccountList = props => {
                     }
                  </tbody>
                 </table>
-                <div className="d-flex justify-content-center"><button className="c-white bg-blue px-5 py-2 bd-width-0">More</button></div>
+                <div className="d-flex justify-content-center"><button className="c-white bg-blue px-5 py-2 bd-width-0" onClick={() => loadAccount()}>More ({remain})</button></div>
               </div>
             </div>
           </main>  
