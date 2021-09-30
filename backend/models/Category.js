@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 const now = Date.now;
-const CategorySchema = Schema({
+const CategorySchema = new Schema({
   _id: {
     type: Number,
     default: now,
@@ -14,6 +14,7 @@ const CategorySchema = Schema({
   },
   parent_id: {
     type: Number,
+    ref: 'Category',
     default: null
   },
   display_order: {
@@ -29,13 +30,14 @@ const CategorySchema = Schema({
     type: String,
     required: true
   },
-  meta_tile: {
+  meta_title: {
     type: String,
     required: true
   },
   slug: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   icon: {
     type: String,
@@ -74,7 +76,6 @@ const CategorySchema = Schema({
     ref: "Account",
     default: null
   },
-
 })
 
-module.exports = mongoose.model("Cateogry", CategorySchema);
+module.exports = mongoose.model("Category", CategorySchema);

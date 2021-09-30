@@ -1,42 +1,40 @@
 /* eslint-disable default-case */
-import { createStore } from '@reduxjs/toolkit';
-import { ACTIONS } from "../actions/AccountAction";
+import { ACTIONS } from "../actions/CategoryAction";
+import {createStore} from "redux";
 
 const init = {
-  accounts: [],
+  categories: [],
+  search: '',
   count: 0,
   page: 0,
-  size: 10,
-  search: ''
+  size: 10
 };
 
 const reducer = (state = init, action) => {
   switch(action.type) {
-    case ACTIONS.ADD_ACCOUNT: 
+    case ACTIONS.ADD_CATEGORIES:
       state = {
         ...state,
-        accounts: [...state.accounts, action.newAccount]
-      };
+        categories: action.newCategories
+      }
       break;
-
-    case ACTIONS.ADD_ACCOUNTS:
+    case ACTIONS.ADD_CATEGORY:
       state = {
         ...state,
-        accounts: [...state.accounts, ...action.newAccounts]
-      };
+        categories: [...action.categories, action.newCategory]
+      }
       break;
-
-    case ACTIONS.DELETE_ACCOUNT: 
+      case ACTIONS.DELETE_CATEGORY: 
       state = {
         ...state,
-        accounts: state.accounts.filter(item => item._id !== action.id)
+        categories: state.categories.filter(item => item._id !== action.id)
       }
       break;
 
-    case ACTIONS.EDIT_ACCOUNT: 
-      state.accounts.forEach(item => {
+    case ACTIONS.EDIT_CATEGORY: 
+      state.categories.forEach(item => {
         if(item._id === action.account._id) {
-          item = action.account;
+          item = action.category;
           return {...state}
         }
       });
@@ -58,7 +56,7 @@ const reducer = (state = init, action) => {
     case ACTIONS.RESET:
       state = {
         ...state,
-        accounts: [],
+        categories: [],
         count: 0,
         page: 0,
         size: 10,      
@@ -72,7 +70,8 @@ const reducer = (state = init, action) => {
       }
       break;
   }
-  return {...state};
+
+  return {...state}
 }
 
 export default createStore(reducer);

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../actions/AccountAction";
@@ -14,7 +15,6 @@ const AccountProvider = ({children}) => {
   let remain = count - size*page < 0 ? 0 : count - size*page;
 
   useEffect( ()=> {
-    console.log(search);
     loadAccount();
   }, [search]);
 

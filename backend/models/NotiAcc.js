@@ -1,6 +1,6 @@
 import {NOTI_ACC_STATUS} from "../utils/Constant";
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 const NotiAccSchema = new Schema({
   noti_id: {

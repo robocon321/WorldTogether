@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { React } from "react";
+import { React, useContext } from "react";
 import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
@@ -8,6 +8,7 @@ import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/categories.css";
+import {CategoryContext} from "../../../contexts/CategoryContext";
 
 const data = {
   labels: ['a','b','c','d','e','f'],
@@ -36,7 +37,21 @@ const options = {
 };
 
 const CategoryList = props => {
-  console.log(props);
+  const { categories, deleteCategory, loadCategory, searchCategory, remain } = useContext(CategoryContext);
+
+  const onEditCategory = (id) => {
+    props.history.push(`/admin/category/edit/${id}`);
+  }
+
+  const onDeleteCategory = (id) => {
+    deleteCategory(id);
+  }
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    searchCategory(e.target.value);
+  }
+
   return (
     <div>
       <div className="categories d-flex">
@@ -58,7 +73,7 @@ const CategoryList = props => {
                   <option value="3">Nhiều lượt xem nhất</option>
                 </select>
                 <div className="search me-3">
-                  <input className="search-box sub-search" name="sub-search" type="text" />              
+                  <input className="search-box sub-search" name="sub-search" type="text" onChange={onSearch} />              
                   <div className="icon"><i className="fas fa-search"></i></div>
                 </div>
                 <Link to="/admin/category/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
@@ -75,101 +90,24 @@ const CategoryList = props => {
                       <th>Product count</th>
                       <th>Action</th>
                     </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                  </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                  </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                  </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><a href="#">Đồ điện tử</a></td>
-                      <td>1</td>
-                      <td>15</td>
-                      <td>18</td>
-                      <td><Link to="/admin/category/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
+                    {
+                      categories.map((item, index) => {
+                        return (
+                          <tr key={index}>
+                            <td><a href="#">{index}</a></td>
+                            <td>{item.title}</td>
+                            <td><a href="#">{item.parent_id ? item.parent_id.title : "None"}</a></td>
+                            <td>{item.display_order}</td>
+                            <td>{item.view_count ? item.view_count : 0}</td>
+                            <td>{0}</td>
+                            <td><button className="btn btn-success me-1" onClick={() => onEditCategory(item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={() => onDeleteCategory(item._id)}><i className="fas fa-trash-alt"></i></button></td>
+                          </tr>
+                        )
+                      })
+                    }
                   </tbody>
                 </table>
-                <div className="spinner text-center">
-                  <div className="spinner-border"></div>
-                </div>
+                <div className="d-flex justify-content-center"><button className="c-white bg-blue px-5 py-2 bd-width-0" onClick={() => loadCategory()}>More ({remain})</button></div>
               </div>
             </div>
           </main>  
