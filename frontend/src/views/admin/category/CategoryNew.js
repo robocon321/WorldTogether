@@ -23,11 +23,12 @@ const initCategory = {
   icon: '',
   attributes: [{
     title: '',
+    category_id: null,
     datatype: DATATYPE.NUMBER
   }]
 };
 const CategoryNew = props => {
-  const { trees, createCategory} = useContext(CategoryContext);
+  const { trees, createCategory, createAttrs} = useContext(CategoryContext);
   const alert = useRef();
   const attributeRef = useRef();
   const [category, setCategory] = useState({...initCategory});
@@ -62,13 +63,22 @@ const CategoryNew = props => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    let result = await createCategory(category);
-    if(result.success) {
-      alert.current.style.display = "none";
-      props.history.goBack();
+    let resultCategory = await createCategory(category);
+    if(resultCategory.success) {      
+      const { attributes } = category;
+      attributes.forEach(item => item.category_id = resultCategory.category._id);
+      let resultAttr = await createAttrs(attributes);
+
+      if(resultAttr.success) {
+        alert.current.style.display = "none";
+        props.history.goBack();
+      } else {
+        alert.current.style.display = "block";
+        alert.current.textContent = resultAttr.message;  
+      }
     } else {
       alert.current.style.display = "block";
-      alert.current.textContent = result.message;
+      alert.current.textContent = resultCategory.message;
     }
   }
 
@@ -78,12 +88,13 @@ const CategoryNew = props => {
       ...category,
       attributes: [...category.attributes, {
         title: '',
+        category_id: null,
         datatype: DATATYPE.NUMBER
       }]
     })
   }
 
-  const onChangeFieldAtribute = (e, index) => {
+  const onChangeFieldAttribute = (e, index) => {
     const {attributes} = category;
     attributes[index] = {
       ...attributes[index],
@@ -174,10 +185,10 @@ const CategoryNew = props => {
                             return (
                               <tr key={index}>
                                 <td>Đặc trưng</td>
-                                <td><input type="text" name="title" value={item.title} required onChange={(e) => onChangeFieldAtribute(e, index)} /></td>
+                                <td><input type="text" name="title" value={item.title} required onChange={(e) => onChangeFieldAttribute(e, index)} /></td>
                                 <td>Kiểu</td>
                                 <td className="d-flex align-items-center">
-                                  <select className="me-2" name="datatype" value={item.datatype} required onChange={(e) => onChangeFieldAtribute(e, index)}>
+                                  <select className="me-2" name="datatype" value={item.datatype} required onChange={(e) => onChangeFieldAttribute(e, index)}>
                                     <option value={0}>Số</option>
                                     <option value={1}>Chuỗi</option>
                                     <option value={2}>Thời gian</option>

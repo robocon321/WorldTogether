@@ -6,15 +6,13 @@ const Category = require("../../models/Category");
 
 router.get('/', verifyToken, async (req, res) => {
   const { query } = req;
-  let {skip, limit, sort, search} = query;
+  let { search} = query;
 
-  delete query.limit;
-  delete query.skip;
   delete query.search;
 
   try {
     const count = await Category.find({...query, title: { $regex: '.' + search + '.' }}).count();
-    const category = await Category.find({...query, title: { $regex: '.' + search + '.'}}).populate('parent_id', ['title']).skip(skip && parseInt(skip)).limit(limit && parseInt(limit)).sort(sort);
+    const category = await Category.find({...query, title: { $regex: '.' + search + '.'}}).populate('parent_id', ['title']);
     if(category) return res.status(200).json({success: true, message: "Successful!", category, count});
     else return res.status(400).json({success: false, message: "Not exists"});  
 

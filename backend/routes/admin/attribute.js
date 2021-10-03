@@ -19,6 +19,7 @@ router.get('/', verifyToken, async (req, res) => {
 
 router.post('/', verifyToken, async (req, res) => {
   const {attributes} = req.body;
+  console.log(attributes);
   
   await attributes.forEach(async (item, index) => {
     const {title, category_id, datatype} = item;

@@ -6,8 +6,6 @@ const init = {
   trees: [],
   search: '',
   count: 0,
-  page: 0,
-  size: 10
 };
 
 const reducer = (state = init, action) => {
@@ -38,13 +36,6 @@ const reducer = (state = init, action) => {
           return {...state}
         }
       });
-      break;
-
-    case ACTIONS.NEXT_PAGE:
-      state = {
-        ...state,
-        page: state.page + 1
-      }
       break;
 
     case ACTIONS.SET_COUNT:

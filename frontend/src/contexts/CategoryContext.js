@@ -11,10 +11,9 @@ import * as attrActions from "../actions/AttributeAction";
 export const CategoryContext = createContext();
 
 const CategoryProvider = ({children}) => {
-  const { categories, size, page, count, search, trees } = useSelector(state => state.category);
+  const { categories, search, trees } = useSelector(state => state.category);
   const { attrs } = useSelector(state => state.attr);
   const dispatch = useDispatch();
-  let remain = count - size*page < 0 ? 0 : count - size*page;
 
   useEffect(()=> {
     loadCategory();
@@ -113,16 +112,12 @@ const CategoryProvider = ({children}) => {
   const loadCategory = async () => {
     const result = await axios.get(`${SERVER}/admin/category`, {
       params: {
-        is_delete: false,
-        limit: size,
-        skip: page * size, 
         search,
       }
     });
     
     if(result.data.success) {
       dispatch(categoryActions.addCategories(result.data.category));
-      dispatch(categoryActions.nextPage());
       dispatch(categoryActions.setCount(result.data.count));
     }
 
@@ -201,7 +196,6 @@ const CategoryProvider = ({children}) => {
     searchCategory, 
     buildTreeCategories, 
     categories, 
-    remain,
     trees
   };
 
@@ -248,7 +242,7 @@ const CategoryProvider = ({children}) => {
     }
 
     try {
-      const res = await axios.post(`${SERVER}/admin/attribute`, newAttrs);
+      const res = await axios.post(`${SERVER}/admin/attribute`, {attributes: newAttrs});
       result.success = res.data.success;
       result.message = res.data.message;
       if(result.success) {

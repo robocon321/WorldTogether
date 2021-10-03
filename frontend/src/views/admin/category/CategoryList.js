@@ -37,7 +37,7 @@ const options = {
 };
 
 const CategoryList = props => {
-  const { categories, deleteCategory, loadCategory, searchCategory, remain } = useContext(CategoryContext);
+  const { categories, deleteCategory, searchCategory } = useContext(CategoryContext);
 
   const onEditCategory = (id) => {
     props.history.push(`/admin/category/edit/${id}`);
@@ -107,7 +107,6 @@ const CategoryList = props => {
                     }
                   </tbody>
                 </table>
-                <div className="d-flex justify-content-center"><button className="c-white bg-blue px-5 py-2 bd-width-0" onClick={() => loadCategory()}>More ({remain})</button></div>
               </div>
             </div>
           </main>  
