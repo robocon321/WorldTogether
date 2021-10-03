@@ -6,7 +6,8 @@ const ACTIONS = {
   SET_COUNT: 'SET_COUNT',
   SET_SEARCH: 'SET_SEARCH',
   RESET: 'RESET',
-  NEXT_PAGE: 'NEXT_PAGE'
+  NEXT_PAGE: 'NEXT_PAGE',
+  SET_TREES: 'SET_TREES'
 }
 
 const addCategory = (newCategory) => {
@@ -63,4 +64,11 @@ const reset = () => {
   }
 }
 
-export {addCategories, addCategory, editCategory, deleteCategory, setSearch, setCount, reset, nextPage, ACTIONS};
+const setTrees = (trees) => {
+  return {
+    type: ACTIONS.SET_TREES,
+    trees
+  }
+}
+
+export {addCategories, addCategory, editCategory, deleteCategory, setSearch, setCount, reset, nextPage, setTrees, ACTIONS};

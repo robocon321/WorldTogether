@@ -18,7 +18,7 @@ const OptProductTitleSchema = new Schema({
     type: String,
     required: true,
   },
-  datetype: {
+  datatype: {
     type: Number,
     required: true,
   }

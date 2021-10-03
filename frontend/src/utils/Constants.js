@@ -6,3 +6,9 @@ export const PERMISSION = {
   ADMIN: 1,
   CLIENT: 2
 }
+
+export const DATATYPE = {
+  NUMBER: 0,
+  STRING: 1,
+  DATETIME: 2
+}

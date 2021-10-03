@@ -1,9 +1,9 @@
 /* eslint-disable default-case */
 import { ACTIONS } from "../actions/CategoryAction";
-import {createStore} from "redux";
 
 const init = {
   categories: [],
+  trees: [],
   search: '',
   count: 0,
   page: 0,
@@ -15,26 +15,26 @@ const reducer = (state = init, action) => {
     case ACTIONS.ADD_CATEGORIES:
       state = {
         ...state,
-        categories: action.newCategories
+        categories: [...state.categories, ...action.newCategories]
       }
       break;
     case ACTIONS.ADD_CATEGORY:
       state = {
         ...state,
-        categories: [...action.categories, action.newCategory]
+        categories: [...state.categories, action.newCategory]
       }
       break;
-      case ACTIONS.DELETE_CATEGORY: 
-      state = {
-        ...state,
-        categories: state.categories.filter(item => item._id !== action.id)
-      }
-      break;
+    case ACTIONS.DELETE_CATEGORY: 
+    state = {
+      ...state,
+      categories: state.categories.filter(item => item._id !== action.id)
+    }
+    break;
 
     case ACTIONS.EDIT_CATEGORY: 
       state.categories.forEach(item => {
-        if(item._id === action.account._id) {
-          item = action.category;
+        if(item._id === action.newCategory._id) {
+          item = action.newCategory;
           return {...state}
         }
       });
@@ -69,9 +69,14 @@ const reducer = (state = init, action) => {
         search: action.search
       }
       break;
+    case ACTIONS.SET_TREES:
+      state = {
+        ...state,
+        trees: action.trees
+      }
   }
 
   return {...state}
 }
 
-export default createStore(reducer);
+export default reducer;

@@ -1,11 +1,20 @@
 import { React } from "react";
 import {Route, Switch} from "react-router-dom";
+import {combineReducers, createStore} from "redux";
 import CategoryEdit from "./CategoryEdit";
 import CategoryNew from "./CategoryNew";
 import CategoryList from "./CategoryList";
 import CategoryProvider from "../../../contexts/CategoryContext";
 import { Provider } from "react-redux";
-import store from "../../../reducers/CategoryReducer";
+import categoryReducer from "../../../reducers/CategoryReducer";
+import attrReducer from "../../../reducers/AttributeReducer";
+
+const reducer = combineReducers({
+  category: categoryReducer,
+  attr: attrReducer
+})
+
+const store = createStore(reducer);
 
 const CategoryIndex = props => {
   return (

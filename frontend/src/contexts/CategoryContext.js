@@ -1,25 +1,36 @@
+/* eslint-disable no-loop-func */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { createContext, useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SERVER } from "../utils/Constants";
 import { AuthContext } from "./AuthContext";
-import * as actions from "../actions/CategoryAction";
+import * as categoryActions from "../actions/CategoryAction";
+import * as attrActions from "../actions/AttributeAction";
 
 export const CategoryContext = createContext();
 
 const CategoryProvider = ({children}) => {
-  const { categories, size, page, count, search } = useSelector(state => state);
+  const { categories, size, page, count, search, trees } = useSelector(state => state.category);
+  const { attrs } = useSelector(state => state.attr);
   const dispatch = useDispatch();
   let remain = count - size*page < 0 ? 0 : count - size*page;
 
-  useEffect( ()=> {
+  useEffect(()=> {
     loadCategory();
+    loadAtrr();
   }, [search]);
+
+  useEffect(() => {
+    dispatch(categoryActions.setTrees(buildTreeCategories()));
+  }, [categories]);
 
   const {authState} = useContext(AuthContext);
   
   const { account } = authState;
+
+
+  // category 
 
   const createCategory = async newCategory => {
     newCategory.cre_uid = account._id;
@@ -27,6 +38,7 @@ const CategoryProvider = ({children}) => {
     const result = {
       success: false,
       message: 'Server error',
+      category: {}
     }
 
     try {
@@ -34,7 +46,12 @@ const CategoryProvider = ({children}) => {
       result.success = res.data.success;
       result.message = res.data.message;
       if(result.success) {
-        dispatch(actions.addCategory(newCategory));
+        result.category = res.data.newCategory;
+        result.category.parent_id = {
+          _id: result.category.parent_id,
+          title: categories.find(item => item._id === result.category.parent_id).title
+        }
+        dispatch(categoryActions.addCategory(result.category));
       }
     } catch (e) {
       if (e.response) {
@@ -80,7 +97,7 @@ const CategoryProvider = ({children}) => {
       result.message = createNew.data.message;
 
       if(result.success) {
-        dispatch(actions.editCategory(newCategory));
+        dispatch(categoryActions.editCategory(newCategory));
       }
 
     } catch (e) {
@@ -104,12 +121,11 @@ const CategoryProvider = ({children}) => {
     });
     
     if(result.data.success) {
-      dispatch(actions.addCategories(result.data.category));
-      dispatch(actions.nextPage());
-      dispatch(actions.setCount(result.data.count));
+      dispatch(categoryActions.addCategories(result.data.category));
+      dispatch(categoryActions.nextPage());
+      dispatch(categoryActions.setCount(result.data.count));
     }
 
-    console.log(result.data);
   }
 
   const getCategoryById = (id) => {
@@ -137,7 +153,7 @@ const CategoryProvider = ({children}) => {
         result.success = updateRes.data.success;
         result.message = updateRes.data.message;
 
-        if(result.success) dispatch(actions.deleteCategory(id));
+        if(result.success) dispatch(categoryActions.deleteCategory(id));
       }
 
     } catch (e) {
@@ -148,11 +164,112 @@ const CategoryProvider = ({children}) => {
   }
 
   const searchCategory = async (str) => {
-    await dispatch(actions.reset());
-    await dispatch(actions.setSearch(str));
+    await dispatch(categoryActions.reset());
+    await dispatch(categoryActions.setSearch(str));
   }
 
-  const value = {createCategory, updateCategory, loadCategory, deleteAccount, getCategoryById, searchCategory, categories, remain};
+  const buildTreeCategories = () => {
+    const trees = [];
+    categories.forEach((item) => {
+      let tree = {
+        _id: item._id,
+        title: ''
+      };
+      let current = item;
+      while(true) {
+        tree.title = current.title + tree.title;
+        if (!current.parent_id) {
+          trees.push(tree);
+          break;
+        }
+        else {
+          current = categories.find(item => item._id === current.parent_id._id);
+          tree.title = " > " + tree.title;
+        }
+      }
+    })
+
+    return trees;
+  }
+
+  const categoryValue = {
+    createCategory, 
+    updateCategory, 
+    loadCategory, 
+    deleteAccount, 
+    getCategoryById, 
+    searchCategory, 
+    buildTreeCategories, 
+    categories, 
+    remain,
+    trees
+  };
+
+  // attribute 
+  
+  const loadAtrr = async () => {
+    const result = await axios.get(`${SERVER}/admin/attribute`);
+    
+    if(result.data.success) {
+      dispatch(attrActions.addAttributes(result.data.attribute));
+    }    
+  }
+
+  const updateAttr = async newAttrs => {
+    const result = {
+      success: false,
+      message: 'Server error',
+    }
+
+    try {
+
+      const res = await axios.put(`${SERVER}/admin/category`, newAttrs);
+
+      if(!res.success) {
+        result.success = res.data.success;
+        result.message = res.data.message;
+      } else {
+        dispatch(attrActions.editAttribute(newAttrs));
+      }
+    } catch (e) {
+      if (e.response) {
+        result.success = e.response.data.success;
+        result.message = e.response.data.message;
+      }
+    }
+
+    return result;
+  }
+
+  const createAttrs = async newAttrs => {
+    const result = {
+      success: false,
+      message: 'Server error',
+    }
+
+    try {
+      const res = await axios.post(`${SERVER}/admin/attribute`, newAttrs);
+      result.success = res.data.success;
+      result.message = res.data.message;
+      if(result.success) {
+        dispatch(attrActions.addAttributes(newAttrs));
+      }
+    } catch (e) {
+      if (e.response) {
+        result.success = e.response.data.success;
+        result.message = e.response.data.message;
+      }
+    }
+
+    return result;
+  }
+
+  const attrValue = {loadAtrr, updateAttr, createAttrs, attrs};
+
+  const value = {
+    ...categoryValue,
+    ...attrValue
+  }
 
   return (
   <CategoryContext.Provider value={value}>

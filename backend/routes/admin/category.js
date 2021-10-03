@@ -41,7 +41,7 @@ router.post('/', verifyToken, async (req,res) => {
     if(category) return res.status(400).json({success: false, message: "Exists your title or slug"});
     const newCategory = new Category(req.body);
     await newCategory.save();
-    return res.status(200).json({success: true, message: "Successful!"});
+    return res.status(200).json({success: true, message: "Successful!", newCategory});
   } catch (e) {
     console.log("Insert error -", e);
     return res.status(500).json({success: false, message: "Interval Server"})
