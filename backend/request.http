@@ -70,7 +70,7 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
 ### category
 
 ###
-GET http://localhost:5000/admin/category?search=
+GET http://localhost:5000/admin/category?_id=1632911712843&search=
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
@@ -80,13 +80,13 @@ Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
 {
-  "title": "Item 9",
+  "title": "Item 14",
   "parent_id": 1632967075715,
   "display_order": 3,
   "meta_keyword": "Keyword",
   "meta_descrp": "Description",
   "meta_title": "Title",
-  "slug": "item9",
+  "slug": "item14",
   "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1200px-Flat_tick_icon.svg.png"
 }
 
@@ -97,11 +97,11 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
 
 {
   "_id": 1632911712843,
-  "title": "Điện tử",
+  "title": "Điện thoại",
   "display_order": 3,
   "meta_keyword": "Keyword",
   "meta_descrp": "Description",
-  "meta_title": "Title",
+  "meta_title": "Title update",
   "slug": "phone",
   "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1200px-Flat_tick_icon.svg.png"
 }

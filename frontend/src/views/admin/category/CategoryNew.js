@@ -30,7 +30,6 @@ const initCategory = {
 const CategoryNew = props => {
   const { trees, createCategory, createAttrs} = useContext(CategoryContext);
   const alert = useRef();
-  const attributeRef = useRef();
   const [category, setCategory] = useState({...initCategory});
 
   useEffect(() => {
@@ -201,7 +200,7 @@ const CategoryNew = props => {
                         }
                         <tr>
                           <td></td>
-                          <td colSpan="3"><button ref={attributeRef} onClick={onNewFieldAttribute} className="bg-yellow c-white"><i className="fas fa-plus"></i> Thêm đặc trưng</button></td>
+                          <td colSpan="3"><button onClick={onNewFieldAttribute} className="bg-yellow c-white"><i className="fas fa-plus"></i> Thêm đặc trưng</button></td>
                         </tr>
                         <tr>
                           <td colSpan="3"></td>

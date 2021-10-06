@@ -35,7 +35,10 @@ router.post('/', verifyToken, async (req,res) => {
   if(!icon) return res.status(400).json({success: false, message: "Icon is required"});
   
   try {
-    const category = await Category.findOne({$or: [{title}, {slug}]}, {is_delete: false});
+    const category = await Category.findOne({$and: [
+      {$or: [{title}, {slug}]}, 
+      {is_delete: false}
+    ]});
     if(category) return res.status(400).json({success: false, message: "Exists your title or slug"});
     const newCategory = new Category(req.body);
     await newCategory.save();
@@ -62,10 +65,10 @@ router.put('/', verifyToken, async (req, res) => {
     const category = await Category.find({$and: [
       {$or: [{title}, {slug}]}, 
       {is_delete: false}, 
-      {$not: [{_id}]}
+      {_id: {$not: {$eq: _id}}}
     ]});
-    if(category) return res.status(400).json({success: false, message: "Exists your title or slug"});
-    const newCategory = await Category.findOneAndUpdate({_id}, query.body);
+    if(category == true) return res.status(400).json({success: false, message: "Exists your title or slug"});
+    const newCategory = await Category.findOneAndUpdate({_id}, req.body);
     if(newCategory) return res.status(200).json({success: true, message: "Successful!"});
     return res.status(400).json({success: false, message: "Unsuccessful!"});
   } catch (e) {

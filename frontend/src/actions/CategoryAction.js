@@ -24,10 +24,11 @@ const addCategories = newCategories => {
   }
 }
 
-const editCategory = newCategory => {
+const editCategory = (oldId, newCategory) => {
   return {
     type: ACTIONS.EDIT_CATEGORY,
-    newCategory
+    newCategory,
+    oldId
   }
 }
 

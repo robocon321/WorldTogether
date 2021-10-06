@@ -11,7 +11,7 @@ import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/new_account.css";
 
 const AccountEdit = props => {
-  const {updateAccount, getAccountById} = useContext(AccountContext);
+  const {accounts, updateAccount, getAccountById} = useContext(AccountContext);
   const alert = useRef();
   const [account, setAccount] = useState({
     uname: '',
@@ -28,8 +28,9 @@ const AccountEdit = props => {
     alert.current.style.display = "none";
 
     const result = getAccountById(props.match.params.id);
+    if(!result) return;
     setAccount(result);
-  }, []);
+  }, [accounts]);
 
   const onChangeField = (e) => {
     setAccount({

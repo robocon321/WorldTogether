@@ -63,40 +63,48 @@ const CategoryProvider = ({children}) => {
   }
 
   const updateCategory = async newCategory => {
+    const oldId = newCategory._id;
     const now = new Date();
     const result = {
       success: false,
       message: 'Server error',
+      category: {}
     }
 
     try {
-      const oldCategory = (await axios.get(`${SERVER}/admin/category`, {params: {_id: newCategory._id}})).data.account;
+      const oldCategory = getCategoryById(newCategory._id);
 
-      if(newCategory.old_id) newCategory.old_id = oldCategory[0].old_id;
-      else newCategory.old_id = oldCategory[0]._id;
+      if(newCategory.old_id) newCategory.old_id = oldCategory.old_id;
+      else newCategory.old_id = oldCategory._id;
 
       newCategory.cre_uid = account.uid;
       newCategory.cre_time = now;
       delete newCategory._id;
 
-      oldCategory[0].mod_uid = account.uid;
-      oldCategory[0].mod_time = now;
-      oldCategory[0].is_delete = true;
+      oldCategory.mod_uid = account.uid;
+      oldCategory.mod_time = now;
+      oldCategory.is_delete = true;
 
-      const updateOld = await axios.put(`${SERVER}/admin/category`, oldCategory[0]);
-      const createNew = await axios.post(`${SERVER}/admin/category`, newCategory);
+      const updateOld = await axios.put(`${SERVER}/admin/category`, oldCategory);
 
-      if(!updateOld.success) {
+      if(!updateOld.data.success) {
         result.success = updateOld.data.success;
         result.message = updateOld.data.message;
         return result;
       }
 
+      const createNew = await axios.post(`${SERVER}/admin/category`, newCategory);
       result.success = createNew.data.success;
       result.message = createNew.data.message;
+      if(result.success) result.category = createNew.data.newCategory;
 
       if(result.success) {
-        dispatch(categoryActions.editCategory(newCategory));
+        const { parent_id } = createNew.data.newCategory;
+        createNew.data.newCategory.parent_id = {
+          _id: parent_id,
+          title: getCategoryById(parent_id).title
+        };
+        dispatch(categoryActions.editCategory(oldId, createNew.data.newCategory));
       }
 
     } catch (e) {
@@ -113,6 +121,7 @@ const CategoryProvider = ({children}) => {
     const result = await axios.get(`${SERVER}/admin/category`, {
       params: {
         search,
+        is_delete: false
       }
     });
     
@@ -127,14 +136,14 @@ const CategoryProvider = ({children}) => {
     return categories.find(item => item._id === parseInt(id));
   }
 
-  const deleteAccount = async (id) => {
+  const deleteCategory = async (id) => {
     const result = {
       success: false,
       message: "Server error"
     };
 
     try {
-      const res = await axios.get(`${SERVER}/admin/category`, {params: {_id: id}});
+      const res = await axios.get(`${SERVER}/admin/category`, {params: {_id: id, search: ''}});
       const categoryRes = res.data.category[0];
       if(!categoryRes) {
         result.success = false;
@@ -144,6 +153,7 @@ const CategoryProvider = ({children}) => {
         categoryRes.mod_uid = account._id;
         categoryRes.mod_time = new Date();
 
+        categoryRes.parent_id = categoryRes.parent_id._id;
         const updateRes = await axios.put(`${SERVER}/admin/category`, categoryRes);
         result.success = updateRes.data.success;
         result.message = updateRes.data.message;
@@ -152,8 +162,8 @@ const CategoryProvider = ({children}) => {
       }
 
     } catch (e) {
-      console.log(e);
-    }    
+      console.log(e.response.data);
+    }
     return result;
 
   }
@@ -191,7 +201,7 @@ const CategoryProvider = ({children}) => {
     createCategory, 
     updateCategory, 
     loadCategory, 
-    deleteAccount, 
+    deleteCategory, 
     getCategoryById, 
     searchCategory, 
     buildTreeCategories, 
@@ -209,21 +219,21 @@ const CategoryProvider = ({children}) => {
     }    
   }
 
-  const updateAttr = async newAttrs => {
+  const updateAttr = async (old_id ,category_id, newAttrs) => {
     const result = {
       success: false,
       message: 'Server error',
     }
 
     try {
+      newAttrs.forEach(item => item.category_id = category_id);
 
-      const res = await axios.put(`${SERVER}/admin/category`, newAttrs);
+      const res = await axios.put(`${SERVER}/admin/attribute`, {category_id, attributes: newAttrs});
 
-      if(!res.success) {
-        result.success = res.data.success;
-        result.message = res.data.message;
-      } else {
-        dispatch(attrActions.editAttribute(newAttrs));
+      result.success = res.data.success;
+      result.message = res.data.message;
+      if(result.success) {
+        dispatch(attrActions.editAttribute(old_id, newAttrs));
       }
     } catch (e) {
       if (e.response) {
@@ -258,7 +268,11 @@ const CategoryProvider = ({children}) => {
     return result;
   }
 
-  const attrValue = {loadAtrr, updateAttr, createAttrs, attrs};
+  const getAttributeByCategoryId = (category_id) => {
+    return attrs.filter(item => item.category_id === category_id);
+  }
+
+  const attrValue = {loadAtrr, updateAttr, createAttrs, getAttributeByCategoryId, attrs};
 
   const value = {
     ...categoryValue,

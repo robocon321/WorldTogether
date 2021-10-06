@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable default-case */
 import { ACTIONS } from "../actions/AttributeAction";
 
@@ -18,13 +19,15 @@ const reducer = (state = init, action) => {
       }
       break;
     case ACTIONS.EDIT_ATTRIBUTE:
+      console.log(9, state.attrs);
+      console.log(10, state.attrs.filter(item => item.category_id === action.old_id), action.newAttrs, action.old_id);
       if(action.newAttrs) {
         state = {
-          attrs: [...state.attrs.filter(item => item.category_id !== action.newAttrs[0].category_id)]
+          attrs: [...state.attrs.filter(item => item.category_id != action.old_id), ...action.newAttrs]
         }  
       } else {
         state = {
-          attrs: [...state.attrs.filter(item => item.category_id !== action.newAttrs[0].category_id), ...action.newAttrs]
+          attrs: [...state.attrs.filter(item => item.category_id != action.old_id)]
         }
       }
       break;

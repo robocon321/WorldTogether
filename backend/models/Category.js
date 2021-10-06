@@ -37,7 +37,6 @@ const CategorySchema = new Schema({
   slug: {
     type: String,
     required: true,
-    unique: true
   },
   icon: {
     type: String,

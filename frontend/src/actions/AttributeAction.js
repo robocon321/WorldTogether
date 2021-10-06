@@ -19,10 +19,11 @@ const addAttributes = (newAttrs) => {
   }
 }
 
-const editAttribute = (newAttrs) => {
+const editAttribute = (old_id, newAttrs) => {
   return {
     type: ACTIONS.EDIT_ATTRIBUTE,
-    newAttrs
+    newAttrs,
+    old_id
   }
 }
 

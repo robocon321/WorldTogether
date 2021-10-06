@@ -30,12 +30,13 @@ const reducer = (state = init, action) => {
     break;
 
     case ACTIONS.EDIT_CATEGORY: 
-      state.categories.forEach(item => {
-        if(item._id === action.newCategory._id) {
-          item = action.newCategory;
-          return {...state}
-        }
-      });
+      let { categories } = state;
+      categories = categories.filter(item => item._id !== action.oldId);
+      categories.push(action.newCategory);
+      state = {
+        ...state,
+        categories
+      }
       break;
 
     case ACTIONS.SET_COUNT:

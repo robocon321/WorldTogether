@@ -22,7 +22,7 @@ const CategoryIndex = props => {
       <CategoryProvider>
         <Switch>
           <Route path="/admin/category/new" component={CategoryNew} />
-          <Route path="/admin/category/edit" component={CategoryEdit} />
+          <Route path="/admin/category/edit/:id" component={CategoryEdit} />
           <Route path="/admin/category" component={CategoryList} />
         </Switch>
       </CategoryProvider>

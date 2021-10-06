@@ -14,7 +14,7 @@ const AccountProvider = ({children}) => {
   const dispatch = useDispatch();
   let remain = count - size*page < 0 ? 0 : count - size*page;
 
-  useEffect( ()=> {
+  useEffect(()=> {
     loadAccount();
   }, [search]);
 
