@@ -1,4 +1,3 @@
-const { query } = require("express");
 const express = require("express");
 const verifyToken = require("../../middleware/verifyToken");
 const router = express.Router();
@@ -11,8 +10,8 @@ router.get('/', verifyToken, async (req, res) => {
   delete query.search;
 
   try {
-    const count = await Category.find({...query, title: { $regex: '.' + search + '.' }}).count();
-    const category = await Category.find({...query, title: { $regex: '.' + search + '.'}}).populate('parent_id', ['title']);
+    const count = await Category.find({...query, title: { $regex: new RegExp(search, 'i')}}).count();
+    const category = await Category.find({...query, title: { $regex: new RegExp(search, 'i')}}).populate('parent_id', ['title']);
     if(category) return res.status(200).json({success: true, message: "Successful!", category, count});
     else return res.status(400).json({success: false, message: "Not exists"});  
 
@@ -74,6 +73,19 @@ router.put('/', verifyToken, async (req, res) => {
   } catch (e) {
     console.log("Update error -", e);
     return res.status(500).json({success: false, message: "Interval Server"})
+  }
+
+})
+
+router.delete('/', verifyToken, async (req, res) => {
+  const {id} = req.query;
+
+  try {
+    await Category.findOneAndUpdate({_id: id}, {is_delete: true, mod_uid: req.uid, mod_time: new Date().getTime()})
+    return res.status(200).json({success: true, message: "Successful!"});
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({success: false, message: 'Interval Server'});
   }
 
 })

@@ -67,6 +67,15 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
   "birthday": 1632562489999
 }
 
+###
+DELETE  http://localhost:5000/admin/account
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "id": 1632818127982
+}
+
 ### category
 
 ###
@@ -161,4 +170,40 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
     "category_id": 1632911712843,
     "datatype": 0
   }]
+}
+
+### shop
+GET http://localhost:5000/admin/shop?search=
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+###
+POST http://localhost:5000/admin/shop
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "title": "Shop 2",
+  "descrp": "Descrp",
+  "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+  "meta_keyword": "Keyword",
+  "meta_descrp": "Description",
+  "meta_title": "Title",
+  "slug": "slug3"
+}
+
+### 
+PUT http://localhost:5000/admin/shop
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "_id": 1633512561578,
+  "title": "Shop 2",
+  "descrp": "Descrp",
+  "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+  "meta_keyword": "Keyword",
+  "meta_descrp": "Description",
+  "meta_title": "Title",
+  "slug": "slug"
 }

@@ -83,7 +83,7 @@ const AccountProvider = ({children}) => {
       const updateOld = await axios.put(`${SERVER}/admin/account`, oldAccount[0]);
       const createNew = await axios.post(`${SERVER}/admin/account`, newAccount);
 
-      if(!updateOld.success) {
+      if(!updateOld.data.success) {
         result.success = updateOld.data.success;
         result.message = updateOld.data.message;
         return result;
@@ -92,7 +92,7 @@ const AccountProvider = ({children}) => {
       result.success = createNew.data.success;
       result.message = createNew.data.message;
 
-      if(result.success) {
+      if(result.data.success) {
         dispatch(actions.editAccount(newAccount));
       }
 
@@ -134,23 +134,12 @@ const AccountProvider = ({children}) => {
     };
 
     try {
-      const res = await axios.get(`${SERVER}/admin/account`, {params: {_id: id}});
-      const accountRes = res.data.account[0];
-      if(!accountRes) {
-        result.success = false;
-        result.message = "Not found";
-      } else {
-        accountRes.is_delete = true;
-        accountRes.mod_uid = account._id;
-        accountRes.mod_time = new Date();
+      const res = await axios.delete(`${SERVER}/admin/account`, {params: {id}});
 
-        const updateRes = await axios.put(`${SERVER}/admin/account`, accountRes);
-        result.success = updateRes.data.success;
-        result.message = updateRes.data.message;
+      result.success = res.data.success;
+      result.message = res.data.message;
 
-        if(result.success) dispatch(actions.deleteAccount(id));
-      }
-
+      if(result.success) dispatch(actions.deleteAccount(id));
     } catch (e) {
       console.log(e);
     }    
@@ -158,9 +147,10 @@ const AccountProvider = ({children}) => {
 
   }
 
-  const searchAccount = async (str) => {
-    await dispatch(actions.reset());
-    await dispatch(actions.setSearch(str));
+  const searchAccount = (str) => {
+    dispatch(actions.reset());
+    dispatch(actions.setSearch(str));
+
   }
 
   const value = {createAccount, updateAccount, loadAccount, deleteAccount, getAccountById, searchAccount, accounts, remain};

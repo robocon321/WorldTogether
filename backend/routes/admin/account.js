@@ -15,8 +15,8 @@ router.get('/', verifyToken, async (req, res) => {
     delete query.search;
 
     try {
-      const count = await Account.find({...query, uname: { $regex: '.' + search + '.' }}).count();
-      const account = await Account.find({...query, uname: { $regex: '.' + search + '.'}}).skip(skip && parseInt(skip)).limit(limit && parseInt(limit)).sort(sort);
+      const count = await Account.find({...query, uname: { $regex: new RegExp(search, 'i')}}).count();
+      const account = await Account.find({...query, uname: { $regex: new RegExp(search, 'i')}}).skip(skip && parseInt(skip)).limit(limit && parseInt(limit)).sort(sort);
       if(account) return res.status(200).json({success: true, message: "Successful!", account, count});
       else return res.status(400).json({success: false, message: "Not exists"});  
     } catch (e) {
@@ -67,6 +67,19 @@ router.put('/', verifyToken, async (req, res) => {
   } catch (e) {
     res.status(500).json({success: false, message: "Internal server error"})
   }
+})
+
+router.delete('/', verifyToken, async (req, res) => {
+  const {id} = req.query;
+
+  try {
+    await Account.findOneAndUpdate({_id: id}, {is_delete: true, mod_uid: req.uid, mod_time: new Date().getTime()})
+    return res.status(200).json({success: true, message: "Successful!"});
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({success: false, message: 'Interval Server'});
+  }
+
 })
 
 module.exports = router;

@@ -19,8 +19,6 @@ const reducer = (state = init, action) => {
       }
       break;
     case ACTIONS.EDIT_ATTRIBUTE:
-      console.log(9, state.attrs);
-      console.log(10, state.attrs.filter(item => item.category_id === action.old_id), action.newAttrs, action.old_id);
       if(action.newAttrs) {
         state = {
           attrs: [...state.attrs.filter(item => item.category_id != action.old_id), ...action.newAttrs]

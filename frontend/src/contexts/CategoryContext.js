@@ -18,7 +18,7 @@ const CategoryProvider = ({children}) => {
   useEffect(()=> {
     loadCategory();
     loadAtrr();
-  }, [search]);
+  }, []);
 
   useEffect(() => {
     dispatch(categoryActions.setTrees(buildTreeCategories()));
@@ -143,34 +143,21 @@ const CategoryProvider = ({children}) => {
     };
 
     try {
-      const res = await axios.get(`${SERVER}/admin/category`, {params: {_id: id, search: ''}});
-      const categoryRes = res.data.category[0];
-      if(!categoryRes) {
-        result.success = false;
-        result.message = "Not found";
-      } else {
-        categoryRes.is_delete = true;
-        categoryRes.mod_uid = account._id;
-        categoryRes.mod_time = new Date();
+      const res = await axios.delete(`${SERVER}/admin/category`, {params: {id}});
 
-        categoryRes.parent_id = categoryRes.parent_id._id;
-        const updateRes = await axios.put(`${SERVER}/admin/category`, categoryRes);
-        result.success = updateRes.data.success;
-        result.message = updateRes.data.message;
+      result.success = res.data.success;
+      result.message = res.data.message;
 
-        if(result.success) dispatch(categoryActions.deleteCategory(id));
-      }
-
+      if(result.success) dispatch(categoryActions.deleteCategory(id));
     } catch (e) {
-      console.log(e.response.data);
-    }
+      console.log(e);
+    }    
     return result;
-
   }
 
-  const searchCategory = async (str) => {
-    await dispatch(categoryActions.reset());
-    await dispatch(categoryActions.setSearch(str));
+  const searchCategory = (str) => {
+    dispatch(categoryActions.reset());
+    dispatch(categoryActions.setSearch(str));
   }
 
   const buildTreeCategories = () => {
@@ -206,7 +193,8 @@ const CategoryProvider = ({children}) => {
     searchCategory, 
     buildTreeCategories, 
     categories, 
-    trees
+    trees,
+    search
   };
 
   // attribute 

@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { React, useContext } from "react";
-import { Link } from "react-router-dom";
+import { React, useContext, useEffect } from "react";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
+import avatar from "../../../assets/images/avatar.png";
 import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/categories.css";
-import {CategoryContext} from "../../../contexts/CategoryContext";
+import "../../../assets/css/admin/shop_list.css";
+import { ShopContext } from "../../../contexts/ShopContext";
+import { setSearch } from "../../../actions/ShopAction";
 
 const data = {
   labels: ['a','b','c','d','e','f'],
@@ -31,36 +33,43 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Top income product'
+      text: 'Top income shop'
     }
   }
 };
 
-const CategoryList = props => {
-  const { categories, deleteCategory, searchCategory, search } = useContext(CategoryContext);
-
-  const onEditCategory = (id) => {
-    props.history.push(`/admin/category/edit/${id}`);
-  }
-
-  const onDeleteCategory = (id) => {
-    deleteCategory(id);
-  }
+const ShopList = props => {
+  const { shops, searchShop, remain, loadShop } = useContext(ShopContext);
 
   const onSearch = (e) => {
     e.preventDefault();
-    searchCategory(e.target.value);
+    searchShop(e.target.value);
   }
+  
 
   return (
     <div>
-      <div className="categories d-flex">
+      <div className="shop_list d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="category" />
+          <AdminNavigation title="shop" />
         </div>
         <div className="col-10">
-          <AdminHeader title="Category" />
+          <AdminHeader title="Shop" />          
           <main>
+          <div className="row p-4 m-0">
+            <div className="d-flex justify-content-center">
+                <div className="statistic-item">
+                  <div className="left bg-blue-l c-white">
+                    <div className="fs-30">512</div>
+                    <div><b>Tổng số shop</b></div>
+                    <div><span><i className="fas fa-sort-up"></i></span> <span>22% so tháng trước</span></div>
+                  </div>
+                  <div className="right bg-blue-d h-full c-white">
+                    <div><i className="fas fa-eye"></i></div>
+                  </div>  
+                </div>
+              </div>
+          </div>
             <div className="p-4 m-0">
                 <Line data={data} options={options} />
             </div>
@@ -75,8 +84,7 @@ const CategoryList = props => {
                 <div className="search me-3">
                   <input className="search-box sub-search" name="sub-search" type="text" onChange={onSearch} />              
                   <div className="icon"><i className="fas fa-search"></i></div>
-                </div>
-                <Link to="/admin/category/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
+                </div>   
               </div>
               <div className="categories">
                 <table className=" my-4">
@@ -84,29 +92,26 @@ const CategoryList = props => {
                     <tr>
                       <th>STT</th>
                       <th>Title</th>
-                      <th>Parent Title</th>
-                      <th>Display Order</th>
+                      <th>Avatar</th>
+                      <th>Products</th>
+                      <th>Follow</th>
                       <th>View count</th>
-                      <th>Product count</th>
-                      <th>Action</th>
                     </tr>
                     {
-                      categories.filter(item => item.title.indexOf(search) >= 0).map((item, index) => {
-                        return (
-                          <tr key={index}>
-                            <td><a href="#">{index}</a></td>
-                            <td>{item.title}</td>
-                            <td><a href="#">{item.parent_id ? item.parent_id.title : "None"}</a></td>
-                            <td>{item.display_order}</td>
-                            <td>{item.view_count ? item.view_count : 0}</td>
-                            <td>{0}</td>
-                            <td><button className="btn btn-success me-1" onClick={() => onEditCategory(item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={() => onDeleteCategory(item._id)}><i className="fas fa-trash-alt"></i></button></td>
-                          </tr>
-                        )
-                      })
+                      shops.map((item, index) => 
+                      <tr key={index}>
+                        <td><a href="#">{index}</a></td>
+                        <td>{item.title}</td>
+                        <td><div className="ht-4"><img className="s-hfull" src={item.avatar} alt="Not found" /></div></td>
+                        <td><a href="#">Go to products</a></td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>                      
+                      )
                     }
                   </tbody>
                 </table>
+                <div className="d-flex justify-content-center"><button className="c-white bg-blue px-5 py-2 bd-width-0" onClick={() => loadShop()}>More ({remain})</button></div>
               </div>
             </div>
           </main>  
@@ -120,4 +125,4 @@ const CategoryList = props => {
   )
 }
 
-export default CategoryList;
+export default ShopList;
