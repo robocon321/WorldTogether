@@ -17,10 +17,6 @@ const ProductSchema = new Schema({
     type: String, 
     required: true,
   },
-  quantity: {
-    type: Number,
-    required: true,
-  },
   category_id: {
     type: Number,
     required: true
@@ -92,8 +88,8 @@ const ProductSchema = new Schema({
     ref: "Shop"
   },
   warrently: {
-    type: Number,
-    required: true
+    type: String,
+    default: null
   },
   tags: {
     type: String,

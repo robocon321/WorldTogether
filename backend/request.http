@@ -207,3 +207,169 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
   "meta_title": "Title",
   "slug": "slug"
 }
+
+### product
+
+GET http://localhost:5000/admin/product?search=X
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+###
+POST http://localhost:5000/admin/product
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "title": "Iphone X",
+  "descrp": "Mô tả",
+  "category_id": 163958483984,
+  "quantity": 100,
+  "detail": "Detail",
+  "meta_keyword": "K1",
+  "meta_descrp": "Descrip",
+  "meta_title": "meta title",
+  "slug": "sjke0",
+  "include_vat": true,
+  "shop_id": 92384982333,
+  "warrently": "3 tháng"
+}
+
+###
+POST http://localhost:5000/admin/product
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "title": "Iphone SE",
+  "descrp": "Mô tả",
+  "category_id": 163958483984,
+  "quantity": 100,
+  "detail": "Detail",
+  "meta_keyword": "K1",
+  "meta_descrp": "Descrip",
+  "meta_title": "meta title",
+  "slug": "add",
+  "include_vat": true,
+  "shop_id": 92384982444,
+  "warrently": "5 tháng",
+  "tags": "a,b,c,d"
+}
+
+###
+POST http://localhost:5000/admin/product
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "title": "Iphone XS",
+  "descrp": "Mô tả",
+  "category_id": 163958483984,
+  "quantity": 100,
+  "detail": "Detail",
+  "meta_keyword": "K1",
+  "meta_descrp": "Descrip",
+  "meta_title": "meta title",
+  "slug": "noodo",
+  "include_vat": true,
+  "shop_id": 9283498238,
+  "warrently": "5 tháng",
+  "tags": "a,b,d,e,p"
+}
+
+###
+PUT http://localhost:5000/admin/product
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "_id": 1633753094397,
+  "title": "Iphone XSX",
+  "descrp": "Mô tả",
+  "category_id": 163958483984,
+  "quantity": 200,
+  "detail": "Detail",
+  "meta_keyword": "K1",
+  "meta_descrp": "Descrip",
+  "meta_title": "meta title",
+  "slug": "noodo",
+  "include_vat": true,
+  "shop_id": 9283498238,
+  "warrently": "5 tháng",
+  "tags": "a,b,h,p"
+}
+
+### product attribute value
+GET http://localhost:5000/admin/option-product-title
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+###
+POST http://localhost:5000/admin/option-product-title
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "optProductTitles": [
+    {
+      "product_id": 1633753076519,
+      "title": "Màu",
+      "datatype": 1
+    },{
+      "product_id": 1633753076519,
+      "title": "RAM",
+      "datatype": 2
+    }
+  ]
+}
+
+### option product value
+GET http://localhost:5000/admin/option-product-value
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+###
+POST http://localhost:5000/admin/option-product-value
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "listOptProductValues": [
+    [
+      {
+        "opt_title_id": 1633939066996,
+        "text_value": "Xanh",
+        "opt_real_price": 12290000,
+        "opt_sale_price": 12190000,
+        "avatar": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+        "imgs": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg,https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg,https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
+      },
+      {
+        "opt_title_id": 1633939068297,
+        "text_value": "3G",
+        "opt_real_price": 12290000,
+        "opt_sale_price": 12190000,
+        "avatar": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+        "imgs": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg,https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg,https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
+      }
+    ],
+    [
+      {
+        "opt_title_id": 1633939066996,
+        "text_value": "Vàng",
+        "opt_real_price": 14290000,
+        "opt_sale_price": 14190000,
+        "avatar": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+        "imgs": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg,https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg,https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
+      },
+      {
+        "opt_title_id": 1633939068297,
+        "text_value": "4G",
+        "opt_real_price": 14290000,
+        "opt_sale_price": 14190000,
+        "avatar": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+        "imgs": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg,https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg,https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
+      }
+    ]
+  ]
+}
+

@@ -156,7 +156,6 @@ const CategoryProvider = ({children}) => {
   }
 
   const searchCategory = (str) => {
-    dispatch(categoryActions.reset());
     dispatch(categoryActions.setSearch(str));
   }
 

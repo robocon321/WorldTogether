@@ -13,6 +13,14 @@ const OptProductValueSchema = new Schema({
     required: true,
     ref: "OptProductTitle"
   },
+  code: {
+    type: Number,
+    default: null,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
   text_value: {
     type: String,
     default: null

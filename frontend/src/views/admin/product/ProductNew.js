@@ -34,10 +34,6 @@ const ProductNew = props => {
                           <td colSpan="3"><input type="text" name="descrp"/></td>
                         </tr>
                         <tr>
-                          <td>Số lượng</td>
-                          <td colSpan="3"><input type="text" name="quantity"/></td>
-                        </tr>
-                        <tr>
                           <td>Thuộc danh mục</td>
                           <td>
                             <select name="category_id">
@@ -92,6 +88,24 @@ const ProductNew = props => {
                           <td colSpan="3"><input type="text" name="quantity" placeholder="Cách nhau bằng dấu phẩy" /></td>
                         </tr>
                         <tr>
+                            <td>Thuộc tính chung</td>
+                            <td><input type="text" name="title" /></td>
+                            <td>Kiểu</td>
+                            <td>
+                              <select name="datetype">
+                                <option value="0">Số</option>
+                                <option value="1">Chuỗi</option>
+                                <option value="2">Thời gian</option>
+                              </select>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td colSpan="4"><hr /></td>
+                        </tr>
+                        <tr>
+                          <td colSpan="4">Nhóm sản phẩm 1</td>
+                        </tr>
+                        <tr>
                             <td>Thuộc tính</td>
                             <td><input type="text" name="title" /></td>
                             <td>Kiểu</td>
@@ -108,11 +122,30 @@ const ProductNew = props => {
                           <td colSpan="3"><input type="text" name="value"/></td>
                         </tr>
                         <tr>
-                          <td></td>
-                          <td colSpan="3"><button className="bg-yellow c-white"><i className="fas fa-plus"></i> Thêm đặc trưng</button></td>
+                          <td>Giá thực tế</td>
+                          <td colSpan="3"><input type="number" name="opt_real_price"/></td>
+                        </tr>
+                        <tr>
+                          <td>Giá bán</td>
+                          <td colSpan="3"><input type="number" name="opt_sale_price"/></td>
+                        </tr>
+                        <tr>
+                          <td>Số lượng</td>
+                          <td colSpan="3"><input type="text" name="quantity"/></td>
+                        </tr>
+                        <tr>
+                          <td>Avatar</td>
+                          <td><input type="file" name="avatar" accept="image/png, image/jpeg" /></td>
+                        </tr>
+                        <tr>
+                          <td>Images</td>
+                          <td><input type="file" name="imgs" accept="image/png, image/jpeg" multiple /></td>
                         </tr>
                         <tr>
                           <td colSpan="4"><button className="bg-blue c-white"><i className="fas fa-plus"></i> Thêm loại sản phẩm</button></td>
+                        </tr>
+                        <tr>
+                          <td colSpan="4"><button className="bg-yellow c-white"><i className="fas fa-plus"></i> Thêm nhóm sản phẩm</button></td>
                         </tr>
                         <tr>
                           <td colSpan="3"></td>

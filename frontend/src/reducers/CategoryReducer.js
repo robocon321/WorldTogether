@@ -19,8 +19,10 @@ const reducer = (state = init, action) => {
     case ACTIONS.ADD_CATEGORY:
       state = {
         ...state,
-        categories: [...state.categories, action.newCategory]
+        categories: [...state.categories, action.newCategory],
+        count: state.count + 1
       }
+      console.log(state);
       break;
     case ACTIONS.DELETE_CATEGORY: 
     state = {
