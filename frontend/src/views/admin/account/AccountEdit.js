@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { React, useState, useContext, useRef, useEffect } from "react";
-import { AccountContext } from "../../../contexts/AccountContext";
+import { React, useContext } from "react";
 import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
@@ -9,47 +8,10 @@ import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/new_account.css";
+import { AccountEditContext } from "../../../contexts/admin/account/AccountEditContext";
 
 const AccountEdit = props => {
-  const {accounts, updateAccount, getAccountById} = useContext(AccountContext);
-  const alert = useRef();
-  const [account, setAccount] = useState({
-    uname: '',
-    pwd: '',
-    re_pwd: '',
-    full_name: '',
-    email: '',
-    phone: '',
-    sex: true,
-    birthday: '',
-  });
-
-  useEffect(() => {
-    alert.current.style.display = "none";
-
-    const result = getAccountById(props.match.params.id);
-    if(!result) return;
-    setAccount(result);
-  }, [accounts]);
-
-  const onChangeField = (e) => {
-    setAccount({
-      ...account,
-      [e.target.name]: e.target.value,
-    })
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    let result = await updateAccount(account);
-    if(result.success) {
-      alert.current.style.display = "none";
-      props.history.goBack();
-    } else {
-      alert.current.style.display = "block";
-      alert.current.textContent = result.message;
-    }
-  }
+  const {newAccount, result, updateAccount, reset, changeField} = useContext(AccountEditContext);
 
   return (
     <div className="new_account">
@@ -63,42 +25,43 @@ const AccountEdit = props => {
             <div className="p-4 m-0">
               <Link to="/admin/account" className="link-primary"><i className="fas fa-long-arrow-alt-left"></i> Trở về</Link>
               <div className="main-title mb-4">Sửa tài khoản</div>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={updateAccount} onReset={reset}>
                   <div className="wrap-form">
-                  <div ref={alert} className="alert alert-danger">
-                    Nothing
-                  </div>
+                  {!result.success &&                     
+                    <div className="alert alert-danger">
+                      {result.message}
+                    </div>}
                     <table>
                       <tbody>
                         <tr>
                           <td>Tên tài khoản</td>
-                          <td colSpan="3"><input type="text" onChange={onChangeField} required disabled name="uname" value={account.uname} /></td>
+                          <td colSpan="3"><input type="text" onChange={changeField} required disabled name="uname" value={newAccount && newAccount.uname} /></td>
                         </tr>
                         <tr>
                           <td>Mật khẩu</td>
-                          <td colSpan="3"><input type="password" name="pwd" onChange={onChangeField} required /></td>
+                          <td colSpan="3"><input type="password" name="pwd" onChange={changeField} required /></td>
                         </tr>
                         <tr>
                           <td>Xác nhận mật khẩu</td>
-                          <td colSpan="3"><input type="password" name="re_pwd" onChange={onChangeField} required /></td>
+                          <td colSpan="3"><input type="password" name="re_pwd" onChange={changeField} required /></td>
                         </tr>
                         <tr>
                           <td>Họ tên</td>
-                          <td colSpan="3"><input type="text" name="full_name" onChange={onChangeField} required value={account.full_name}/></td>
+                          <td colSpan="3"><input type="text" name="full_name" onChange={changeField} required value={newAccount ? newAccount.full_name : ''}/></td>
                         </tr>
                         <tr>
                           <td>SĐT</td>
-                          <td colSpan="3"><input type="text" name="phone" onChange={onChangeField} required value={account.phone}/></td>
+                          <td colSpan="3"><input type="text" name="phone" onChange={changeField} required value={newAccount && newAccount.phone}/></td>
                         </tr>
                         <tr>
                           <td>Email</td>
-                          <td colSpan="3"><input type="text" name="email" onChange={onChangeField} required value={account.email}/></td>
+                          <td colSpan="3"><input type="text" name="email" onChange={changeField} required value={newAccount && newAccount.email}/></td>
                         </tr>
                         <tr>
                           <td>Ngày sinh</td>
-                          <td><input type="date" name="birthday" onChange={onChangeField} required value={account.birthday && account.birthday.substring(0,10)}/></td>
+                          <td><input type="date" name="birthday" onChange={changeField} required value={newAccount && newAccount.birthday && newAccount.birthday.substring(0,10)}/></td>
                           <td>Giới tính</td>
-                          <td><div className="d-flex align-items-center"><label className="me-2" htmlFor="male">Nam</label><input className="me-4" type="radio" defaultChecked={account.sex} id="male" name="sex" value="true" onChange={onChangeField}/><label className="me-2" htmlFor="female">Nữ</label><input type="radio" id="female" name="sex" value="false" onChange={onChangeField} defaultChecked={!account.sex} /></div></td>
+                          <td><div className="d-flex align-items-center"><label className="me-2" htmlFor="male">Nam</label><input className="me-4" type="radio" defaultChecked={newAccount && newAccount.sex} id="male" name="sex" value="true" onChange={changeField}/><label className="me-2" htmlFor="female">Nữ</label><input type="radio" id="female" name="sex" value="false" onChange={changeField} defaultChecked={newAccount && !newAccount.sex} /></div></td>
                         </tr>
                         <tr>
                           <td colSpan="3"></td>

@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { React, useContext } from "react";
 import { Link } from "react-router-dom";
-import { AccountContext } from "../../../contexts/AccountContext";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
@@ -10,6 +9,7 @@ import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/account_list.css";
+import { AccountListContext } from "../../../contexts/admin/account/AccountListContext";
 
 const data = {
   labels: ['a','b','c','d','e','f'],
@@ -38,21 +38,8 @@ const options = {
 };
 
 const AccountList = props => {
-  const { accounts, deleteAccount, loadAccount, searchAccount, remain } = useContext(AccountContext);
+  const { loadAccount, deleteAccount, searchAccount, switchToEditPage, accounts, remain } = useContext(AccountListContext);
 
-  const onEditAccount = (id) => {
-    props.history.push(`/admin/account/edit/${id}`);
-  }
-
-  const onDeleteAccount = (id) => {
-    deleteAccount(id);
-  }
-
-  const onSearch = (e) => {
-    e.preventDefault();
-    searchAccount(e.target.value);
-  }
-  
   return (
     <div>
       <div className="account_list d-flex">
@@ -112,7 +99,7 @@ const AccountList = props => {
                   <option value="3">Nhiều lượt xem nhất</option>
                 </select>
                 <div className="search me-3">
-                  <input className="search-box sub-search" name="sub-search" type="text" onChange={onSearch}/>              
+                  <input className="search-box sub-search" name="sub-search" type="text" onChange={searchAccount}/>              
                   <div className="icon"><i className="fas fa-search"></i></div>
                 </div>
                 <Link to="/admin/account/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
@@ -137,7 +124,7 @@ const AccountList = props => {
                             <td>{item.full_name}</td>
                             <td>{item.phone}</td>
                             <td>Root</td>
-                            <td><button className="btn btn-success me-1" onClick={() => onEditAccount(item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={() => onDeleteAccount(item._id)}><i className="fas fa-trash-alt"></i></button></td>
+                            <td><button className="btn btn-success me-1" onClick={() => switchToEditPage(item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteAccount(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
                           </tr>
                         )
                       })

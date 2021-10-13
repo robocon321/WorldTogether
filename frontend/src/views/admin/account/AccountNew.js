@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { React, useState, useContext, useRef, useEffect } from "react";
-import { AccountContext } from "../../../contexts/AccountContext";
+import { React, useContext } from "react";
+import AccountNewProvider, { AccountNewContext } from "../../../contexts/admin/account/AccountNewContext"; 
 import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
@@ -10,113 +10,83 @@ import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/new_account.css";
 
 const AccountNew = props => {
-  const {createAccount} = useContext(AccountContext);
-  const alert = useRef();
-  const [account, setAccount] = useState({
-    uname: '',
-    pwd: '',
-    re_pwd: '',
-    full_name: '',
-    email: '',
-    phone: '',
-    sex: true,
-    birthday: '',
-  });
-
-  useEffect(() => {
-    alert.current.style.display = "none";
-  }, []);
-
-  const onChangeField = (e) => {
-    setAccount({
-      ...account,
-      [e.target.name]: e.target.value,
-    })
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    let result = await createAccount(account);
-    if(result.success) {
-      alert.current.style.display = "none";
-      props.history.goBack();
-    } else {
-      alert.current.style.display = "block";
-      alert.current.textContent = result.message;
-    }
-  }
+  const {createAccount, changeField, reset, result} = useContext(AccountNewContext);
 
   return (
-    <div className="new_account">
-      <div className="d-flex">
-        <div className="col-2 bg-black">
-          <AdminNavigation title="account" />
-        </div>
-        <div className="col-10">
-          <AdminHeader title="Account" />
-          <main className="edit_category">
-            <div className="p-4 m-0">
-              <Link to="/admin/account" className="link-primary"><i className="fas fa-long-arrow-alt-left"></i> Trở về</Link>
-              <div className="main-title mb-4">Thêm mới tài khoản</div>
-                <form onSubmit={onSubmit}>
-                  <div className="wrap-form">
-                  <div ref={alert} className="alert alert-danger">
-                    Nothing
+    <AccountNewProvider>
+      <div className="new_account">
+        <div className="d-flex">
+          <div className="col-2 bg-black">
+            <AdminNavigation title="account" />
+          </div>
+          <div className="col-10">
+            <AdminHeader title="Account" />
+            <main className="edit_category">
+              <div className="p-4 m-0">
+                <Link to="/admin/account" className="link-primary"><i className="fas fa-long-arrow-alt-left"></i> Trở về</Link>
+                <div className="main-title mb-4">Thêm mới tài khoản</div>
+                  <form onSubmit={createAccount} onReset={reset}>
+                    <div className="wrap-form">
+                    {!result.success &&                     
+                      <div className="alert alert-danger">
+                        {result.message}
+                      </div>
+                    }
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>Tên tài khoản</td>
+                            <td colSpan="3"><input type="text" name="uname" onChange={changeField} required/></td>
+                          </tr>
+                          <tr>
+                            <td>Mật khẩu</td>
+                            <td colSpan="3"><input type="password" name="pwd" onChange={changeField} required/></td>
+                          </tr>
+                          <tr>
+                            <td>Xác nhận mật khẩu</td>
+                            <td colSpan="3"><input type="password" name="re_pwd" onChange={changeField} required/></td>
+                          </tr>
+                          <tr>
+                            <td>Họ tên</td>
+                            <td colSpan="3"><input type="text" name="full_name" onChange={changeField} required/></td>
+                          </tr>
+                          <tr>
+                            <td>SĐT</td>
+                            <td colSpan="3"><input type="text" name="phone" onChange={changeField} required/></td>
+                          </tr>
+                          <tr>
+                            <td>Email</td>
+                            <td colSpan="3"><input type="text" name="email" onChange={changeField} required/></td>
+                          </tr>
+                          <tr>
+                            <td>Ngày sinh</td>
+                            <td><input type="date" name="birthday" onChange={changeField} required/></td>
+                            <td>Giới tính</td>
+                            <td><div className="d-flex align-items-center"><label className="me-2" htmlFor="male">Nam</label><input className="me-4" type="radio" defaultChecked id="male" name="sex" value="true" onChange={changeField}/><label className="me-2" htmlFor="female">Nữ</label><input type="radio" id="female" name="sex" value="false" onChange={changeField} /></div></td>
+                          </tr>
+                          <tr>
+                            <td colSpan="3"></td>
+                            <td>
+                              <div className="d-flex justify-content-between">
+                                <button type="submit" className="bg-green action">Đồng ý</button>
+                                <button type="reset" className="bg-red-d action">Hủy</button>  
+                              </div>
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
                   </div>
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>Tên tài khoản</td>
-                          <td colSpan="3"><input type="text" name="uname" onChange={onChangeField} required/></td>
-                        </tr>
-                        <tr>
-                          <td>Mật khẩu</td>
-                          <td colSpan="3"><input type="password" name="pwd" onChange={onChangeField} required/></td>
-                        </tr>
-                        <tr>
-                          <td>Xác nhận mật khẩu</td>
-                          <td colSpan="3"><input type="password" name="re_pwd" onChange={onChangeField} required/></td>
-                        </tr>
-                        <tr>
-                          <td>Họ tên</td>
-                          <td colSpan="3"><input type="text" name="full_name" onChange={onChangeField} required/></td>
-                        </tr>
-                        <tr>
-                          <td>SĐT</td>
-                          <td colSpan="3"><input type="text" name="phone" onChange={onChangeField} required/></td>
-                        </tr>
-                        <tr>
-                          <td>Email</td>
-                          <td colSpan="3"><input type="text" name="email" onChange={onChangeField} required/></td>
-                        </tr>
-                        <tr>
-                          <td>Ngày sinh</td>
-                          <td><input type="date" name="birthday" onChange={onChangeField} required/></td>
-                          <td>Giới tính</td>
-                          <td><div className="d-flex align-items-center"><label className="me-2" htmlFor="male">Nam</label><input className="me-4" type="radio" defaultChecked id="male" name="sex" value="true" onChange={onChangeField}/><label className="me-2" htmlFor="female">Nữ</label><input type="radio" id="female" name="sex" value="false" onChange={onChangeField} /></div></td>
-                        </tr>
-                        <tr>
-                          <td colSpan="3"></td>
-                          <td>
-                            <div className="d-flex justify-content-between">
-                              <button type="submit" className="bg-green action">Đồng ý</button>
-                              <button type="reset" className="bg-red-d action">Hủy</button>  
-                            </div>
-                          </td>
-                        </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </form>
-            </div>
-          </main>  
+                </form>
+              </div>
+            </main>  
+          </div>
         </div>
+        <script src="../../../assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+        <script src="../../../assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../../../assets/vendor/fontawesome-free-5.15.4-web/js/all.min.js"></script>
+        <script src="../../../assets/vendor/jquery/jquery-3.6.0.min.js"></script>
       </div>
-      <script src="../../../assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
-      <script src="../../../assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
-      <script src="../../../assets/vendor/fontawesome-free-5.15.4-web/js/all.min.js"></script>
-      <script src="../../../assets/vendor/jquery/jquery-3.6.0.min.js"></script>
-    </div>
+    </AccountNewProvider>
   )
 }
 

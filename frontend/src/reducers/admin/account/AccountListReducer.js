@@ -1,45 +1,31 @@
-/* eslint-disable default-case */
-import { createStore } from '@reduxjs/toolkit';
-import { ACTIONS } from "../actions/AccountAction";
+import { ACTIONS } from "../../../actions/admin/account/AccountListAction";
 
 const init = {
   accounts: [],
   count: 0,
   page: 0,
   size: 10,
-  search: ''
+  search: '',
+  result: {
+    success: false,
+    message: 'Nothing'
+  }
 };
 
 const reducer = (state = init, action) => {
   switch(action.type) {
-    case ACTIONS.ADD_ACCOUNT: 
-      state = {
-        ...state,
-        accounts: [...state.accounts, action.newAccount]
-      };
-      break;
-
-    case ACTIONS.ADD_ACCOUNTS:
+    case ACTIONS.LOAD: 
       state = {
         ...state,
         accounts: [...state.accounts, ...action.newAccounts]
       };
       break;
 
-    case ACTIONS.DELETE_ACCOUNT: 
+    case ACTIONS.DELETE: 
       state = {
         ...state,
         accounts: state.accounts.filter(item => item._id !== action.id)
       }
-      break;
-
-    case ACTIONS.EDIT_ACCOUNT: 
-      state.accounts.forEach(item => {
-        if(item._id === action.account._id) {
-          item = action.account;
-          return {...state}
-        }
-      });
       break;
 
     case ACTIONS.NEXT_PAGE:
@@ -71,8 +57,17 @@ const reducer = (state = init, action) => {
         search: action.search
       }
       break;
+      
+    case ACTIONS.SET_RESULT: 
+      state = {
+        ...state,
+        result: action.result
+      }
+      break;
+
+      default: break;
   }
   return {...state};
 }
 
-export default createStore(reducer);
+export default reducer;

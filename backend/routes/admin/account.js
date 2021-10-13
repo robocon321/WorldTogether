@@ -17,6 +17,7 @@ router.get('/', verifyToken, async (req, res) => {
     try {
       const count = await Account.find({...query, uname: { $regex: new RegExp(search, 'i')}}).count();
       const account = await Account.find({...query, uname: { $regex: new RegExp(search, 'i')}}).skip(skip && parseInt(skip)).limit(limit && parseInt(limit)).sort(sort);
+
       if(account) return res.status(200).json({success: true, message: "Successful!", account, count});
       else return res.status(400).json({success: false, message: "Not exists"});  
     } catch (e) {
@@ -26,6 +27,8 @@ router.get('/', verifyToken, async (req, res) => {
 
 router.post('/', verifyToken, async (req, res) => {
   req.body.pwd = await argon2.hash(req.body.pwd);
+  req.body.cre_uid = req.uid;
+
   const { uname, pwd, full_name, email, phone, sex, birthday } = req.body;
   
   if(!uname) return res.status(400).json({success: false, message: "Username is required"});
@@ -50,15 +53,10 @@ router.post('/', verifyToken, async (req, res) => {
 });
 
 router.put('/', verifyToken, async (req, res) => {
-  req.body.pwd = await argon2.hash(req.body.pwd);
-  const { pwd, full_name, email, phone, sex, birthday, _id } = req.body;
-  
-  if(!pwd) return res.status(400).json({success: false, message: "Password is required"});
-  if(!full_name) return res.status(400).json({success: false, message: "Full-name is required"});
-  if(!email) return res.status(400).json({success: false, message: "Email is required"});
-  if(!phone) return res.status(400).json({success: false, message: "Phone is required"});
-  if(sex === '' || sex === null || sex === undefined) return res.status(400).json({success: false, message: "Sex is required"});
-  if(!birthday) return res.status(400).json({success: false, message: "Birthday is required"});
+  if(req.body.pwd) req.body.pwd = await argon2.hash(req.body.pwd);
+  const { _id } = req.body;
+  req.body.mod_uid = req.uid;
+  req.body.mod_time = new Date().getTime();
 
   try {
     const account = await Account.findOneAndUpdate({_id}, req.body);
