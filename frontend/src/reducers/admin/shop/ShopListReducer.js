@@ -1,7 +1,7 @@
-import { ACTIONS } from "../../../actions/admin/account/AccountListAction";
+import { ACTIONS } from "../../../actions/admin/shop/ShopListAction";
 
 const init = {
-  accounts: [],
+  shops: [],
   count: 0,
   page: 0,
   size: 10,
@@ -17,14 +17,14 @@ const reducer = (state = init, action) => {
     case ACTIONS.LOAD: 
       state = {
         ...state,
-        accounts: [...state.accounts, ...action.newAccounts]
+        shops: [...state.shops, ...action.newShops]
       };
       break;
 
     case ACTIONS.DELETE: 
       state = {
         ...state,
-        accounts: state.accounts.filter(item => item._id !== action.id)
+        shops: state.shops.filter(item => item._id !== action.id)
       }
       break;
 
@@ -44,7 +44,7 @@ const reducer = (state = init, action) => {
     case ACTIONS.RESET:
       state = {
         ...state,
-        accounts: [],
+        shops: [],
         count: 0,
         page: 0,
         size: 10,      

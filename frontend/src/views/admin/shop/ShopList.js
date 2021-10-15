@@ -1,16 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { React, useContext, useEffect } from "react";
+import { React, useContext } from "react";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
-import avatar from "../../../assets/images/avatar.png";
 import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/shop_list.css";
-import { ShopContext } from "../../../contexts/ShopContext";
-import { setSearch } from "../../../actions/ShopAction";
+import { ShopListContext } from "../../../contexts/admin/shop/ShopListContext";
 
 const data = {
   labels: ['a','b','c','d','e','f'],
@@ -39,13 +37,12 @@ const options = {
 };
 
 const ShopList = props => {
-  const { shops, searchShop, remain, loadShop } = useContext(ShopContext);
-
-  const onSearch = (e) => {
-    e.preventDefault();
-    searchShop(e.target.value);
-  }
-  
+  const { 
+    loadShop, 
+    searchShop, 
+    shops, 
+    remain
+   } = useContext(ShopListContext);  
 
   return (
     <div>
@@ -82,7 +79,7 @@ const ShopList = props => {
                   <option value="3">Nhiều lượt xem nhất</option>
                 </select>
                 <div className="search me-3">
-                  <input className="search-box sub-search" name="sub-search" type="text" onChange={onSearch} />              
+                  <input className="search-box sub-search" name="sub-search" type="text" onChange={searchShop} />              
                   <div className="icon"><i className="fas fa-search"></i></div>
                 </div>   
               </div>

@@ -50,7 +50,6 @@ const AccountListProvider = ({children, history}) => {
 
   const searchAccount = (e) => {
     e.preventDefault();
-    dispatch(actions.reset());
     dispatch(actions.setSearch(e.target.value));
   }
 

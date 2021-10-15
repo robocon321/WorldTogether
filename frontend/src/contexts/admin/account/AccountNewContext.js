@@ -1,10 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../actions/admin/account/AccountNewAction";
 import axios from 'axios';
 import { SERVER } from "../../../utils/Constants";
-import {AuthContext} from '../../../contexts/AuthContext';
 
 export const AccountNewContext = createContext();
 
@@ -12,10 +11,6 @@ const AccountNewProvider = (props) => {
   
   const { newAccount, result } = useSelector(state => state);
   const dispatch = useDispatch();
-
-  const {authState} = useContext(AuthContext);
-  
-  const { account } = authState;
 
   const createAccount = async (e) => {
     e.preventDefault();
@@ -47,7 +42,7 @@ const AccountNewProvider = (props) => {
     dispatch(actions.reset());
   }
 
-  const value = {createAccount, changeField, reset, account, result};
+  const value = {createAccount, changeField, reset, result};
 
   return (
     <AccountNewContext.Provider value={value}>

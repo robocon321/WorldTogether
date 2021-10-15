@@ -47,25 +47,10 @@ router.post('/', verifyToken, async (req, res) => {
 });
 
 router.put('/', verifyToken, async (req, res) => {
-  const { _id, title, descrp, avatar, meta_keyword, meta_descrp, meta_title, slug } = req.body;
+  const { _id } = req.body;
   req.body.cre_uid = req.uid;
   
-  if(!title) return res.status(400).json({success: false, message: "Title is required"});
-  if(!descrp) return res.status(400).json({success: false, message: "Descrp is required"});
-  if(!avatar) return res.status(400).json({success: false, message: "Avatar is required"});
-  if(!meta_keyword) return res.status(400).json({success: false, message: "Meta_keyword is required"});
-  if(!meta_descrp) return res.status(400).json({success: false, message: "Meta_descrp is required"});
-  if(!meta_title) return res.status(400).json({success: false, message: "Meta_title is required"});
-  if(!slug) return res.status(400).json({success: false, message: "Slug is required"});
-
-  try {
-    const shop = await Shop.findOne({$and: [
-      {$or: [{slug}]}, 
-      {is_delete: false}, 
-      {_id: {$not: {$eq: _id}}}
-    ]});
-    if(shop) return res.status(400).json({success: false, message: "Exists slug"});
-    
+  try {    
     await Shop.findOneAndUpdate({_id}, req.body);
     return res.status(200).json({success: true, message: "Successful!"});
   } catch (e) {

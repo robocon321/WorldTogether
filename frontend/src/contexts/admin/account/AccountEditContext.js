@@ -18,8 +18,8 @@ const AccountEditProvider = (props) => {
 
   
   const loadAccount = async id => {
-    const newAccount = await (await axios.get(`${SERVER}/admin/account`, {params: {_id: id}})).data.account[0];
-    dispatch(actions.loadAccount(newAccount));
+    const account = await (await axios.get(`${SERVER}/admin/account`, {params: {_id: id}})).data.account[0];
+    dispatch(actions.loadAccount(account));
   }
 
   const updateAccount = async (e) => {
