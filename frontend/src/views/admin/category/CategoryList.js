@@ -8,7 +8,7 @@ import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/categories.css";
-import {CategoryContext} from "../../../contexts/CategoryContext";
+import { CategoryListContext } from "../../../contexts/admin/category/CategoryListContext";
 
 const data = {
   labels: ['a','b','c','d','e','f'],
@@ -37,20 +37,14 @@ const options = {
 };
 
 const CategoryList = props => {
-  const { categories, deleteCategory, searchCategory, search } = useContext(CategoryContext);
-
-  const onEditCategory = (id) => {
-    props.history.push(`/admin/category/edit/${id}`);
-  }
-
-  const onDeleteCategory = (id) => {
-    deleteCategory(id);
-  }
-
-  const onSearch = (e) => {
-    e.preventDefault();
-    searchCategory(e.target.value);
-  }
+  const { 
+    categories, 
+    deleteCategory, 
+    searchCategory, 
+    switchToEditPage,
+    getTitleParentCategory,
+    search
+  } = useContext(CategoryListContext);
 
   return (
     <div>
@@ -73,7 +67,7 @@ const CategoryList = props => {
                   <option value="3">Nhiều lượt xem nhất</option>
                 </select>
                 <div className="search me-3">
-                  <input className="search-box sub-search" name="sub-search" type="text" onChange={onSearch} />              
+                  <input className="search-box sub-search" name="sub-search" type="text" onChange={searchCategory} />              
                   <div className="icon"><i className="fas fa-search"></i></div>
                 </div>
                 <Link to="/admin/category/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
@@ -96,11 +90,11 @@ const CategoryList = props => {
                           <tr key={index}>
                             <td><a href="#">{index}</a></td>
                             <td>{item.title}</td>
-                            <td><a href="#">{item.parent_id ? item.parent_id.title : "None"}</a></td>
+                            <td><a href="#">{getTitleParentCategory(item.parent_id)}</a></td>
                             <td>{item.display_order}</td>
                             <td>{item.view_count ? item.view_count : 0}</td>
                             <td>{0}</td>
-                            <td><button className="btn btn-success me-1" onClick={() => onEditCategory(item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={() => onDeleteCategory(item._id)}><i className="fas fa-trash-alt"></i></button></td>
+                            <td><button className="btn btn-success me-1" onClick={(e) => switchToEditPage(e, item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteCategory(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
                           </tr>
                         )
                       })

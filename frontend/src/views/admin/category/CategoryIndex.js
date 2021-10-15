@@ -1,32 +1,50 @@
 import { React } from "react";
 import {Route, Switch} from "react-router-dom";
-import {combineReducers, createStore} from "redux";
+import {createStore} from "redux";
+import { Provider } from "react-redux";
+
 import CategoryEdit from "./CategoryEdit";
 import CategoryNew from "./CategoryNew";
 import CategoryList from "./CategoryList";
-import CategoryProvider from "../../../contexts/CategoryContext";
-import { Provider } from "react-redux";
-import categoryReducer from "../../../reducers/CategoryReducer";
-import attrReducer from "../../../reducers/AttributeReducer";
 
-const reducer = combineReducers({
-  category: categoryReducer,
-  attr: attrReducer
-})
+import CategoryListProvider from "../../../contexts/admin/category/CategoryListContext";
+import CategoryEditProvider from "../../../contexts/admin/category/CategoryEditContext";
+import CategoryNewProvider from "../../../contexts/admin/category/CategoryNewContext";
 
-const store = createStore(reducer);
+import listCategoryReducer from "../../../reducers/admin/category/CategoryListReducer";
+import editCategoryReducer from "../../../reducers/admin/category/CategoryEditReducer";
+import newCategoryReducer from "../../../reducers/admin/category/CategoryNewReducer";
+
+
+const listCategoryStore = createStore(listCategoryReducer);
+const newCategoryStore = createStore(newCategoryReducer);
+const editCategoryStore = createStore(editCategoryReducer);
 
 const CategoryIndex = props => {
   return (
-    <Provider store={store}>
-      <CategoryProvider>
-        <Switch>
-          <Route path="/admin/category/new" component={CategoryNew} />
-          <Route path="/admin/category/edit/:id" component={CategoryEdit} />
-          <Route path="/admin/category" component={CategoryList} />
-        </Switch>
-      </CategoryProvider>
-    </Provider>
+      <Switch>
+        <Route path="/admin/category/new" component={CategoryNew} children={(props) => (
+          <Provider store={newCategoryStore}>
+            <CategoryNewProvider {...props}>
+              <CategoryNew />
+            </CategoryNewProvider>
+          </Provider>
+        )} />
+        <Route path="/admin/category/edit/:id" component={CategoryEdit} children={(props) => (
+          <Provider store={editCategoryStore}>
+            <CategoryEditProvider {...props}>
+              <CategoryEdit />
+            </CategoryEditProvider>
+          </Provider>
+        )} />
+        <Route path="/admin/category" component={CategoryList} children={(props)=> (
+          <Provider store={listCategoryStore}>
+            <CategoryListProvider {...props}>
+              <CategoryList />
+            </CategoryListProvider>
+          </Provider>
+        )}/>
+      </Switch>
   )
 }
 

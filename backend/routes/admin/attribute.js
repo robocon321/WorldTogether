@@ -4,7 +4,7 @@ const verifyToken = require('../../middleware/verifyToken');
 const router = express.Router();
 
 router.get('/', verifyToken, async (req, res) => {
-  const {query} = req.query;
+  const {query} = req;
 
   try {
     const attribute = await Attribute.find({...query});

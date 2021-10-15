@@ -11,7 +11,7 @@ router.get('/', verifyToken, async (req, res) => {
 
   try {
     const count = await Category.find({...query, title: { $regex: new RegExp(search, 'i')}}).count();
-    const category = await Category.find({...query, title: { $regex: new RegExp(search, 'i')}}).populate('parent_id', ['title']);
+    const category = await Category.find({...query, title: { $regex: new RegExp(search, 'i')}});
     if(category) return res.status(200).json({success: true, message: "Successful!", category, count});
     else return res.status(400).json({success: false, message: "Not exists"});  
 
@@ -49,16 +49,10 @@ router.post('/', verifyToken, async (req,res) => {
 });
 
 router.put('/', verifyToken, async (req, res) => {
-  const {_id, title, display_order, meta_keyword, meta_descrp, meta_title, slug, icon} = req.body;
+  const {_id, title, slug} = req.body;
   req.body.mod_uid = req.uid;
-
-  if(!title) return res.status(400).json({success: false, message: "Title is required"});
-  if(!display_order) return res.status(400).json({success: false, message: "Display order is required"});
-  if(!meta_keyword) return res.status(400).json({success: false, message: "Meta keyword is required"});
-  if(!meta_descrp) return res.status(400).json({success: false, message: "Meta description is required"});
-  if(!meta_title) return res.status(400).json({success: false, message: "Meta title is required"});
-  if(!slug) return res.status(400).json({success: false, message: "Slug is required"});
-  if(!icon) return res.status(400).json({success: false, message: "Icon is required"});
+  req.body.mod_uid = req.uid;
+  req.body.mod_time = new Date().getTime();
 
   try {
     const category = await Category.find({$and: [
@@ -66,6 +60,7 @@ router.put('/', verifyToken, async (req, res) => {
       {is_delete: false}, 
       {_id: {$not: {$eq: _id}}}
     ]});
+    
     if(category == true) return res.status(400).json({success: false, message: "Exists your title or slug"});
     const newCategory = await Category.findOneAndUpdate({_id}, req.body);
     if(newCategory) return res.status(200).json({success: true, message: "Successful!"});
