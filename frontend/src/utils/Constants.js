@@ -8,7 +8,7 @@ export const PERMISSION = {
 }
 
 export const DATATYPE = {
-  NUMBER: 0,
-  STRING: 1,
-  DATETIME: 2
+  TEXT: 0,
+  NUMBER: 1,
+  DATE: 2
 }

@@ -24,19 +24,18 @@ router.get('/', verifyToken, async (req, res) => {
 });
 
 router.post('/', verifyToken, async (req, res) => {
-  const { title, descrp, quantity, category_id, detail, include_vat, meta_keyword, meta_descrp, meta_title, slug, tags, shop_id, warrently } = req.body;
+  const { title, descrp, category_id, detail, include_vat, meta_keyword, meta_descrp, meta_title, slug, tags, shop_id, warrently } = req.body;
   req.body.cre_uid = req.uid;
   
   if(!title) return res.status(400).json({success: false, message: "Title is required"});
   if(!descrp) return res.status(400).json({success: false, message: "Descrp is required"});
   if(!category_id) return res.status(400).json({success: false, message: "Category is required"});
-  if(!quantity) return res.status(400).json({success: false, message: "Quantity is required"});
   if(!detail) return res.status(400).json({success: false, message: "Detail is required"});
   if(!meta_keyword) return res.status(400).json({success: false, message: "Meta_keyword is required"});
   if(!meta_descrp) return res.status(400).json({success: false, message: "Meta_descrp is required"});
   if(!meta_title) return res.status(400).json({success: false, message: "Meta_title is required"});
   if(!slug) return res.status(400).json({success: false, message: "Slug is required"});
-  if(!include_vat) return res.status(400).json({success: false, message: "Include vat is required"});
+  if(include_vat === undefined) return res.status(400).json({success: false, message: "Include vat is required"});
   if(!shop_id) return res.status(400).json({success: false, message: "Shop is required"});
   if(!warrently) return res.status(400).json({success: false, message: "Warrently is required"});
 
@@ -50,13 +49,15 @@ router.post('/', verifyToken, async (req, res) => {
       const arrTag = [...new Set(tags.split(','))];
       
       arrTag.forEach(async item => {
-        let tag = await Tag.findOne({name: item});
-        if(tag) {
-          tag.use_count = tag.use_count + 1;
-          await Tag.findOneAndUpdate({_id: tag._id}, {use_count: tag.use_count})
-        } else {
-          tag = new Tag({name: item, use_count: 1});
-          tag.save();
+        if(item) {
+          let tag = await Tag.findOne({name: item});
+          if(tag) {
+            tag.use_count = tag.use_count + 1;
+            await Tag.findOneAndUpdate({_id: tag._id}, {use_count: tag.use_count})
+          } else {
+            tag = new Tag({name: item, use_count: 1});
+            tag.save();
+          }
         }
       })  
     }
@@ -71,19 +72,6 @@ router.put('/', verifyToken, async (req, res) => {
   const { _id, title, descrp, quantity, category_id, detail, include_vat, meta_keyword, meta_descrp, meta_title, slug, tags, shop_id, warrently } = req.body;
   req.body.cre_uid = req.uid;
   
-  if(!title) return res.status(400).json({success: false, message: "Title is required"});
-  if(!descrp) return res.status(400).json({success: false, message: "Descrp is required"});
-  if(!category_id) return res.status(400).json({success: false, message: "Category is required"});
-  if(!quantity) return res.status(400).json({success: false, message: "Quantity is required"});
-  if(!detail) return res.status(400).json({success: false, message: "Detail is required"});
-  if(!meta_keyword) return res.status(400).json({success: false, message: "Meta_keyword is required"});
-  if(!meta_descrp) return res.status(400).json({success: false, message: "Meta_descrp is required"});
-  if(!meta_title) return res.status(400).json({success: false, message: "Meta_title is required"});
-  if(!slug) return res.status(400).json({success: false, message: "Slug is required"});
-  if(!include_vat) return res.status(400).json({success: false, message: "Include vat is required"});
-  if(!shop_id) return res.status(400).json({success: false, message: "Shop is required"});
-  if(!warrently) return res.status(400).json({success: false, message: "Warrently is required"});
-
   try {
     delete req.body._id;
 

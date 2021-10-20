@@ -23,21 +23,21 @@ const editCategoryStore = createStore(editCategoryReducer);
 const CategoryIndex = props => {
   return (
       <Switch>
-        <Route path="/admin/category/new" component={CategoryNew} children={(props) => (
+        <Route path="/admin/category/new" children={(props) => (
           <Provider store={newCategoryStore}>
             <CategoryNewProvider {...props}>
               <CategoryNew />
             </CategoryNewProvider>
           </Provider>
         )} />
-        <Route path="/admin/category/edit/:id" component={CategoryEdit} children={(props) => (
+        <Route path="/admin/category/edit/:id" children={(props) => (
           <Provider store={editCategoryStore}>
             <CategoryEditProvider {...props}>
               <CategoryEdit />
             </CategoryEditProvider>
           </Provider>
         )} />
-        <Route path="/admin/category" component={CategoryList} children={(props)=> (
+        <Route path="/admin/category" children={(props)=> (
           <Provider store={listCategoryStore}>
             <CategoryListProvider {...props}>
               <CategoryList />

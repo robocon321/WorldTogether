@@ -80,15 +80,11 @@ const ProductEdit = props => {
                           <td colSpan="3">
                           <CKEditor
                             editor={ ClassicEditor }
-                            onReady={ editor => {
-                              // todo 
-                            } }
-                            onBlur={ ( event, editor ) => {
-                              // todo 
-                            } }
-                            onFocus={ ( event, editor ) => {
-                              // todo 
-                            } } />
+                            onChange={ ( event, editor ) => {
+                                const data = editor.getData();
+                                console.log( { event, editor, data } );
+                            } }                            
+                            />
                           </td>
                         </tr>
                         <tr>

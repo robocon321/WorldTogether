@@ -210,7 +210,7 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
 
 ### product
 
-GET http://localhost:5000/admin/product?search=X
+GET http://localhost:5000/admin/product?search=
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
@@ -373,3 +373,49 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
   ]
 }
 
+### product option
+
+GET http://localhost:5000/admin/option-product
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+###
+POST http://localhost:5000/admin/option-product
+Content-Type: application/json
+Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
+
+{
+  "group": [
+    [
+      {
+        "product_title" : {
+          "product_id": 1633753076519,
+          "title": "ROM",
+          "datatype": 1
+        },
+        "product_value" : {
+          "number_value": 1,
+          "opt_real_price": 122,
+          "opt_sale_price": 100,
+          "quantity": 10,
+          "avatar": "https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg"
+        }
+      }
+    ],
+    [
+      {
+        "product_title" : {
+          "product_id": 1633753076519,
+          "title": "ROM",
+          "datatype": 1
+        },
+        "product_value" : {
+          "number_value": 1,
+          "opt_real_price": 122,
+          "opt_sale_price": 100,
+          "quantity": 10,
+          "avatar": "https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg"
+        }
+      }
+    ]  ]
+}

@@ -18,4 +18,10 @@ ORDER_STATUS = {
   CANCEL: 4,
 }
 
-module.exports = {PERMISSION, NOTI_ACC_STATUS, ORDER_STATUS}
+const DATATYPE = {
+  TEXT: 0,
+  NUMBER: 1,
+  DATE: 2
+}
+
+module.exports = {PERMISSION, NOTI_ACC_STATUS, ORDER_STATUS, DATATYPE};

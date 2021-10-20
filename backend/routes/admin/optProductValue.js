@@ -67,7 +67,7 @@ router.post('/', verifyToken, async (req, res) => {
         if(!optProductValue) {
           const newOptProductValue = new OptProductValue(child);
           await newOptProductValue.save();
-        }  
+        }
       });
     });
   } catch (e) {
