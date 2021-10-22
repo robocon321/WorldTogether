@@ -19,7 +19,8 @@ const ProductSchema = new Schema({
   },
   category_id: {
     type: Number,
-    required: true
+    required: true,
+    ref: 'Category'
   },
   detail: {
     type: String,

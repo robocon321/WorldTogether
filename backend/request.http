@@ -79,7 +79,7 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
 ### category
 
 ###
-GET http://localhost:5000/admin/category?_id=1632911712843&search=
+GET http://localhost:5000/admin/category?&search=
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 

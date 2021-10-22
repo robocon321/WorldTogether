@@ -6,7 +6,7 @@ const verifyToken = require('../../middleware/verifyToken');
 const router = express.Router();
 
 router.get('/', verifyToken, async (req, res) => {
-  const {query_title, query_value} = req;
+  const {query_title, query_value} = req.query;
   const optProduct = {
     product_titles: [],
     product_values: []

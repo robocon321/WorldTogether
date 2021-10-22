@@ -14,7 +14,13 @@ router.get('/', verifyToken, async (req, res) => {
 
     try {
       const count = await Product.find({...query, title: { $regex: new RegExp(search, 'i')}}).count();
-      const product = await Product.find({...query, title: { $regex: new RegExp(search, 'i')}}).skip(skip && parseInt(skip)).limit(limit && parseInt(limit)).sort(sort);
+      const product = await Product.find({...query, title: { $regex: new RegExp(search, 'i')}})
+                                    .skip(skip && parseInt(skip))
+                                    .limit(limit && parseInt(limit))
+                                    .sort(sort)
+                                    .populate('category_id', ['title'])
+                                    .populate('shop_id', ['title']);
+
       if(product) return res.status(200).json({success: true, message: "Successful!", product, count});
       else return res.status(400).json({success: false, message: "Not exists"});  
     } catch (e) {
@@ -123,7 +129,7 @@ router.put('/', verifyToken, async (req, res) => {
 router.delete('/', verifyToken, async (req, res) => {
   const {id} = req.query;
   try {
-    await Category.findOneAndUpdate({_id: id}, {is_delete: true, mod_uid: req.uid, mod_time: new Date().getTime()})
+    await Product.findOneAndUpdate({_id: id}, {is_delete: true, mod_uid: req.uid, mod_time: new Date().getTime()})
     return res.status(200).json({success: true, message: "Successful!"});
   } catch (e) {
     console.log(e);

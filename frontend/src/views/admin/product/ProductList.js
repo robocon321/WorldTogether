@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { React } from "react";
+import { React, useContext } from "react";
 import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
@@ -9,6 +9,7 @@ import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
 import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
 import "../../../assets/css/styles.css";
 import "../../../assets/css/admin/product_list.css";
+import { ProductListContext } from "../../../contexts/admin/product/ProductListContext";
 
 const data = {
   labels: ['a','b','c','d','e','f'],
@@ -37,6 +38,8 @@ const options = {
 };
 
 const ProductList = props => {
+  const { loadProduct, deleteProduct, searchProduct, switchToEditPage, products, remain } = useContext(ProductListContext);
+
   return (
     <div>
       <div className="product_list d-flex">
@@ -96,7 +99,7 @@ const ProductList = props => {
                   <option value="3">Nhiều lượt xem nhất</option>
                 </select>
                 <div className="search me-3">
-                  <input className="search-box sub-search" name="sub-search" type="text" />              
+                  <input className="search-box sub-search" name="sub-search" type="text" onChange={searchProduct} />              
                   <div className="icon"><i className="fas fa-search"></i></div>
                 </div>
                 <Link to="/admin/product/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
@@ -107,119 +110,26 @@ const ProductList = props => {
                     <tr>
                       <th>STT</th>
                       <th>Title</th>
-                      <th>Avatar</th>
-                      <th>Real price</th>
-                      <th>Sale price</th>
-                      <th>Quantity</th>
+                      <th>Category</th>
                       <th>View count</th>
+                      <th>Shop</th>
                       <th>Action</th>
                     </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">1</a></td>
-                      <td>Điện thoại</td>
-                      <td><div className="ht-6"><img src={avatar} alt="Not found" /></div></td>
-                      <td>15.000.000</td>
-                      <td>18.000.000</td>
-                      <td>123</td>
-                      <td>100</td>
-                      <td><Link to="/admin/product/edit"><button className="btn btn-success me-1"><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1"><i className="fas fa-trash-alt"></i></button></Link></td>
-                    </tr>
-
+                    {
+                      products.map((item, index) => (
+                        <tr key={index}>
+                          <td><a href="#">{index}</a></td>
+                          <td>{item.title}</td>
+                          <td>{item.category_id ? item.category_id.title : "None"}</td>
+                          <td>0</td>
+                          <td>{item.shop_id ? item.shop_id.title : "None"}</td>
+                          <td><button className="btn btn-success me-1" onClick={(e) => switchToEditPage(e, item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteProduct(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
+                        </tr>
+                      ))
+                    }
                   </tbody>
                 </table>
-                <div className="spinner text-center">
-                  <div className="spinner-border"></div>
-                </div>
+                <div className="d-flex justify-content-center"><button className="c-white bg-blue px-5 py-2 bd-width-0" onClick={() => loadProduct()}>More ({remain})</button></div>
               </div>
             </div>
           </main>  
