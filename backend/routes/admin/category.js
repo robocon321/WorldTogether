@@ -49,27 +49,38 @@ router.post('/', verifyToken, async (req,res) => {
 });
 
 router.put('/', verifyToken, async (req, res) => {
+  if(req.body.pwd) req.body.pwd = await argon2.hash(req.body.pwd);
   const {_id, title, slug} = req.body;
-  req.body.mod_uid = req.uid;
-  req.body.mod_uid = req.uid;
-  req.body.mod_time = new Date().getTime();
 
   try {
-    const category = await Category.find({$and: [
-      {$or: [{title}, {slug}]}, 
-      {is_delete: false}, 
-      {_id: {$not: {$eq: _id}}}
-    ]});
-    
-    if(category == true) return res.status(400).json({success: false, message: "Exists your title or slug"});
-    const newCategory = await Category.findOneAndUpdate({_id}, req.body);
-    if(newCategory) return res.status(200).json({success: true, message: "Successful!"});
-    return res.status(400).json({success: false, message: "Unsuccessful!"});
-  } catch (e) {
-    console.log("Update error -", e);
-    return res.status(500).json({success: false, message: "Interval Server"})
-  }
+    if(title || slug) {
+      const category = await Category.find({$and: [
+        {$or: [{title}, {slug}]}, 
+        {is_delete: false}, 
+        {_id: {$not: {$eq: _id}}}
+      ]});
+      if(category.length) return res.status(400).json({success: false, message: "Exists your title or slug"});
+    }
 
+    // save old item
+    const oldCategory = (await Category.findOne({_id})).toJSON();
+    if(!oldCategory) return res.status(500).json({success: false, message: 'Interval Server'});
+    oldCategory.is_delete = true;
+
+    oldCategory.old_id = _id;
+    oldCategory.mod_uid = req.uid;
+    oldCategory.mod_time = new Date().getTime();
+  
+    delete oldCategory._id;
+    const oldCategorySave = await (new Category(oldCategory)).save();
+
+    // save update item
+    const updateCategory = await Category.findOneAndUpdate({_id}, req.body);
+    if(updateCategory) return res.status(200).json({success: true, message: "Successful!", old: oldCategorySave, update: updateCategory});
+    else return res.status(400).json({success: false, message: "Unsuccessful!"});
+  } catch (e) {
+    res.status(500).json({success: false, message: "Internal server error"})
+  }
 })
 
 router.delete('/', verifyToken, async (req, res) => {
@@ -83,6 +94,6 @@ router.delete('/', verifyToken, async (req, res) => {
     return res.status(500).json({success: false, message: 'Interval Server'});
   }
 
-})
+});
 
 module.exports = router;

@@ -47,16 +47,50 @@ router.post('/', verifyToken, async (req, res) => {
 });
 
 router.put('/', verifyToken, async (req, res) => {
-  const { _id } = req.body;
-  req.body.cre_uid = req.uid;
+  if(req.body.pwd) req.body.pwd = await argon2.hash(req.body.pwd);
+  const { _id, slug } = req.body;
+
+  if(slug) {
+    const shop = await Shop.findOne({$and: [
+      {slug}, 
+      {is_delete: false}, 
+      {_id: {$not: {$eq: _id}}}
+    ]});
+    if(shop) return res.status(400).json({success: false, message: "Exists slug"});  
+  }
+
+  try {
+    // save old item
+    const oldShop = (await Shop.findOne({_id})).toJSON();
+    if(!oldShop) return res.status(500).json({success: false, message: 'Interval Server'});
+    oldShop.is_delete = true;
+
+    oldShop.old_id = _id;
+    oldShop.mod_uid = req.uid;
+    oldShop.mod_time = new Date().getTime();
   
-  try {    
-    await Shop.findOneAndUpdate({_id}, req.body);
+    delete oldShop._id;
+    const oldShopSave = await (new Shop(oldShop)).save();
+
+    // save update item
+    const shop = await Shop.findOneAndUpdate({_id}, req.body);
+    if(shop) return res.status(200).json({success: true, message: "Successful!", old: oldShop, update: shop});
+    else return res.status(400).json({success: false, message: "Unsuccessful!"});
+  } catch (e) {
+    res.status(500).json({success: false, message: "Internal server error"})
+  }
+});
+
+router.delete('/', verifyToken, async (req, res) => {
+  const {id} = req.query;
+
+  try {
+    await Shop.findOneAndUpdate({_id: id}, {is_delete: true, mod_uid: req.uid, mod_time: new Date().getTime()})
     return res.status(200).json({success: true, message: "Successful!"});
   } catch (e) {
     console.log(e);
-    res.status(500).json({success: false, message: "Internal server error"})
+    return res.status(500).json({success: false, message: 'Interval Server'});
   }
-})
+});
 
 module.exports = router;

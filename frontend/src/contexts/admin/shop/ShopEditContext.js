@@ -28,23 +28,11 @@ const ShopEditProvider = (props) => {
     e.preventDefault();
 
     try {
-      const oldShop = {_id: newShop._id, is_delete: true};
 
-      if(!newShop.old_id) newShop.old_id = oldShop._id;
+      const res = await axios.put(`${SERVER}/admin/shop`, newShop);
+      dispatch(actions.changeResult({success: res.data.success, message: res.data.message}));
 
-      delete newShop._id;
-
-      console.log(oldShop, newShop);
-      const updateOld = await axios.put(`${SERVER}/admin/shop`, oldShop);
-      const createNew = await axios.post(`${SERVER}/admin/shop`, newShop);
-
-      if(!updateOld.data.success) {
-        dispatch(actions.changeResult({success: false, message: updateOld.data.message}));
-        return ;
-      }
-
-      dispatch(actions.changeResult({success: createNew.data.success, message: createNew.data.message}));
-      if(createNew.data.success) props.history.goBack();  
+      if(res.data.success) props.history.goBack();  
       return ;
 
     } catch (e) {

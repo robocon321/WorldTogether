@@ -31,22 +31,14 @@ const AccountEditProvider = (props) => {
     }
 
     try {
-      const oldAccount = {_id: newAccount._id, is_delete: true};
+      const update = await axios.put(`${SERVER}/admin/account`, newAccount);
 
-      if(!newAccount.old_id) newAccount.old_id = oldAccount._id;
-
-      delete newAccount._id;
-
-      const updateOld = await axios.put(`${SERVER}/admin/account`, oldAccount);
-      const createNew = await axios.post(`${SERVER}/admin/account`, newAccount);
-
-      if(!updateOld.data.success) {
-        dispatch(actions.changeResult({success: false, message: updateOld.data.message}));
+      if(update.data.success) {
+        dispatch(actions.changeResult({success: update.data.success, message: update.data.message}));
+        props.history.goBack();
         return ;
       }
 
-      dispatch(actions.changeResult({success: createNew.data.success, message: createNew.data.message}));
-      if(createNew.data.success) props.history.goBack();  
       return ;
 
     } catch (e) {

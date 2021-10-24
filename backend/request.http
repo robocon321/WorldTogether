@@ -33,7 +33,7 @@ Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
 ###
-GET http://localhost:5000/admin/account
+GET http://localhost:5000/admin/account?search=killerbea
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
@@ -58,11 +58,11 @@ Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
 {
-  "_id": 1632565112911,
+  "_id": 1634116814942,
   "pwd": "123bd41234",
   "full_name": "Robocon",
-  "email": "robocon321n@gmail.com",
-  "phone": "03545454454",
+  "email": "haha@gmail.com",
+  "phone": "09984858485",
   "sex": "false",
   "birthday": 1632562489999
 }
@@ -173,7 +173,7 @@ Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3M
 }
 
 ### shop
-GET http://localhost:5000/admin/shop?search=
+GET http://localhost:5000/admin/shop?search=tiki
 Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
@@ -198,14 +198,13 @@ Content-Type: application/json
 Authorization:  Print eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjE2MzE4MTQ3MzkwNjcsImlhdCI6MTYzMTgxNzMxM30.zPLtlobU_OjgPEAofigMJrg_r_aVDKUx4xpUmEltqik
 
 {
-  "_id": 1633512561578,
-  "title": "Shop 2",
+  "_id": 1634318088553,
   "descrp": "Descrp",
   "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
-  "meta_keyword": "Keyword",
+  "meta_keyword": "Keyword tiki",
   "meta_descrp": "Description",
   "meta_title": "Title",
-  "slug": "slug"
+  "slug": "slu"
 }
 
 ### product

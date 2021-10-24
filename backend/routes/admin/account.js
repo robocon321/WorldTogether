@@ -55,12 +55,23 @@ router.post('/', verifyToken, async (req, res) => {
 router.put('/', verifyToken, async (req, res) => {
   if(req.body.pwd) req.body.pwd = await argon2.hash(req.body.pwd);
   const { _id } = req.body;
-  req.body.mod_uid = req.uid;
-  req.body.mod_time = new Date().getTime();
 
   try {
+    // save old item
+    const oldAccount = (await Account.findOne({_id})).toJSON();
+    if(!oldAccount) return res.status(500).json({success: false, message: 'Interval Server'});
+    oldAccount.is_delete = true;
+
+    oldAccount.old_id = _id;
+    oldAccount.mod_uid = req.uid;
+    oldAccount.mod_time = new Date().getTime();
+  
+    delete oldAccount._id;
+    const oldAccountSave = await (new Account(oldAccount)).save();
+
+    // save update item
     const account = await Account.findOneAndUpdate({_id}, req.body);
-    if(account) return res.status(200).json({success: true, message: "Successful!"});
+    if(account) return res.status(200).json({success: true, message: "Successful!", old: oldAccountSave, update: account});
     else return res.status(400).json({success: false, message: "Unsuccessful!"});
   } catch (e) {
     res.status(500).json({success: false, message: "Internal server error"})
@@ -77,7 +88,6 @@ router.delete('/', verifyToken, async (req, res) => {
     console.log(e);
     return res.status(500).json({success: false, message: 'Interval Server'});
   }
-
 })
 
 module.exports = router;

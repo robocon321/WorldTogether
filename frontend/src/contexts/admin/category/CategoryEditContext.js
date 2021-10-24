@@ -27,23 +27,11 @@ const CategoryEditProvider = (props) => {
     e.preventDefault();
 
     try {
-      const oldCategory = {_id: category._id, is_delete: true};
+      const res = await axios.put(`${SERVER}/admin/category`, category);
+      dispatch(actions.setResult({success: res.data.success, message: res.data.message}));
 
-      if(!category.old_id) category.old_id = oldCategory._id;
-
-      delete category._id;
-
-      const updateOld = await axios.put(`${SERVER}/admin/category`, oldCategory);
-      const createNew = await axios.post(`${SERVER}/admin/category`, category);
-
-      if(!updateOld.data.success) {
-        dispatch(actions.setResult({success: false, message: updateOld.data.message}));
-        return ;
-      }
-
-      dispatch(actions.setResult({success: createNew.data.success, message: createNew.data.message}));
-      if(createNew.data.success) {
-        createAttrs(createNew.data.newCategory._id);
+      if(res.data.success) {
+        createAttrs(res.data.old, res.data.update);
       }
       return ;
 
@@ -122,14 +110,14 @@ const CategoryEditProvider = (props) => {
   }
 
   // attribute 
-  const createAttrs = async (category_id) => {
+  const createAttrs = async (old, update) => {
     attributes.forEach(item => {
-      item.category_id = category_id;
+      item.category_id = update._id;
       delete item._id;
     });
 
     try {
-      const res = await axios.post(`${SERVER}/admin/attribute`, {attributes});
+      const res = await axios.put(`${SERVER}/admin/attribute`, {attributes, oldCategory: old, updateCategory: update});
       dispatch(actions.setResult({success: res.data.success, message: res.data.message}));
       if(res.data.success) props.history.goBack(); 
     } catch (e) {

@@ -59,17 +59,22 @@ return res.status(result.success ? 200 : 400).json({...result});
 });
 
 router.put('/', verifyToken, async (req, res) => {
-  const {attributes, category_id} = req.body;
+  const {attributes, updateCategory, oldCategory} = req.body;
   const result = {
     success: true,
     message: "Successful!"
   }
 
   try {
+    const oldAttributes = await Attribute.find({category_id: updateCategory._id});
+    oldAttributes.forEach(item => {
+      item.category_id = oldCategory._id;
+      item.save();
+    });
+
     await attributes.forEach(async (item, index) => {
     const {title, datatype} = item;
-    req.body.cre_uid = req.uid;
-  
+
     if(!title) {
       result.success = false;
       result.message = "Title index "+index+" is required";
@@ -80,13 +85,11 @@ router.put('/', verifyToken, async (req, res) => {
       result.message = "Datatype index "+index+" is required";
       return ;
     }
-      const attribute = await Attribute.findOne({title, category_id, datatype});
-      if(!attribute) {
-        if(item._id) delete item._id;
-        const newAttribute = new Attribute(item);
-        await newAttribute.save();
-      }
+
+    const newAttribute = new Attribute(item);
+    await newAttribute.save();
   });
+  
   } catch (e) {
     console.log("Insert error -", e);
     return res.status(500).json({success: false, message: "Interval Server"})
