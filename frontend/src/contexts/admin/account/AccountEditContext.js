@@ -18,7 +18,7 @@ const AccountEditProvider = (props) => {
 
   
   const loadAccount = async id => {
-    const account = await (await axios.get(`${SERVER}/admin/account`, {params: {_id: id}})).data.account[0];
+    const account = await (await axios.get(`${SERVER}/admin/account`, {params: {_id: id, is_delete: false}})).data.account[0];
     dispatch(actions.loadAccount(account));
   }
 

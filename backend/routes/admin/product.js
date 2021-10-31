@@ -75,15 +75,13 @@ router.post('/', verifyToken, async (req, res) => {
 });
 
 router.put('/', verifyToken, async (req, res) => {
-  const { _id, title, descrp, quantity, category_id, detail, include_vat, meta_keyword, meta_descrp, meta_title, slug, tags, shop_id, warrently } = req.body;
+  const { _id,  slug, tags } = req.body;
   req.body.cre_uid = req.uid;
   
   try {
     delete req.body._id;
 
     const tagStr = await Product.findOne({_id}).select("tags -_id");
-
-    await Product.findOneAndUpdate({_id}, req.body);
 
     const product = await Product.findOne({$and: [
       {$or: [{slug}]}, 
@@ -92,6 +90,7 @@ router.put('/', verifyToken, async (req, res) => {
     ]});
     if(product) return res.status(400).json({success: false, message: "Exists slug"});
 
+    // update tags
     if(tagStr.tags) {
       const newTags = [...new Set(tags.split(","))];
       const oldTags = [...new Set(tagStr.tags.split(","))];
@@ -118,8 +117,26 @@ router.put('/', verifyToken, async (req, res) => {
         }
       });
     }
-    
-    return res.status(200).json({success: true, message: "Successful!"});
+
+    // update product
+
+    // save old item
+    const oldProduct = (await Product.findOne({_id})).toJSON();
+    if(!oldProduct) return res.status(500).json({success: false, message: 'Interval Server'});
+    oldProduct.is_delete = true;
+
+    oldProduct.old_id = _id;
+    oldProduct.mod_uid = req.uid;
+    oldProduct.mod_time = new Date().getTime();
+  
+    delete oldProduct._id;
+    const oldProductSave = await (new Product(oldProduct)).save();
+
+    // save update item
+    const updateProduct = await Product.findOneAndUpdate({_id}, req.body);
+    if(updateProduct) return res.status(200).json({success: true, message: "Successful!", old: oldProductSave, update: updateProduct});
+    else return res.status(400).json({success: false, message: "Unsuccessful!"});
+ 
   } catch (e) {
     console.log("Put error - ", e);
     res.status(500).json({success: false, message: "Internal server error"})

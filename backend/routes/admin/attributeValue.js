@@ -4,7 +4,7 @@ const verifyToken = require('../../middleware/verifyToken');
 const router = express.Router();
 
 router.get('/', verifyToken, async (req, res) => {
-  const {query} = req.query;
+  const {query} = req;
 
   try {
     const productAttributeValue = await ProductAttributeValue.find({...query});
@@ -58,5 +58,47 @@ router.post('/', verifyToken, async (req, res) => {
   
   return res.status(result.success ? 200 : 400).json({...result});
 });
+
+router.put('/', verifyToken, async (req, res) => {
+  const {attributeValues, updateProduct, oldProduct} = req.body;
+  const result = {
+    success: true,
+    message: "Successful!"
+  }
+
+  try {
+    const oldAttributes = await ProductAttributeValue.find({product_id: updateProduct._id});
+    oldAttributes.forEach(item => {
+      item.product_id = oldProduct._id;
+      item.save();
+    });
+
+    await attributeValues.forEach(async (item, index) => {
+    const {attr_id, text_value, number_value, date_value} = item;
+    delete item._id;
+
+    if(!attr_id) {
+      result.success = false;
+      result.message = "Attribute index "+index+" is required";
+      return ;
+    }
+
+    if(!text_value && !number_value && !date_value) {
+      result.success = false;
+      result.message = "Value index "+index+"  is required";
+      return;
+    }
+
+    const newAttributeValue = new ProductAttributeValue(item);
+    await newAttributeValue.save();
+  });
+  
+  } catch (e) {
+    console.log("Put error -", e);
+    return res.status(500).json({success: false, message: "Interval Server"})
+  }   
+  return res.status(result.success ? 200 : 400).json({...result});
+});
+
 
 module.exports = router;

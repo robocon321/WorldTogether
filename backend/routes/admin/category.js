@@ -49,7 +49,6 @@ router.post('/', verifyToken, async (req,res) => {
 });
 
 router.put('/', verifyToken, async (req, res) => {
-  if(req.body.pwd) req.body.pwd = await argon2.hash(req.body.pwd);
   const {_id, title, slug} = req.body;
 
   try {

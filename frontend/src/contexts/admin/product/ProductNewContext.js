@@ -53,10 +53,8 @@ const CategoryNewProvider = (props) => {
             })
           });
 
-          console.log(1, group);
 
           const resGroup = await axios.post(`${SERVER}/admin/option-product`, {group});
-          console.log(2, resGroup.data);
           dispatch(actions.setResult({success: resGroup.data.success, message: resGroup.data.message}));
 
           if(resGroup.data.success) {
