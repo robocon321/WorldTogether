@@ -5,10 +5,6 @@ import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/new_product.css";
 import { ProductNewContext } from "../../../contexts/admin/product/ProductNewContext";
 import { DATATYPE } from "../../../utils/Constants";
 
@@ -32,10 +28,10 @@ const ProductNew = props => {
   } = useContext(ProductNewContext);
 
   return (
-    <div className="new_product">
+    <div className="form-style">
       <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="product" />
+          <AdminNavigation title="product" history={props.history} />
         </div>
         <div className="col-10">
           <AdminHeader title="Product" />
@@ -81,7 +77,7 @@ const ProductNew = props => {
                           <td>Tophot</td>
                           <td><input type="date" name="tophot" onChange={changeField} /></td>
                           <td><label htmlFor="include_vat">Có thuế VAT</label></td>
-                          <td><div className="d-flex align-items-center"><input type="checkbox" id="include_vat" name="include_vat" value="true" onChange={changeField} /></div></td>
+                          <td><div style={{width: "1rem", height: "1rem"}} className="d-flex align-items-center"><input type="checkbox" id="include_vat" name="include_vat" value="true" onChange={changeField} /></div></td>
                         </tr>
                         <tr>
                          <td>Thời gian bảo hành</td>

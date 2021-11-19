@@ -7,7 +7,7 @@ import { SET_AUTH } from "../actions/AuthAction";
 
 export const AuthContext = createContext();
 
-const AuthProvider = ({children}) =>{
+const AuthProvider = (props) =>{
   const [authState, dispatch] = useReducer(authReducer, {
     isLoading: true,
     isAuth: false,
@@ -134,7 +134,7 @@ const AuthProvider = ({children}) =>{
 
   return (
     <AuthContext.Provider value={data}>
-      {children}
+      {props.children}
     </AuthContext.Provider>
   )
 }

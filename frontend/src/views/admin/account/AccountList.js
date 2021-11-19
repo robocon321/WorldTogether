@@ -5,10 +5,6 @@ import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/account_list.css";
 import { AccountListContext } from "../../../contexts/admin/account/AccountListContext";
 
 const data = {
@@ -42,7 +38,7 @@ const AccountList = props => {
 
   return (
     <div>
-      <div className="account_list d-flex">
+      <div className="d-flex">
         <div className="col-2 bg-black">
           <AdminNavigation title="account"/>
         </div>
@@ -105,26 +101,26 @@ const AccountList = props => {
                 <Link to="/admin/account/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
               </div>
               <div className="categories">
-                <table className=" my-4">
+                <table className="list my-4">
                   <tbody>
                     <tr>
-                      <th>STT</th>
-                      <th>Username</th>
-                      <th>FullName</th>
-                      <th>Phone</th>
-                      <th>Permission</th>
-                      <th>Action</th>
+                      <th style={{"--w": "5%"}}>STT</th>
+                      <th style={{"--w": "30%"}}>Username</th>
+                      <th style={{"--w": "30%"}}>FullName</th>
+                      <th style={{"--w": "10%"}}>Phone</th>
+                      <th style={{"--w": "10%"}}>Permission</th>
+                      <th style={{"--w": "15%"}}>Action</th>
                     </tr>
                     {
                       accounts.map((item, index) => {
                         return (
                           <tr key={index}>
-                            <td><a href="#">{index}</a></td>
-                            <td>{item.uname}</td>
-                            <td>{item.full_name}</td>
-                            <td>{item.phone}</td>
-                            <td>Root</td>
-                            <td><button className="btn btn-success me-1" onClick={() => switchToEditPage(item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteAccount(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
+                            <td style={{"--w": "5%"}}><a href="#">{index}</a></td>
+                            <td style={{"--w": "30%"}}>{item.uname}</td>
+                            <td style={{"--w": "30%"}}>{item.full_name}</td>
+                            <td style={{"--w": "10%"}}>{item.phone}</td>
+                            <td style={{"--w": "10%"}}>Root</td>
+                            <td style={{"--w": "15%"}}><button className="btn btn-success me-1" onClick={() => switchToEditPage(item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteAccount(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
                           </tr>
                         )
                       })

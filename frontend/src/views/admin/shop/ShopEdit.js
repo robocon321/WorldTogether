@@ -3,10 +3,6 @@
 import { React, useContext } from "react";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/new_category.css";
 import { ShopEditContext } from "../../../contexts/admin/shop/ShopEditContext";
 
 const ShopEdit = props => {
@@ -19,10 +15,10 @@ const ShopEdit = props => {
  } = useContext(ShopEditContext) 
 
   return (
-    <div className="new_category">
+    <div className="form-style">
       <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="category" />
+          <AdminNavigation title="category" history={props.history} />
         </div>
         <div className="col-10">
           <AdminHeader title="Category" />

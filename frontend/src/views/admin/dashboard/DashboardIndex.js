@@ -2,10 +2,6 @@ import { React } from "react";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/dashboard.css";
 
 const data = {
   labels: ['a','b','c','d','e','f'],
@@ -64,7 +60,7 @@ const DashboardIndex = props => {
     <div>
       <div className="dashboard d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="dashboard" />
+          <AdminNavigation title="dashboard" history={props.history} />
         </div>
         <div className="col-10">
           <AdminHeader title="Dashboard" />
@@ -120,12 +116,12 @@ const DashboardIndex = props => {
               <div className="col-6">
                 <div className="tags">
                   <h2><b>Tags phổ biến</b></h2>
-                  <table>
+                  <table className="list">
                     <tbody>
                     <tr>
-                      <th>Name: </th>
-                      <th>Lượt truy cập</th>
-                      <th>Lượt dùng</th>  
+                      <th style={{"--w": "50%"}}>Name: </th>
+                      <th style={{"--w": "30%"}}>Lượt truy cập</th>
+                      <th style={{"--w": "20%"}}>Lượt dùng</th>  
                     </tr>
                     <tr>
                       <td>Tag 1</td>
@@ -165,11 +161,11 @@ const DashboardIndex = props => {
               <div className="col-6">
                 <div className="searchs">
                   <h2><b>Tìm kiếm phổ biến</b></h2>
-                  <table>
+                  <table className="list">
                     <tbody>
                       <tr>
-                        <th>Name: </th>
-                        <th>Lượt tìm kiếm</th>
+                        <th style={{"--w": "60%"}}>Name: </th>
+                        <th style={{"--w": "40%"}}>Lượt tìm kiếm</th>
                       </tr>
                       <tr>
                         <td>Word 1</td>

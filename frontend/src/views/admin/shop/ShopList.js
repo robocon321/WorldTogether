@@ -4,10 +4,6 @@ import { React, useContext } from "react";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/shop_list.css";
 import { ShopListContext } from "../../../contexts/admin/shop/ShopListContext";
 
 const data = {
@@ -48,7 +44,7 @@ const ShopList = props => {
     <div>
       <div className="shop_list d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="shop" />
+          <AdminNavigation title="shop" history={props.history} />
         </div>
         <div className="col-10">
           <AdminHeader title="Shop" />          
@@ -83,16 +79,16 @@ const ShopList = props => {
                   <div className="icon"><i className="fas fa-search"></i></div>
                 </div>   
               </div>
-              <div className="categories">
-                <table className=" my-4">
+              <div className="shops">
+                <table className="list my-4">
                   <tbody>
                     <tr>
-                      <th>STT</th>
-                      <th>Title</th>
-                      <th>Avatar</th>
-                      <th>Products</th>
-                      <th>Follow</th>
-                      <th>View count</th>
+                      <th style={{"--w": "10%"}}>STT</th>
+                      <th style={{"--w": "20%"}}>Title</th>
+                      <th style={{"--w": "30%"}}>Avatar</th>
+                      <th style={{"--w": "10%"}}>Products</th>
+                      <th style={{"--w": "10%"}}>Follow</th>
+                      <th style={{"--w": "20%"}}>View count</th>
                     </tr>
                     {
                       shops.map((item, index) => 

@@ -64,7 +64,6 @@ router.post('/', verifyToken, async (req, res) => {
   
         // check product_value
   
-        console.log(product_title, product_value, product_title.datatype == DATATYPE.NUMBER);
         if(
         (product_title.datatype == DATATYPE.TEXT && !product_value.text_value) || 
         (product_title.datatype == DATATYPE.NUMBER && !product_value.number_value) || 
@@ -126,7 +125,7 @@ router.post('/', verifyToken, async (req, res) => {
       });
     });
   } catch (e) {
-    console.log(e);
+    console.log("Insert error", e);
     return res.status(400).json({success: false, message: "Interval Server"});
   }
 });

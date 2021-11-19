@@ -13,7 +13,7 @@ function App() {
           <Route path="/auth" component={AuthIndex} />
           <Route path="/admin" component={Admin} />
           <Route path="/error" component={Error404} />          
-          <Route path="/" component={Client} />
+          <Route path="/" exact component={Client} />
         </Switch>
       </Router>
     </AuthProvider>

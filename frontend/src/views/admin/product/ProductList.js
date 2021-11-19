@@ -4,11 +4,6 @@ import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
-import avatar from "../../../assets/images/avatar.png";
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/product_list.css";
 import { ProductListContext } from "../../../contexts/admin/product/ProductListContext";
 
 const data = {
@@ -42,9 +37,9 @@ const ProductList = props => {
 
   return (
     <div>
-      <div className="product_list d-flex">
+      <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="product" />
+          <AdminNavigation title="product" history={props.history} />
         </div>
         <div className="col-10">
           <AdminHeader title="Product" />
@@ -104,26 +99,26 @@ const ProductList = props => {
                 </div>
                 <Link to="/admin/product/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
               </div>
-              <div className="categories">
-                <table className=" my-4">
+              <div className="products">
+                <table className="list my-4">
                   <tbody>
                     <tr>
-                      <th>STT</th>
-                      <th>Title</th>
-                      <th>Category</th>
-                      <th>View count</th>
-                      <th>Shop</th>
-                      <th>Action</th>
+                      <th style={{"--w": "5%"}}>STT</th>
+                      <th style={{"--w": "35%"}}>Title</th>
+                      <th style={{"--w": "25%"}}>Category</th>
+                      <th style={{"--w": "10%"}}>View count</th>
+                      <th style={{"--w": "15%"}}>Shop</th>
+                      <th style={{"--w": "10%"}}>Action</th>
                     </tr>
                     {
                       products.map((item, index) => (
                         <tr key={index}>
-                          <td><a href="#">{index}</a></td>
-                          <td>{item.title}</td>
-                          <td>{item.category_id ? item.category_id.title : "None"}</td>
-                          <td>0</td>
-                          <td>{item.shop_id ? item.shop_id.title : "None"}</td>
-                          <td><button className="btn btn-success me-1" onClick={(e) => switchToEditPage(e, item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteProduct(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
+                          <td style={{"--w": "5%"}}><a href="#">{index}</a></td>
+                          <td style={{"--w": "35%"}}>{item.title}</td>
+                          <td style={{"--w": "25%"}}>{item.category_id ? item.category_id.title : "None"}</td>
+                          <td style={{"--w": "10%"}}>0</td>
+                          <td style={{"--w": "15%"}}>{item.shop_id ? item.shop_id.title : "None"}</td>
+                          <td style={{"--w": "10%"}}><button className="btn btn-success me-1" onClick={(e) => switchToEditPage(e, item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteProduct(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
                         </tr>
                       ))
                     }

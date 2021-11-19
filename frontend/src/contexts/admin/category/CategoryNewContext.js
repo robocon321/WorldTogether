@@ -10,7 +10,7 @@ import { getDownloadURL } from "@firebase/storage";
 
 export const CategoryNewContext = createContext();
 
-const CategoryNewProvider = ({children}) => {
+const CategoryNewProvider = (props) => {
   const { categories, search, trees, attributes, result, category } = useSelector(state => state);
   const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ const CategoryNewProvider = ({children}) => {
       const res = await axios.post(`${SERVER}/admin/category`, category);
       dispatch(actions.setResult({success: res.data.success, message: res.data.message}));
       if(res.data.success) {
-        createAttrs(res.data.newCategory._id);
+        await createAttrs(res.data.newCategory._id);
       }
     } catch (e) {
       if (e.response) {
@@ -109,6 +109,8 @@ const CategoryNewProvider = ({children}) => {
     try {
       const res = await axios.post(`${SERVER}/admin/attribute`, {attributes});
       dispatch(actions.setResult({success: res.data.success, message: res.data.message}));
+      if(res.data.success) props.history.push('/admin/category');
+
     } catch (e) {
       if (e.response) {
         dispatch(actions.setResult({success: e.response.data.success, message: e.response.data.message}));
@@ -148,7 +150,7 @@ const CategoryNewProvider = ({children}) => {
 
   return (
   <CategoryNewContext.Provider value={value}>
-    {children}
+    {props.children}
   </CategoryNewContext.Provider>
   )
 }

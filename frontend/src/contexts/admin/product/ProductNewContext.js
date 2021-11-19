@@ -45,7 +45,7 @@ const CategoryNewProvider = (props) => {
       const resProduct = await axios.post(`${SERVER}/admin/product`, product);
       if(resProduct.data.success) {
         attributeValues.forEach(item => item.product_id = resProduct.data.newProduct._id);
-        const resAttributes = await axios.post(`${SERVER}/admin/product-attribute-value`, {productAttributeValues: attributeValues});
+        const resAttributes = await axios.post(`${SERVER}/admin/attribute-value`, {productAttributeValues: attributeValues});
         if(resAttributes.data.success) {
           group.forEach(itemGroup => {
             itemGroup.forEach(item => {

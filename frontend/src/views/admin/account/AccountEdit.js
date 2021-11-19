@@ -4,20 +4,16 @@ import { React, useContext } from "react";
 import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/new_account.css";
 import { AccountEditContext } from "../../../contexts/admin/account/AccountEditContext";
 
 const AccountEdit = props => {
   const {newAccount, result, updateAccount, reset, changeField} = useContext(AccountEditContext);
 
   return (
-    <div className="new_account">
+    <div className="form-style">
       <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="account" />
+          <AdminNavigation title="account"/>
         </div>
         <div className="col-10">
           <AdminHeader title="Account" />

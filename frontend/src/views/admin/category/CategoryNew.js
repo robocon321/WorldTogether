@@ -2,11 +2,6 @@
 import { React, useContext } from "react";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/new_category.css";
-import closeIcon from "../../../assets/images/close.png";
 import { CategoryNewContext } from "../../../contexts/admin/category/CategoryNewContext";
 
 const CategoryNew = props => {
@@ -23,10 +18,10 @@ const CategoryNew = props => {
   } = useContext(CategoryNewContext);
 
   return (
-    <div className="new_category">
+    <div className="form-style">
       <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="category" />
+          <AdminNavigation title="category" history={props.history} />
         </div>
         <div className="col-10">
           <AdminHeader title="Category" />
@@ -92,7 +87,7 @@ const CategoryNew = props => {
                                     <option value={1}>Chuỗi</option>
                                     <option value={2}>Thời gian</option>
                                   </select>
-                                  <div className="s-2" onClick={() => removeAttribte(index)}><img className="s-2" src={closeIcon} alt="Not found"/></div>
+                                  <div className="s-2" onClick={() => removeAttribte(index)}><img className="s-2" src="assets/images/close.png" alt="Not found"/></div>
                                 </td>
                             </tr>
                             )

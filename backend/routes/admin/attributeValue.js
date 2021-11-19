@@ -25,6 +25,7 @@ router.post('/', verifyToken, async (req, res) => {
   }
   
   try {
+    if(productAttributeValues.length === 0) return res.status(200).json({...result});
     await productAttributeValues.forEach(async (item, index) => {
     const { attr_id, product_id, text_value, number_value, date_value } = item;
     req.body.cre_uid = req.uid;
@@ -49,6 +50,12 @@ router.post('/', verifyToken, async (req, res) => {
       if(!productAttributeValue) {
         const newProductAttributeValue = new ProductAttributeValue(item);
         await newProductAttributeValue.save();
+        if(!result.success) {
+          return res.status(400).json({...result});
+        }
+        if(index >= productAttributeValues.length - 1) {
+          return res.status(200).json({...result});
+        }
       }
     });
   } catch (e) {
@@ -56,7 +63,6 @@ router.post('/', verifyToken, async (req, res) => {
     return res.status(500).json({success: false, message: "Interval Server"})
   }   
   
-  return res.status(result.success ? 200 : 400).json({...result});
 });
 
 router.put('/', verifyToken, async (req, res) => {

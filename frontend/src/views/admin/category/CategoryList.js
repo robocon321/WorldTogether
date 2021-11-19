@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/categories.css";
 import { CategoryListContext } from "../../../contexts/admin/category/CategoryListContext";
 
 const data = {
@@ -48,9 +44,9 @@ const CategoryList = props => {
 
   return (
     <div>
-      <div className="categories d-flex">
+      <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="category" />
+          <AdminNavigation title="category" history={props.history}/>
         </div>
         <div className="col-10">
           <AdminHeader title="Category" />
@@ -73,28 +69,28 @@ const CategoryList = props => {
                 <Link to="/admin/category/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
               </div>
               <div className="categories">
-                <table className=" my-4">
+                <table className="list my-4">
                   <tbody>
                     <tr>
-                      <th>STT</th>
-                      <th>Title</th>
-                      <th>Parent Title</th>
-                      <th>Display Order</th>
-                      <th>View count</th>
-                      <th>Product count</th>
-                      <th>Action</th>
+                      <th style={{"--w": "10%"}}>STT</th>
+                      <th style={{"--w": "20%"}}>Title</th>
+                      <th style={{"--w": "20%"}}>Parent Title</th>
+                      <th style={{"--w": "10%"}}>Display Order</th>
+                      <th style={{"--w": "10%"}}>View count</th>
+                      <th style={{"--w": "10%"}}>Product count</th>
+                      <th style={{"--w": "20%"}}>Action</th>
                     </tr>
                     {
                       categories.filter(item => item.title.indexOf(search) >= 0).map((item, index) => {
                         return (
                           <tr key={index}>
-                            <td><a href="#">{index}</a></td>
-                            <td>{item.title}</td>
-                            <td><a href="#">{getTitleParentCategory(item.parent_id)}</a></td>
-                            <td>{item.display_order}</td>
-                            <td>{item.view_count ? item.view_count : 0}</td>
-                            <td>{0}</td>
-                            <td><button className="btn btn-success me-1" onClick={(e) => switchToEditPage(e, item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteCategory(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
+                            <td style={{"--w": "10%"}}><a href="#">{index}</a></td>
+                            <td style={{"--w": "20%"}}>{item.title}</td>
+                            <td style={{"--w": "20%"}}><a href="#">{getTitleParentCategory(item.parent_id)}</a></td>
+                            <td style={{"--w": "10%"}}>{item.display_order}</td>
+                            <td style={{"--w": "10%"}}>{item.view_count ? item.view_count : 0}</td>
+                            <td style={{"--w": "10%"}}>{0}</td>
+                            <td style={{"--w": "20%"}}><button className="btn btn-success me-1" onClick={(e) => switchToEditPage(e, item._id)}><i className="fas fa-pen"></i></button><button className="btn btn-danger ms-1" onClick={(e) => deleteCategory(e, item._id)}><i className="fas fa-trash-alt"></i></button></td>
                           </tr>
                         )
                       })

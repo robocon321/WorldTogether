@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import AdminNavigation from "../../../components/layout/AdminNavigation";
 import AdminHeader from "../../../components/layout/AdminHeader";
 import { Line } from 'react-chartjs-2';
-import "../../../assets/vendor/bootstrap-5.1.0-dist/css/bootstrap.min.css";
-import "../../../assets/vendor/fontawesome-free-5.15.4-web/css/all.min.css";
-import "../../../assets/css/styles.css";
-import "../../../assets/css/admin/order_list.css";
 
 const data = {
   labels: ['a','b','c','d','e','f'],
@@ -40,7 +36,7 @@ const OrderIndex = props => {
     <div className="order_list">
       <div className="d-flex">
         <div className="col-2 bg-black">
-          <AdminNavigation title="order" />
+          <AdminNavigation title="order" history={props.history} />
         </div>
         <div className="col-10">
           <AdminHeader title="Order" />          
@@ -101,17 +97,17 @@ const OrderIndex = props => {
                 <Link to="/admin/product/new"><button className="btn-add bg-blue-l c-white rd-full">+</button></Link>       
               </div>
               <div className="categories">
-                <table className=" my-4">
+                <table className="list my-4">
                   <tbody>
                     <tr>
-                      <th>STT</th>
-                      <th>Ngày gửi</th>
-                      <th>Ngày nhận</th>
-                      <th>Tình trạng</th>
-                      <th>Tổng cộng</th>
-                      <th>Giảm giá</th>
-                      <th>Phí ship</th>
-                      <th>Thành tiền</th>
+                      <th style={{"--w": "5%"}}>STT</th>
+                      <th style={{"--w": "15%"}}>Ngày gửi</th>
+                      <th style={{"--w": "15%"}}>Ngày nhận</th>
+                      <th style={{"--w": "15%"}}>Tình trạng</th>
+                      <th style={{"--w": "10%"}}>Tổng cộng</th>
+                      <th style={{"--w": "10%"}}>Giảm giá</th>
+                      <th style={{"--w": "10%"}}>Phí ship</th>
+                      <th style={{"--w": "10%"}}>Thành tiền</th>
                     </tr>
                     <tr>
                       <td><a href="#">1</a></td>
