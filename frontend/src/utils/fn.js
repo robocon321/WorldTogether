@@ -32,4 +32,10 @@ export const uploadFirebase = (file) => {
   return uploadBytesResumable(storageRef, file);
 }
 
+export const loadScript = function(src) {
+  var tag = document.createElement('script');
+  tag.async = false;
+  tag.src = src;
+  document.getElementsByTagName('body')[0].appendChild(tag);
+};
 

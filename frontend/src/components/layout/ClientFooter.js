@@ -36,9 +36,9 @@ const ClientFooter = props => {
       </div>
       <div className="footer-col">
         <h6 className="mb-4">KẾT NỐI VỚI CHÚNG TÔI</h6>
-        <a href="#" className="ht-2 d-inline-block me-1"><img className="s-hfull" src="assets/images/facebook.svg" alt="Not found" /></a>
-        <a href="#" className="ht-2 d-inline-block mx-1"><img className="s-hfull" src="assets/images/youtube.svg" alt="Not found" /></a>
-        <a href="#" className="ht-2 d-inline-block ms-1"><img className="s-hfull" src="assets/images/zalo.svg" alt="Not found" /></a>
+        <a href="#" className="ht-2 d-inline-block me-1"><img className="s-hfull" src="/assets/images/facebook.svg" alt="Not found" /></a>
+        <a href="#" className="ht-2 d-inline-block mx-1"><img className="s-hfull" src="/assets/images/youtube.svg" alt="Not found" /></a>
+        <a href="#" className="ht-2 d-inline-block ms-1"><img className="s-hfull" src="/assets/images/zalo.svg" alt="Not found" /></a>
       </div>
     </div>
   </footer>

@@ -5,10 +5,9 @@
 import React, { useContext, useEffect } from "react";
 import Slider from "react-slick";
 
-import ClientHeader from "../../components/layout/ClientHeader";
-import ClientFooter from "../../components/layout/ClientFooter";
 import { HomeContext } from "../../contexts/client/HomeContext";
 import currencyFormat from "currency-formatter";
+import { loadScript } from "../../utils/fn";
 
 
 const Home = props => {
@@ -16,15 +15,10 @@ const Home = props => {
     flashSale, 
     suggestSale, 
     findProductByIdValue_SuggestSale, 
-    loadProduct_SuggestSale
+    findProductByIdValue_FlashSale,
+    loadProduct_SuggestSale,
   } = useContext(HomeContext);
 
-  var loadScript = function(src) {
-    var tag = document.createElement('script');
-    tag.async = false;
-    tag.src = src;
-    document.getElementsByTagName('body')[0].appendChild(tag);
-  } 
   const settings = {
     autoplay: true,
     dots: true,
@@ -38,7 +32,7 @@ const Home = props => {
     loadScript("../../assets/vendor/bootstrap-5.1.0-dist/js/bootstrap.min.js");
     loadScript("../../assets/vendor/fontawesome-free-5.15.4-web/js/all.min.js");
     loadScript("../../assets/vendor/jquery/jquery-3.6.0.min.js");
-    loadScript("../../assets/js/script.js");
+    loadScript("../../assets/js/homeScript.js");
   }, []);
 
   return(
@@ -84,13 +78,16 @@ const Home = props => {
         </div>
         <Slider className="flash-product" {...settings}>
         {
-          flashSale.product_values.map((item, index) => (
-            <a key={index} href="#" className="product-item p-2 d-flex flex-column m-1">
-            <img src={item.avatar} />
-            <h5 className="text-center p-2">{currencyFormat.format(item.opt_sale_price, {locale: "vi-VN"})}</h5>
-            <div className="sold-process"></div>
-          </a>
-          ))
+          flashSale.product_values.map((item, index) => {
+            const product = findProductByIdValue_FlashSale(item._id);
+            return (
+            <a key={index} href={`/sanpham/${product._id}`} className="product-item p-2 d-flex flex-column m-1">
+              <img src={item.avatar} />
+              <h5 className="text-center p-2">{currencyFormat.format(item.opt_sale_price, {locale: "vi-VN"})}</h5>
+              <div className="sold-process"></div>
+            </a>
+            )
+          })
         }
         </Slider>
       </section>

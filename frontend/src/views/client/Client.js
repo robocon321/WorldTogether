@@ -5,28 +5,46 @@
 import React from "react";
 
 import { Provider } from "react-redux";
-import { Route, Switch } from "react-router";
+import {Route, Switch} from "react-router-dom";
 
 import HomeProvider from "../../contexts/client/HomeContext";
-import Home from "./Home";
-import homeStore from "../../reducers/client/home/index";
+import DetailProductProvider from "../../contexts/client/DetailProductContext";
+import ClientHeaderProvider from "../../contexts/client/ClientHeaderContext";
+
 import ClientHeader from "../../components/layout/ClientHeader";
 import ClientFooter from "../../components/layout/ClientFooter";
+
+import Home from "./Home";
+import DetailProduct from "./DetailProduct";
+
+import homeStore from "../../reducers/client/home/index";
+import detailStore from "../../reducers/client/detail_product/index";
+import headerStore from "../../reducers/client/template/ClientHeaderReducer";
 
 const Client = props => {
   return (
     <div>
-      <ClientHeader />
-        <Switch>
-            <Route path="/" children={(props) => (
-              <Provider store={homeStore}>
-                  <HomeProvider {...props}>
-                    <Home />
-                  </HomeProvider>
-                </Provider>
-              )}>
-            </Route>
-        </Switch>
+      <Provider store={headerStore}>
+        <ClientHeaderProvider>
+          <ClientHeader />
+        </ClientHeaderProvider>
+      </Provider>
+      <Switch>
+        <Route path="/sanpham/:id" component={(props) => (
+          <Provider store={detailStore}>
+              <DetailProductProvider {...props}>
+                <DetailProduct />
+              </DetailProductProvider>
+            </Provider>
+          )} />
+        <Route path="/" children={(props) => (
+          <Provider store={homeStore}>
+              <HomeProvider {...props}>
+                <Home />
+              </HomeProvider>
+            </Provider>
+          )} />
+      </Switch>
       <ClientFooter />
     </div>
   )

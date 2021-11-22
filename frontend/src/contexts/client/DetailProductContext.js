@@ -3,40 +3,42 @@ import axios from "axios";
 import { createContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SERVER } from "../../utils/Constants";
-import * as flashSaleActions from "../../actions/client/home/FlashSaleAction";
-import * as suggestSaleActions from "../../actions/client/home/SuggestSaleAction";
+import * as suggestSaleActions from "../../actions/client/detail_product/SuggestSaleAction";
+import * as detailProductActions from "../../actions/client/detail_product/DetailProductAction";
 
-export const HomeContext = createContext();
+export const DetailProductContext = createContext();
 
-const HomeProvider = (props) => {
-
-  const { flashSale, suggestSale } = useSelector(state => state);
+const DetailProductProvider = (props) => {
+  const { suggestSale, detailProduct } = useSelector(state => state);
   const dispatcher = useDispatch();
 
   useEffect(() => {
-    loadProduct_FlashSale();
     loadProduct_SuggestSale();
+    loadProduct_Detail();
   }, []);
-  
-  const loadProduct_FlashSale = async () => {
+
+  // detail product
+
+  const loadProduct_Detail = async () => {
     const resProduct = await axios.get(`${SERVER}/product`, {
       params: {
         is_delete: false,
         limit: 10,
         skip: 0, 
-        search: ''
+        search: '',
+        _id: props.match.params.id
       }
     });
     
     if(resProduct.data.success) {
-      dispatcher(flashSaleActions.loadProduct(resProduct.data.product));
+      dispatcher(detailProductActions.loadDetailProduct(resProduct.data.product[0]));
       resProduct.data.product.forEach((item) => {
-        loadOption_FlashSale(item._id);
+        loadOption_Detail(item._id);
       })
     }
   }
 
-  const loadOption_FlashSale = async (id) => {
+  const loadOption_Detail = async (id) => {
     const resProduct = await axios.get(`${SERVER}/option-product`, {
       params: {
         query_title: {
@@ -47,10 +49,21 @@ const HomeProvider = (props) => {
     });
 
     if(resProduct.data.success) {
-      dispatcher(flashSaleActions.loadOption(resProduct.data.product_titles, resProduct.data.product_values));
-      dispatcher(flashSaleActions.loadOption(resProduct.data.product_titles, resProduct.data.product_values));
+      dispatcher(detailProductActions.loadOptions(resProduct.data.product_titles, resProduct.data.product_values));
+      dispatcher(detailProductActions.loadOptions(resProduct.data.product_titles, resProduct.data.product_values));
     };
   }
+
+  const findTitleByIdValue_Detail = (id) => {
+    const optValue = suggestSale.product_values.find(item => item._id === id);
+    return suggestSale.product_titles.find(item => item._id === optValue.opt_title_id);
+  }
+
+  const findProductByIdValue_Detail = (id) => {
+    return suggestSale.products.find(item => item._id === findTitleByIdValue_SuggestSale(id).product_id)
+  }
+
+  // suggest product
 
   const loadProduct_SuggestSale = async () => {
     const resProduct = await axios.get(`${SERVER}/product`, {
@@ -95,30 +108,28 @@ const HomeProvider = (props) => {
     return suggestSale.products.find(item => item._id === findTitleByIdValue_SuggestSale(id).product_id)
   }
 
-  const findTitleByIdValue_FlashSale = (id) => {
-    const optValue = flashSale.product_values.find(item => item._id === id);
-    return flashSale.product_titles.find(item => item._id === optValue.opt_title_id);
-  }
-
-  const findProductByIdValue_FlashSale = (id) => {
-    return flashSale.products.find(item => item._id === findTitleByIdValue_FlashSale(id).product_id)
+  const splitImageString = (index) => {
+    if(!detailProduct.product_values.length || detailProduct.product_values[index].imgs === '') return [];
+    else return detailProduct.product_values[index].imgs.split(',');
   }
 
   const value = {
-    flashSale, 
     suggestSale, 
     findTitleByIdValue_SuggestSale, 
     findProductByIdValue_SuggestSale, 
-    findTitleByIdValue_FlashSale,
-    findProductByIdValue_FlashSale,
-    loadProduct_SuggestSale
+    loadProduct_SuggestSale,
+
+    detailProduct,
+    findTitleByIdValue_Detail,
+    findProductByIdValue_Detail,
+    splitImageString
   };
 
   return (
-    <HomeContext.Provider value={value}>
+    <DetailProductContext.Provider value={value}>
       {props.children}
-    </HomeContext.Provider>
+    </DetailProductContext.Provider>
   )
 }
 
-export default HomeProvider;
+export default DetailProductProvider;
